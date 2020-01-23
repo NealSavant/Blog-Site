@@ -16,11 +16,11 @@ CREATE SCHEMA IF NOT EXISTS `SD_ELP` DEFAULT CHARACTER SET utf8 ;
 USE `SD_ELP` ;
 
 -- -----------------------------------------------------
--- Table `images`
+-- Table `image`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `images` ;
+DROP TABLE IF EXISTS `image` ;
 
-CREATE TABLE IF NOT EXISTS `images` (
+CREATE TABLE IF NOT EXISTS `image` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `content_img_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
@@ -45,45 +45,47 @@ CREATE TABLE IF NOT EXISTS `user` (
   INDEX `fk_user_images1_idx` (`images_id` ASC),
   CONSTRAINT `fk_user_images1`
     FOREIGN KEY (`images_id`)
-    REFERENCES `images` (`id`)
+    REFERENCES `image` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `written_content`
+-- Table `content`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `written_content` ;
+DROP TABLE IF EXISTS `content` ;
 
-CREATE TABLE IF NOT EXISTS `written_content` (
+CREATE TABLE IF NOT EXISTS `content` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `content` TEXT NULL,
+  `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `content_index`
+-- Table `topic`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `content_index` ;
+DROP TABLE IF EXISTS `topic` ;
 
-CREATE TABLE IF NOT EXISTS `content_index` (
+CREATE TABLE IF NOT EXISTS `topic` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `images_id` INT NOT NULL,
-  `written_content_id` INT NOT NULL,
+  `content_id` INT NOT NULL,
+  `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_content_index_images1_idx` (`images_id` ASC),
-  INDEX `fk_content_index_written_content1_idx` (`written_content_id` ASC),
+  INDEX `fk_content_index_written_content1_idx` (`content_id` ASC),
   CONSTRAINT `fk_content_index_images1`
     FOREIGN KEY (`images_id`)
-    REFERENCES `images` (`id`)
+    REFERENCES `image` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_content_index_written_content1`
-    FOREIGN KEY (`written_content_id`)
-    REFERENCES `written_content` (`id`)
+    FOREIGN KEY (`content_id`)
+    REFERENCES `content` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -109,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `log` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_log_content_index1`
     FOREIGN KEY (`content_index_id`)
-    REFERENCES `content_index` (`id`)
+    REFERENCES `topic` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -124,19 +126,20 @@ CREATE TABLE IF NOT EXISTS `resource` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NOT NULL,
   `resource_url` VARCHAR(2000) NOT NULL,
+  `active` TINYINT NULL DEFAULT 1,
   `images_id` INT NULL,
-  `content_index_id` INT NOT NULL,
+  `topic_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_resource_images1_idx` (`images_id` ASC),
-  INDEX `fk_resource_content_index1_idx` (`content_index_id` ASC),
+  INDEX `fk_resource_content_index1_idx` (`topic_id` ASC),
   CONSTRAINT `fk_resource_images1`
     FOREIGN KEY (`images_id`)
-    REFERENCES `images` (`id`)
+    REFERENCES `image` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_resource_content_index1`
-    FOREIGN KEY (`content_index_id`)
-    REFERENCES `content_index` (`id`)
+    FOREIGN KEY (`topic_id`)
+    REFERENCES `topic` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
