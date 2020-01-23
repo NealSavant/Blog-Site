@@ -28,4 +28,38 @@ public class Log {
 	@JoinColumn(name="content_index_id")
 	private Topic content;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public LocalDateTime getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(LocalDateTime timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Topic getContent() {
+		return content;
+	}
+
+	public void setContent(Topic content) {
+		this.content = content;
+	}
+	
+	
+
 }

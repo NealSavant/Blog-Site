@@ -1,6 +1,7 @@
 package com.skilldistillery.sdelp.entities;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -67,8 +68,27 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+		
+		
 	}
 	
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	public List<Log> getLogs() {
+		List<Log> copy = new ArrayList<>(logs);
+		return copy;
+	}
+
+	public void setLogs(List<Log> logs) {
+		this.logs = logs;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", active=" + active + ", role="
