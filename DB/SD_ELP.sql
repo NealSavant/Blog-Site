@@ -16,21 +16,77 @@ CREATE SCHEMA IF NOT EXISTS `SD_ELP` DEFAULT CHARACTER SET utf8 ;
 USE `SD_ELP` ;
 
 -- -----------------------------------------------------
+-- Table `images`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `images` ;
+
+CREATE TABLE IF NOT EXISTS `images` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `content_img_url` VARCHAR(2000) NULL,
+  `user_img_url` VARCHAR(2000) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `type` ENUM('admin', 'basic') NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(50) NULL,
-  `cohort_id` INT NULL,
+  `role` VARCHAR(45) NOT NULL DEFAULT 'user',
   `active` TINYINT NULL DEFAULT 1,
-  `role` VARCHAR(45) NULL,
+  `email` VARCHAR(50) NULL,
+  `images_id` INT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC))
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
+  INDEX `fk_user_images1_idx` (`images_id` ASC),
+  CONSTRAINT `fk_user_images1`
+    FOREIGN KEY (`images_id`)
+    REFERENCES `images` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `written_content`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `written_content` ;
+
+CREATE TABLE IF NOT EXISTS `written_content` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(50) NOT NULL,
+  `content` TEXT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `content_index`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `content_index` ;
+
+CREATE TABLE IF NOT EXISTS `content_index` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `images_id` INT NOT NULL,
+  `written_content_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_content_index_images1_idx` (`images_id` ASC),
+  INDEX `fk_content_index_written_content1_idx` (`written_content_id` ASC),
+  CONSTRAINT `fk_content_index_images1`
+    FOREIGN KEY (`images_id`)
+    REFERENCES `images` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_content_index_written_content1`
+    FOREIGN KEY (`written_content_id`)
+    REFERENCES `written_content` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -43,11 +99,40 @@ CREATE TABLE IF NOT EXISTS `log` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `time_stamp` DATETIME NOT NULL,
   `user_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `user_id`),
+  `content_index_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
   INDEX `fk_log_user_idx` (`user_id` ASC),
+  INDEX `fk_log_content_index1_idx` (`content_index_id` ASC),
   CONSTRAINT `fk_log_user`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_log_content_index1`
+    FOREIGN KEY (`content_index_id`)
+    REFERENCES `content_index` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `resources`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `resources` ;
+
+CREATE TABLE IF NOT EXISTS `resources` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(100) NOT NULL,
+  `resource_url` VARCHAR(2000) NOT NULL,
+  `content_index_id` INT NOT NULL,
+  `content_index_images_id` INT NOT NULL,
+  `content_index_written_content_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_reference_content_index1_idx` (`content_index_id` ASC),
+  CONSTRAINT `fk_reference_content_index1`
+    FOREIGN KEY (`content_index_id`)
+    REFERENCES `content_index` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -68,7 +153,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SD_ELP`;
-INSERT INTO `user` (`id`, `type`, `username`, `password`, `email`, `cohort_id`, `active`, `role`) VALUES (1, DEFAULT, 'admin', 'admin', NULL, NULL, 1, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `active`, `email`, `images_id`) VALUES (1, 'admin', 'admin', 'ADMIN', 1, NULL, NULL);
 
 COMMIT;
 
