@@ -5,6 +5,7 @@ build
 bin
 .metadata
 # .settings
+.classpath
 .gradle
 *.war
 *.bak
