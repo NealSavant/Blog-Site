@@ -9,3 +9,4 @@ bin
 .gradle
 *.war
 *.bak
+.classpath
