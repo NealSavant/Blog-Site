@@ -8,3 +8,4 @@ Purpose:
 * Related technologies:
   - How they are different?
   - What are the use cases?
+  - What resources are available?
