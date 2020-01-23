@@ -29,6 +29,6 @@ public class Resource {
 	
 	@ManyToOne
 	@JoinColumn(name="topic_id")
-	private Content content;
+	private Topic topic;
 
 }

@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -23,6 +25,10 @@ public class User {
 	private Boolean active;
 	
 	private String role;
+	
+	@OneToOne
+	@JoinColumn(name="images_id")
+	private Image image;
 	
 	@OneToMany(mappedBy="user")
 	private List<Log> logs;

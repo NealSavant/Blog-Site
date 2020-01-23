@@ -26,6 +26,6 @@ public class Log {
 	
 	@ManyToOne
 	@JoinColumn(name="content_index_id")
-	private Content content;
+	private Topic content;
 
 }
