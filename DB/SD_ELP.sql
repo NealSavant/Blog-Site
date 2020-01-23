@@ -125,11 +125,18 @@ CREATE TABLE IF NOT EXISTS `resource` (
   `title` VARCHAR(100) NOT NULL,
   `resource_url` VARCHAR(2000) NOT NULL,
   `images_id` INT NULL,
+  `content_index_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_resource_images1_idx` (`images_id` ASC),
+  INDEX `fk_resource_content_index1_idx` (`content_index_id` ASC),
   CONSTRAINT `fk_resource_images1`
     FOREIGN KEY (`images_id`)
     REFERENCES `images` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_resource_content_index1`
+    FOREIGN KEY (`content_index_id`)
+    REFERENCES `content_index` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
