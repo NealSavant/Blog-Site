@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Resource {
@@ -19,6 +20,10 @@ public class Resource {
 	
 	@Column(name="resource_url")
 	private String resourceUrl;
+	
+	@OneToOne
+	@JoinColumn(name="images_id")
+	private Image image;
 	
 	@ManyToOne
 	@JoinColumn(name="content_index_id")

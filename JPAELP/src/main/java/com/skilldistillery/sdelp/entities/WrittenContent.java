@@ -20,8 +20,7 @@ public class WrittenContent {
 	
 	private String content;
 	
-	@OneToOne(mappedBy="writtenContent")
-	public WrittenContent writtenContent;
+
 	
 	
 
