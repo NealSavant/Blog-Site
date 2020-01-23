@@ -23,7 +23,6 @@ DROP TABLE IF EXISTS `images` ;
 CREATE TABLE IF NOT EXISTS `images` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `content_img_url` VARCHAR(2000) NULL,
-  `user_img_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -125,14 +124,12 @@ CREATE TABLE IF NOT EXISTS `resource` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NOT NULL,
   `resource_url` VARCHAR(2000) NOT NULL,
-  `content_index_id` INT NOT NULL,
-  `content_index_images_id` INT NOT NULL,
-  `content_index_written_content_id` INT NOT NULL,
+  `images_id` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_reference_content_index1_idx` (`content_index_id` ASC),
-  CONSTRAINT `fk_reference_content_index1`
-    FOREIGN KEY (`content_index_id`)
-    REFERENCES `content_index` (`id`)
+  INDEX `fk_resource_images1_idx` (`images_id` ASC),
+  CONSTRAINT `fk_resource_images1`
+    FOREIGN KEY (`images_id`)
+    REFERENCES `images` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
