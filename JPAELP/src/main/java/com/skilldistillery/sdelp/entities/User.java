@@ -1,10 +1,13 @@
 package com.skilldistillery.sdelp.entities;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -12,10 +15,17 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String username;
+	
 	private String password;
+	
 	private Boolean active;
+	
 	private String role;
+	
+	@OneToMany(mappedBy="user")
+	private List<Log> logs;
 	
 	
 	public User() {
