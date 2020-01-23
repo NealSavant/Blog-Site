@@ -117,11 +117,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `resources`
+-- Table `resource`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `resources` ;
+DROP TABLE IF EXISTS `resource` ;
 
-CREATE TABLE IF NOT EXISTS `resources` (
+CREATE TABLE IF NOT EXISTS `resource` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NOT NULL,
   `resource_url` VARCHAR(2000) NOT NULL,
