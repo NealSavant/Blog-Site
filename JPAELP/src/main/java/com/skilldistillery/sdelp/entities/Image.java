@@ -15,7 +15,7 @@ public class Image {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="")
+	@Column(name="content_img_url")
 	private String imageUrl;
 	
 	@OneToOne

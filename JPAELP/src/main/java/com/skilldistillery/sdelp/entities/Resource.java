@@ -21,12 +21,14 @@ public class Resource {
 	@Column(name="resource_url")
 	private String resourceUrl;
 	
+	private Boolean active;
+	
 	@OneToOne
 	@JoinColumn(name="images_id")
 	private Image image;
 	
 	@ManyToOne
-	@JoinColumn(name="content_index_id")
+	@JoinColumn(name="topic_id")
 	private Content content;
 
 }
