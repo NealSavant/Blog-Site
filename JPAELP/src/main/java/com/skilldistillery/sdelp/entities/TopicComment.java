@@ -28,7 +28,7 @@ public class TopicComment {
 	@CreationTimestamp
 	public LocalDateTime createdAt;
 	
-	@Column(name="updated_at")
+	@Column(name="update_at")
 	@UpdateTimestamp
 	public LocalDateTime updatedAt;
 	
