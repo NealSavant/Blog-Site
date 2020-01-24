@@ -36,9 +36,8 @@ public class Topic {
 	@UpdateTimestamp
 	public LocalDateTime updatedAt;
 	
-	@OneToOne
-	@JoinColumn(name="content_id")
-	public Content content;
+	@OneToMany(mappedBy="topic")
+	public List<Content> contents;
 	
 	
 	@ManyToMany
@@ -84,12 +83,15 @@ public class Topic {
 		this.updatedAt = updatedAt;
 	}
 
-	public Content getContent() {
-		return content;
+	
+
+	public List<Content> getContents() {
+		List<Content> copy = new ArrayList<>(contents);
+		return contents;
 	}
 
-	public void setContent(Content content) {
-		this.content = content;
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
 	}
 
 	public List<Image> getImages() {
@@ -121,7 +123,7 @@ public class Topic {
 	@Override
 	public String toString() {
 		return "Topic [id=" + id + ", title=" + title + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ ", content=" + content + ", active=" + active + ", resources=" + resources + "]";
+				+ ", active=" + active + "]";
 	}
 
 	@Override
