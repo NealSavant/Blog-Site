@@ -14,10 +14,24 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 	
+	<article>
 	
-
-
-
+	<div = "nav-wrapper">
+	
+	
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</article>
 
 
 

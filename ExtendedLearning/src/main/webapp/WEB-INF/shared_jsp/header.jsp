@@ -7,17 +7,24 @@
 
 <!DOCTYPE html>
 
+
+<div class="row">
+	<div class="col-sm">
+			<h2>SD Extended Learning Platform</h2>
+		<div class="col-sm">
+			<a>Take your Full Stack development skill to new levels.</a>
+		</div>
+	</div>
+</div>
+
 <div class="container">
 	<div class="row">
-		<div class="col-sm">
-			<h3>SD Extended Learning Platform</h3>
-		</div>
-
 		<nav class="header-nav">
 			<ul class="main-header-list">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Create Account</a></li>
-				<li><a href="#">Log In</a></li>
+				<li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+				<li><a href="#"><i class="fas fa-plus-square"></i> Create
+						Account</a></li>
+				<li><a href="#"><i class="fas fa-user"></i> Log In</a></li>
 			</ul>
 		</nav>
 	</div>
