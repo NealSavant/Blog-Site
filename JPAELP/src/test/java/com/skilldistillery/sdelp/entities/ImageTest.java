@@ -42,7 +42,6 @@ class ImageTest {
 		em.close();
 	}
 
-	@Disabled
 	@Test
 	@DisplayName("Test user entity mapping")
 	void test1() {
@@ -50,4 +49,10 @@ class ImageTest {
 		assertEquals(1, image.getId());
 	}
 
+	@DisplayName("Testing image list for topic")
+	@Test
+	void test5() {
+		assertTrue(image.getTopics().size() > 0);
+		assertEquals("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png", image.getImageUrl());
+	}
 }
