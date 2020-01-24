@@ -30,6 +30,8 @@ public class UserController {
 		return "login";
 	}
 	
+	// show create account page to user
+	
 	@RequestMapping(path = "showCreateAccount.do")
 	public String showCreateAccount() {
 		return "create_account";
@@ -49,6 +51,25 @@ public class UserController {
 
 			return "redirect:showLogin.do";
 		}
+	}
+	
+	// attempt create account
+	
+	@RequestMapping(path="createAccount.do", method = RequestMethod.POST)
+	public String attemptCreateAccount(@RequestParam String username,
+			@RequestParam String password,
+			@RequestParam String firstName,
+			@RequestParam String lastName,
+			@RequestParam String email,
+			@RequestParam String jobTitle,
+			@RequestParam String about
+			) {
+		
+		
+		
+		
+		
+		return "user_home";
 	}
 	
 	@RequestMapping(path = "logout.do")
