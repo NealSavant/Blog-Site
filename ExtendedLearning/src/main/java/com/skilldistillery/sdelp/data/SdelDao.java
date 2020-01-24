@@ -34,9 +34,6 @@ public interface SdelDao {
 	Image addImage(Image image);
 	
 
-	
-	TopicComment addTopicComment(TopicComment topicComment);
-	
-	TopicComment updateTopicComment(TopicComment topicComment);
+
 	
 }

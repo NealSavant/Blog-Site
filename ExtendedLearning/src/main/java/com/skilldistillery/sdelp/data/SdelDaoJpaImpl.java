@@ -96,18 +96,6 @@ public class SdelDaoJpaImpl implements SdelDao {
 
 
 
-	@Override
-	public TopicComment addTopicComment(TopicComment topicComment) {
-		em.persist(topicComment);
-		return topicComment;
-	}
 
-	@Override
-	public TopicComment updateTopicComment(TopicComment topicComment) {
-		TopicComment managedTopicComment = em.find(TopicComment.class, topicComment.getId());
-		managedTopicComment.setTitle(topicComment.getTitle());
-		managedTopicComment.setContent(topicComment.getContent());
-		return managedTopicComment;
-	}
 
 }
