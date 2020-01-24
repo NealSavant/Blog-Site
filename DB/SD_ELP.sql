@@ -239,3 +239,83 @@ INSERT INTO `user` (`id`, `username`, `password`, `role`, `created_at`, `updated
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `topic`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `SD_ELP`;
+INSERT INTO `topic` (`id`, `title`, `created_at`, `updated_at`, `active`) VALUES (1, 'test', '2020-01-23', '2020-01-23', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `log`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `SD_ELP`;
+INSERT INTO `log` (`id`, `time_stamp`, `user_id`, `topic_id`) VALUES (1, '2020-01-23', 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `image`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `SD_ELP`;
+INSERT INTO `image` (`id`, `content_img_url`) VALUES (1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `resource`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `SD_ELP`;
+INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `update_at`, `image_id`, `active`) VALUES (1, 'test', 'www.google.com', 1, '2020-01-23', '2020-01-23', NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `content`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `SD_ELP`;
+INSERT INTO `content` (`id`, `content`, `topic_id`, `created_at`, `update_at`, `active`) VALUES (1, 'test', 1, '2020-01-23', '2020-01-23', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `profile`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `SD_ELP`;
+INSERT INTO `profile` (`id`, `first_name`, `last_name`, `image_id`, `email`, `user_id`, `job_title`, `about`) VALUES (1, 'test', 'test', 1, 'test@test.com', 1, NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `topic_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `SD_ELP`;
+INSERT INTO `topic_comment` (`id`, `title`, `created_at`, `update_at`, `topic_id`, `user_id`, `content`) VALUES (1, 'test', '2020-01-23', '2020-01-23', 1, 1, 'test');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `topic_image`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `SD_ELP`;
+INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (1, 1);
+
+COMMIT;
+
