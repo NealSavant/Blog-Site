@@ -73,14 +73,17 @@ public class SdelDaoJpaImpl implements SdelDao {
 
 	@Override
 	public Topic addTopic(Topic topic) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(topic);
+		return topic;
 	}
 
 	@Override
 	public Topic updateTopic(Topic topic) {
-		// TODO Auto-generated method stub
-		return null;
+		Topic managedTopic = em.find(Topic.class, topic.getId());
+		managedTopic.setTitle(topic.getTitle());
+		managedTopic.setActive(topic.getActive());
+		// add in list updates?
+		return managedTopic;
 	}
 
 	@Override
