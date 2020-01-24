@@ -7,3 +7,4 @@
 <script src="https://kit.fontawesome.com/40b066926e.js" crossorigin="anonymous"></script>
 <link rel ="stylesheet" href="/css/master.css">
 <link rel ="stylesheet" href="/css/header.css">
+<link rel ="stylesheet" href="/css/side-nav.css">

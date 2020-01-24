@@ -7,16 +7,18 @@
 
 <!DOCTYPE html>
 
-
-<div class="row">
-	<div class="col-sm">
-			<h2>SD Extended Learning Platform</h2>
-		<div class="col-sm">
-			<a>Take your Full Stack development skill to new levels.</a>
-		</div>
+<!--Static title at top of every page  -->
+<div class="container" >
+	<div class="row">
+		<h2>SD Extended Learning Platform</h2>
 	</div>
+	<div class="row">
+		<a>Take your Full Stack development skill to new levels.</a>
+	</div>
+
 </div>
 
+<!--Top style nav bar for account information  -->
 <div class="container">
 	<div class="row">
 		<nav class="header-nav">

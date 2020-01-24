@@ -13,30 +13,30 @@
 	<header class="main-header">
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
-	
+
 	<article>
-	
-	<div = "nav-wrapper">
-	
-	
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+		<div class= "nav-wrapper">
+
+			<jsp:include page="shared_jsp/nav.jsp" />
+		</div>
+
+
+
+
+
+
+
+
+
+
+
 	</article>
 
 
 
 	<footer>
-		<jsp:include page ="shared_jsp/footer.jsp" />
+		<jsp:include page="shared_jsp/footer.jsp" />
 	</footer>
 
 
