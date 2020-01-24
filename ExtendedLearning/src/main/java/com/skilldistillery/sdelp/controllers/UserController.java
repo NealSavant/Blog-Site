@@ -70,7 +70,7 @@ public class UserController {
 			User user = new User();
 			user.setUsername(username);
 			user.setPassword(password);
-			userProfileDao.createUser(user);
+			userProfileDao.createUser(user);	//backend handles profile and user table in one method
 			Profile profile = new Profile();
 			profile.setFirstName(firstName);
 			profile.setLastName(lastName);

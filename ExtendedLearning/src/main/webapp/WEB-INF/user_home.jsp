@@ -30,8 +30,8 @@
 			<a>Job Title: ${profile.jobTitle }</a>
 			<a>Biography: ${profile.about }</a>
 			
-			<form action = "updateProfile.do" method = "POST">
-				<button type = "button" class ="btn btn-info">Update Account </button>
+			<form action = "showUpdateAccount.do" method = "POST">
+				<button type = "button" class ="btn btn-info">Update Account</button>
 			</form>
 		</div>
 
