@@ -13,15 +13,7 @@ import com.skilldistillery.sdelp.entities.User;
 
 public interface SdelDao {
 	
-	User getUserByUsernamePassword(String username, String password);
-	
-	User createUser(User user);
-	
-	User updateUser(User user);
-	
-	Profile createProfile(Profile profile);
-	
-	Profile updateProfile(Profile profile);
+
 	
 	List<Topic> findTopicsBySearchTerm(String keyword);
 	

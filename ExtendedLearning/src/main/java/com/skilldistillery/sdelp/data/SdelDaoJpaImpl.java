@@ -25,48 +25,6 @@ public class SdelDaoJpaImpl implements SdelDao {
 	@PersistenceContext
 	private EntityManager em;
 
-	@Override
-	public User getUserByUsernamePassword(String username, String password) {
-		User user = null;
-		String jpql = "select user from User user where username = :username"
-				+ " and password = :password";
-		user = em.createQuery(jpql, User.class).setParameter("username", username)
-				.setParameter("password", password).getResultList().get(0);
-		return user;
-	}
-
-	@Override
-	public User createUser(User user) {
-		em.persist(user);
-		return user;
-	}
-
-	@Override
-	public User updateUser(User user) {
-		User managedUser = em.find(User.class, user.getId());
-		managedUser.setUsername(user.getUsername());
-		managedUser.setPassword(user.getPassword());
-		managedUser.setRole(user.getRole());
-		managedUser.setActive(user.getActive());
-		return managedUser;
-	}
-	
-	@Override
-	public Profile createProfile(Profile profile) {
-		em.persist(profile);
-		return profile;
-	}
-	
-	@Override
-	public Profile updateProfile(Profile profile) {
-		Profile managedProfile = em.find(Profile.class, profile.getId());
-		managedProfile.setFirstName(profile.getFirstName());
-		managedProfile.setLastName(profile.getLastName());
-		managedProfile.setEmail(profile.getEmail());
-		managedProfile.setJobTitle(profile.getJobTitle());
-		managedProfile.setAbout(profile.getAbout());
-		return managedProfile;
-	}
 
 	@Override
 	public List<Topic> findTopicsBySearchTerm(String keyword) {
