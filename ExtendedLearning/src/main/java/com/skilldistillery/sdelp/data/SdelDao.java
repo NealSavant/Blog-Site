@@ -1,7 +1,10 @@
 package com.skilldistillery.sdelp.data;
 
+import java.util.List;
+
 import com.skilldistillery.sdelp.entities.Content;
 import com.skilldistillery.sdelp.entities.Log;
+import com.skilldistillery.sdelp.entities.Resource;
 import com.skilldistillery.sdelp.entities.Topic;
 import com.skilldistillery.sdelp.entities.TopicComment;
 import com.skilldistillery.sdelp.entities.User;
@@ -14,14 +17,24 @@ public interface SdelDao {
 	
 	User updateUser(User user);
 	
-	Topic findTopicsBySearchTerm(String keyword);
+	List<Topic> findTopicsBySearchTerm(String keyword);
+	
+	List<Topic> getAllTopics();
 	
 	Topic addTopic(Topic topic);
+	
+	Topic updateTopic(Topic topic);
+	
+	Resource addResource(Resource resource);
+	
+	Resource updateResource(Resource resource);
+	
+	Content addContent(Content content);
+	
+	Content updateContent(Content content);
 	
 	Log writeLog(Log log);
 	
 	TopicComment addTopicComment(TopicComment topicComment);
 	
-	Content addContent(Content content);
-
 }
