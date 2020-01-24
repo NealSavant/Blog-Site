@@ -108,6 +108,26 @@ public class Topic {
 	public void setImages(List<Image> images) {
 		this.images = images;
 	}
+	
+	// add/remove
+	
+	public void addImage(Image image) {
+		if (images == null) {
+			images = new ArrayList<>();
+		}
+		
+		if (!images.contains(image)) {
+			images.add(image);
+			image.addTopic(this);
+		}
+	}
+	
+	public void removeImage(Image image) {
+		if (images != null && images.contains(image)) {
+			images.remove(image);
+			image.removeTopic(this);
+		}
+	}
 
 	public Boolean getActive() {
 		return active;
