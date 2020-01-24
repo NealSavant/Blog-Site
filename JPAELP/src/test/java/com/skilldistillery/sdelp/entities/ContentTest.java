@@ -43,7 +43,8 @@ public class ContentTest {
 		em.close();
 	}
 
-//	@Disabled
+
+  @Disabled
 	@Test
 	@DisplayName("Test Content entity mapping")
 	void test1() {

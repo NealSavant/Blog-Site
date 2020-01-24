@@ -47,6 +47,26 @@ public class Image {
 	public void setTopics(List<Topic> topics) {
 		this.topics = topics;
 	}
+	
+	// add, remove
+	
+	public void addTopic(Topic topic) {
+		if (topics == null) {
+			topics = new ArrayList<>();
+		}
+		
+		if (!topics.contains(topic)) {
+			topics.add(topic);
+			topic.addImage(this);
+		}
+	}
+	
+	public void removeTopic(Topic topic) {
+		if (topics != null && topics.contains(topic)) {
+			topics.remove(topic);
+			topic.removeImage(this);
+		}
+	}
 
 	@Override
 	public String toString() {
