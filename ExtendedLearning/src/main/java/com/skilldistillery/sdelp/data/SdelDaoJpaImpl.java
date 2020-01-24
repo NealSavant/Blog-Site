@@ -88,14 +88,17 @@ public class SdelDaoJpaImpl implements SdelDao {
 
 	@Override
 	public Resource addResource(Resource resource) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(resource);
+		return resource;
 	}
 
 	@Override
 	public Resource updateResource(Resource resource) {
-		// TODO Auto-generated method stub
-		return null;
+		Resource managedResource = em.find(Resource.class, resource.getId());
+		managedResource.setTitle(resource.getTitle());
+		managedResource.setResourceUrl(resource.getResourceUrl());
+		managedResource.setActive(resource.getActive());
+		return managedResource;
 	}
 
 	@Override
