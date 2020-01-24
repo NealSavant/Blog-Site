@@ -17,4 +17,6 @@ public interface UserProfileDAO {
 	
 	Profile updateProfile(Profile profile);
 
+	boolean checkIfUsernameAndEmailAreAvailable(String username, String email);
+
 }

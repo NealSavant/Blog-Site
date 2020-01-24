@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.skilldistillery.sdelp.data.UserProfileDAO;
 import com.skilldistillery.sdelp.data.UserProfileDAOJpaImpl;
 import com.skilldistillery.sdelp.entities.Profile;
+import com.skilldistillery.sdelp.entities.User;
 
 @Controller
 public class UserController {
@@ -64,7 +65,19 @@ public class UserController {
 			@RequestParam String jobTitle,
 			@RequestParam String about
 			) {
-		
+		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
+			User user = new User();
+			user.setUsername(username);
+			user.setPassword(password);
+			userProfileDao.createUser(user);
+			Profile profile = new Profile();
+			profile.setFirstName(firstName);
+			profile.setLastName(lastName);
+			profile.setEmail(email);
+			profile.setJobTitle(jobTitle);
+			profile.setAbout(about);
+			profile.setUser(user);
+		}
 		
 		
 		

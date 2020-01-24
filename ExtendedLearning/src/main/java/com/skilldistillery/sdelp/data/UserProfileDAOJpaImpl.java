@@ -26,6 +26,20 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 				.setParameter("password", password).getResultList().get(0);
 		return user;
 	}
+	
+	@Override
+	public boolean checkIfUsernameAndEmailAreAvailable(String username, String email) {
+		boolean isAvail = true;
+		String jpql = "select user from User user where username = :username";
+		if (em.createQuery(jpql, User.class).setParameter("username", username).getResultList().size() != 0) {
+			isAvail = false;
+		}
+		jpql = "select profile from Profile profile where email = :email";
+		if (em.createQuery(jpql, Profile.class).setParameter("email", email).getResultList().size() != 0) {
+			isAvail = false;
+		}
+		return isAvail;
+	}
 
 	@Override
 	public User createUser(User user) {
