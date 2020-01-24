@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.skilldistillery.sdelp.data.ImageDAO;
+import com.skilldistillery.sdelp.data.ImageDAOJpaImpl;
 import com.skilldistillery.sdelp.data.UserProfileDAO;
 import com.skilldistillery.sdelp.data.UserProfileDAOJpaImpl;
+import com.skilldistillery.sdelp.entities.Image;
 import com.skilldistillery.sdelp.entities.Profile;
 import com.skilldistillery.sdelp.entities.User;
 
@@ -18,6 +21,9 @@ public class UserController {
 
 	@Autowired
 	UserProfileDAO userProfileDao = new UserProfileDAOJpaImpl();
+	
+	@Autowired
+	ImageDAO imagedao = new ImageDAOJpaImpl();
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home() {
@@ -70,6 +76,7 @@ public class UserController {
 			User user = new User();
 			user.setUsername(username);
 			user.setPassword(password);
+			user.setRole("USER");
 			userProfileDao.createUser(user);	//backend handles profile and user table in one method
 			Profile profile = new Profile();
 			profile.setFirstName(firstName);
@@ -77,6 +84,10 @@ public class UserController {
 			profile.setEmail(email);
 			profile.setJobTitle(jobTitle);
 			profile.setAbout(about);
+			Image newImage = new Image();
+			newImage.setImageUrl("https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjCnL-ss53nAhUHAZ0JHbhJCmcQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.amazon.com%2FMunchkin-White-Safety-Bath-Ducky%2Fdp%2FB000GUZC2A&psig=AOvVaw1ZQGH-0l0EMx_BFKI6ZQiX&ust=1579995311416096");
+			imagedao.addImage(newImage);
+			profile.setImage(newImage);
 			profile.setUser(user);
 			userProfileDao.createProfile(profile);
 			session.setAttribute("profile", profile);
