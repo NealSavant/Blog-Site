@@ -18,6 +18,7 @@ public class ImageDAOJpaImpl implements ImageDAO {
 	@Override
 	public Image addImage(Image image) {
 		em.persist(image);
+		em.flush();
 		return image;
 	}
 
