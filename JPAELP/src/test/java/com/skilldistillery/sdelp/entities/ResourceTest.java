@@ -54,4 +54,5 @@ class ResourceTest {
 		assertEquals(LocalDateTime.of(2020, 01, 23, 00, 00, 00), resource.getCreatedAt());
 		assertEquals(LocalDateTime.of(2020, 01, 23, 00, 00, 00), resource.getUpdatedAt());
 	}
+	
 }
