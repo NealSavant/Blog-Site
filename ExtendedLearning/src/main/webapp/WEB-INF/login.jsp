@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Extended Learning</title>
+<title>Login</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
 <body>
@@ -15,12 +15,27 @@
 	</header>
 
 	<article>
-
-		<div class= "nav-wrapper">
-
+		<div class="nav-wrapper">
 			<jsp:include page="shared_jsp/nav.jsp" />
 		</div>
 
+		<div class="form-container">
+			<form action="login.do" method="POST">
+				<fieldset>
+					<div class="form-group">
+						<label for="username">Username: </label> <input type="text"
+							name="username" id="username" class="form-control" required />
+					</div>
+					<div class="form-group">
+						<label for="password">Password: </label> <input type="password"
+							name="password" id="password" class="form-control" required />
+					</div>
+				</fieldset>
+			</form>
+
+
+
+		</div>
 
 
 	</article>

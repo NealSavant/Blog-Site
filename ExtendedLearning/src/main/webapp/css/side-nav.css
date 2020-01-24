@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.nav-wrapper .sidebar {
+	position: fixed;
+	width: 150px;
+	height: 100%;
+	background: #a2b9bc;
+	padding: 30px 0;
+}
+
+.nav-wrapper .sidebar h2 {
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.nav-wrapper .sidebar ul li {
+	padding: 15px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	border-top: 1px solid rgba(225, 225, 225, 0.05);
+	display: inline-block;
+}
+
+.nav-wrapper .sidebar ul li a {
+	display: block;
+	color: #d2cff1;
+}
+/*  spacing for glyphicons from fontawesome*/
+.nav-wrapper .sidebar ul li a .fas{
+	display: block;
+	width: 25px;
+	
+}
+
+.nav-wrapper .sidebar ul li :hover{
+	background: #b9ced2;
+	
+}
+
+.nav-wrapper .sidebar ul li :hover a{
+	color: #fff;
+}

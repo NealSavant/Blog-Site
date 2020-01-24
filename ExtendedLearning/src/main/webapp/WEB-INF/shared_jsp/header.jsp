@@ -7,17 +7,26 @@
 
 <!DOCTYPE html>
 
+<!--Static title at top of every page  -->
+<div class="container" >
+	<div class="row">
+		<h2>SD Extended Learning Platform</h2>
+	</div>
+	<div class="row">
+		<a>Take your Full Stack development skill to new levels.</a>
+	</div>
+
+</div>
+
+<!--Top style nav bar for account information  -->
 <div class="container">
 	<div class="row">
-		<div class="col-sm">
-			<h3>SD Extended Learning Platform</h3>
-		</div>
-
 		<nav class="header-nav">
 			<ul class="main-header-list">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Create Account</a></li>
-				<li><a href="#">Log In</a></li>
+				<li><a href="home.do"><i class="fas fa-home"></i> Home</a></li>
+				<li><a href="#"><i class="fas fa-plus-square"></i> Create
+						Account</a></li>
+				<li><a href="showLogin.do"><i class="fas fa-user"></i> Log In</a></li>
 			</ul>
 		</nav>
 	</div>
