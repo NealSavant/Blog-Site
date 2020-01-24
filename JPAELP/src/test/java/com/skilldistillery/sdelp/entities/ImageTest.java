@@ -42,12 +42,12 @@ class ImageTest {
 		em.close();
 	}
 
-//	@Disabled
-//	@Test
-//	@DisplayName("Test user entity mapping")
-//	void test1() {
-//		assertNotNull(image);
-//		assertEquals("admin", user.getUsername());
-//	}
+	@Disabled
+	@Test
+	@DisplayName("Test user entity mapping")
+	void test1() {
+		assertNotNull(image);
+		assertEquals(1, image.getId());
+	}
 
 }

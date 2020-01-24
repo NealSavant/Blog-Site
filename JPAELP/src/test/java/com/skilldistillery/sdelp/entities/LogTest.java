@@ -41,11 +41,11 @@ class LogTest {
 		em.close();
 	}
 
-//	@Test
-//	@DisplayName("Test user entity mapping")
-//	void test1() {
-//		assertNotNull(user);
-//		assertEquals("admin", user.getUsername());
-//	}
+	@Test
+	@DisplayName("Test user entity mapping")
+	void test1() {
+		assertNotNull(log);
+		assertEquals("2020-01-23", log.getTimeStamp());
+	}
 
 }

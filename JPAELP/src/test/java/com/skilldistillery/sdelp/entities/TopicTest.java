@@ -40,11 +40,11 @@ class TopicTest {
 		em.close();
 	}
 
-//	@Test
-//	@DisplayName("Test user entity mapping")
-//	void test1() {
-//		assertNotNull(user);
-//		assertEquals("admin", user.getUsername());
-//	}
+	@Test
+	@DisplayName("Test Topic entity mapping")
+	void test1() {
+		assertNotNull(topic);
+		assertEquals("test", topic.getTitle());
+	}
 
 }
