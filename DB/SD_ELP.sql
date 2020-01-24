@@ -280,10 +280,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `updated_at`, `image_id`, `active`) VALUES (1, 'test', 'www.google.com', 1, '2020-01-23', '2020-01-23', NULL, NULL);
-<<<<<<< HEAD
-=======
 INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `updated_at`, `image_id`, `active`) VALUES (2, 'react_test', 'https://reactjs.org/', 2, '2020-01-24', '2020-01-24', 2, NULL);
->>>>>>> 659df0248a39fb23bf68c210ec012bb3fc2377e4
 
 COMMIT;
 
@@ -332,4 +329,3 @@ INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (1, 1);
 INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (2, 2);
 
 COMMIT;
-
