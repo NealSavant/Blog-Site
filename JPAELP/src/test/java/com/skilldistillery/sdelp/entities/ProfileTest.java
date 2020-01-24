@@ -1,7 +1,6 @@
 package com.skilldistillery.sdelp.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,15 +10,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class ContentTest {
-	
+class ProfileTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Content content;
+	private Profile profile;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -34,20 +32,22 @@ public class ContentTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		content = em.find(Content.class, 1);
+		profile = em.find(Profile.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		content = null;
+		profile = null;
 		em.close();
 	}
 
-
-  @Disabled
 	@Test
-	@DisplayName("Test Content entity mapping")
+	@DisplayName("Test Profile entity mapping")
 	void test1() {
-		assertEquals("test", content.getContent());
+		assertNotNull(profile);
+		assertEquals("test", profile.getFirstName());
+		assertEquals("test", profile.getLastName());
+		assertEquals("test@test.com", profile.getEmail());
 	}
+
 }
