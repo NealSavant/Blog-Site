@@ -25,8 +25,8 @@ public class Log {
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="content_index_id")
-	private Topic content;
+	@JoinColumn(name="topic_id")
+	private Topic topic;
 
 	public int getId() {
 		return id;
@@ -52,14 +52,39 @@ public class Log {
 		this.user = user;
 	}
 
-	public Topic getContent() {
-		return content;
+	public Topic getTopic() {
+		return topic;
 	}
 
-	public void setContent(Topic content) {
-		this.content = content;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Log [id=" + id + ", timeStamp=" + timeStamp + ", user=" + user + ", topic=" + topic + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Log other = (Log) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}	
 
 }

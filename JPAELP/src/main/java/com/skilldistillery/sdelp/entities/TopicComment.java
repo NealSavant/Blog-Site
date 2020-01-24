@@ -1,9 +1,6 @@
 package com.skilldistillery.sdelp.entities;
 
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,24 +8,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-public class User {
+@Table(name="topic_comment")
+public class TopicComment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String username;
-	
-	private String password;
-	
-	private String role;
+	private String title;
 	
 	@Column(name="created_at")
 	@CreationTimestamp
@@ -37,14 +31,16 @@ public class User {
 	@Column(name="updated_at")
 	@UpdateTimestamp
 	public LocalDateTime updatedAt;
-
-	private Boolean active;
 	
-	@OneToMany(mappedBy="user")
-	private List<Log> logs;
+	@ManyToOne
+	@JoinColumn(name="topic_id")
+	private Topic topic;
 	
-	@OneToMany(mappedBy="user")
-	private List<TopicComment> topicComments;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	private String content;
 
 	public int getId() {
 		return id;
@@ -54,28 +50,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public LocalDateTime getCreatedAt() {
@@ -94,36 +74,34 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 
-	public Boolean getActive() {
-		return active;
+	public Topic getTopic() {
+		return topic;
 	}
 
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 
-	public List<Log> getLogs() {
-		List<Log> copy = new ArrayList<>(logs);
-		return copy;
+	public User getUser() {
+		return user;
 	}
 
-	public void setLogs(List<Log> logs) {
-		this.logs = logs;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public List<TopicComment> getTopicComments() {
-		List<TopicComment> copy = new ArrayList<>(topicComments);
-		return copy;
+	public String getContent() {
+		return content;
 	}
 
-	public void setTopicComments(List<TopicComment> topicComments) {
-		this.topicComments = topicComments;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", active=" + active + "]";
+		return "TopicComment [id=" + id + ", title=" + title + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ ", topic=" + topic + ", user=" + user + ", content=" + content + "]";
 	}
 
 	@Override
@@ -142,7 +120,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		TopicComment other = (TopicComment) obj;
 		if (id != other.id)
 			return false;
 		return true;
@@ -150,7 +128,4 @@ public class User {
 	
 	
 
-	
-	
-	
 }
