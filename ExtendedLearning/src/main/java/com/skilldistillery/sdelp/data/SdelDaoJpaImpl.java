@@ -47,7 +47,6 @@ public class SdelDaoJpaImpl implements SdelDao {
 		managedUser.setPassword(user.getPassword());
 		managedUser.setRole(user.getRole());
 		managedUser.setActive(user.getActive());
-		
 		return managedUser;
 	}
 
@@ -103,38 +102,42 @@ public class SdelDaoJpaImpl implements SdelDao {
 
 	@Override
 	public Content addContent(Content content) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(content);
+		return content;
 	}
 
 	@Override
 	public Content updateContent(Content content) {
-		// TODO Auto-generated method stub
-		return null;
+		Content managedContent = em.find(Content.class, content.getId());
+		managedContent.setContent(content.getContent());
+		managedContent.setActive(content.getActive());
+		return managedContent;
 	}
 
 	@Override
 	public Image addImage(Image image) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(image);
+		return image;
 	}
 
 	@Override
 	public Log writeLog(Log log) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(log);
+		return log;
 	}
 
 	@Override
 	public TopicComment addTopicComment(TopicComment topicComment) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(topicComment);
+		return topicComment;
 	}
 
 	@Override
 	public TopicComment updateTopicComment(TopicComment topicComment) {
-		// TODO Auto-generated method stub
-		return null;
+		TopicComment managedTopicComment = em.find(TopicComment.class, topicComment.getId());
+		managedTopicComment.setTitle(topicComment.getTitle());
+		managedTopicComment.setContent(topicComment.getContent());
+		return managedTopicComment;
 	}
 
 }
