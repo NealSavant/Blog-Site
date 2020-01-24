@@ -44,7 +44,6 @@ public class ContentTest {
 	}
 
 
-  @Disabled
 	@Test
 	@DisplayName("Test Content entity mapping")
 	void test1() {
