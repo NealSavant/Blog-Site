@@ -53,12 +53,19 @@ public class SdelDaoJpaImpl implements SdelDao {
 	
 	@Override
 	public Profile createProfile(Profile profile) {
-		return null;
+		em.persist(profile);
+		return profile;
 	}
 	
 	@Override
 	public Profile updateProfile(Profile profile) {
-		return null;
+		Profile managedProfile = em.find(Profile.class, profile.getId());
+		managedProfile.setFirstName(profile.getFirstName());
+		managedProfile.setLastName(profile.getLastName());
+		managedProfile.setEmail(profile.getEmail());
+		managedProfile.setJobTitle(profile.getJobTitle());
+		managedProfile.setAbout(profile.getAbout());
+		return managedProfile;
 	}
 
 	@Override
