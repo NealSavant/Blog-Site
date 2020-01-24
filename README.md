@@ -9,3 +9,7 @@ Purpose:
   - How they are different?
   - What are the use cases?
   - What resources are available?
+
+
+### Lessons Learned
+* Persistence.xml entities should be updated before writing @Entity content
