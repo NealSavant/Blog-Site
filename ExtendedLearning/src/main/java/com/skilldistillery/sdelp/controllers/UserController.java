@@ -29,6 +29,11 @@ public class UserController {
 	public String showLogin() {
 		return "login";
 	}
+	
+	@RequestMapping(path = "showCreateAccount.do")
+	public String showCreateAccount() {
+		return "create_account";
+	}
 
 	// attempt login
 
@@ -46,6 +51,12 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping(path = "logout.do")
+	public String logout(HttpSession session) {
+		session.removeAttribute("profile");	//remove profile from session
+		return "redirect:home.do";
+	}
+	
 	// show user homepage
 	
 	@RequestMapping(path="userHome.do")
@@ -53,5 +64,6 @@ public class UserController {
 		session.setAttribute("profile", session.getAttribute("profile"));
 		return "user_home";
 	}
+	
 
 }
