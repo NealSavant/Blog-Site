@@ -236,6 +236,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `user` (`id`, `username`, `password`, `role`, `created_at`, `updated_at`, `active`) VALUES (1, 'admin', 'admin', 'ADMIN', '2020-01-23', '2020-01-23', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `created_at`, `updated_at`, `active`) VALUES (2, 'reactguy', 'reactguy', 'USER', '2020-01-24', '2020-01-24', 1);
 
 COMMIT;
 
@@ -246,6 +247,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `topic` (`id`, `title`, `created_at`, `updated_at`, `active`) VALUES (1, 'test', '2020-01-23', '2020-01-23', NULL);
+INSERT INTO `topic` (`id`, `title`, `created_at`, `updated_at`, `active`) VALUES (2, 'react_test', '2020-01-24', '2020-01-24', NULL);
 
 COMMIT;
 
@@ -256,6 +258,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `log` (`id`, `time_stamp`, `user_id`, `topic_id`) VALUES (1, '2020-01-23', 1, 1);
+INSERT INTO `log` (`id`, `time_stamp`, `user_id`, `topic_id`) VALUES (2, '2020-01-24', 2, 2);
 
 COMMIT;
 
@@ -265,7 +268,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SD_ELP`;
-INSERT INTO `image` (`id`, `content_img_url`) VALUES (1, NULL);
+INSERT INTO `image` (`id`, `content_img_url`) VALUES (1, 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png');
+INSERT INTO `image` (`id`, `content_img_url`) VALUES (2, 'https://reactjs.org/logo-og.png');
 
 COMMIT;
 
@@ -276,6 +280,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `updated_at`, `image_id`, `active`) VALUES (1, 'test', 'www.google.com', 1, '2020-01-23', '2020-01-23', NULL, NULL);
+INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `updated_at`, `image_id`, `active`) VALUES (2, 'react_test', 'https://reactjs.org/', 2, '2020-01-24', '2020-01-24', 2, NULL);
 
 COMMIT;
 
@@ -286,6 +291,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `content` (`id`, `content`, `topic_id`, `created_at`, `updated_at`, `active`) VALUES (1, 'test', 1, '2020-01-23', '2020-01-23', NULL);
+INSERT INTO `content` (`id`, `content`, `topic_id`, `created_at`, `updated_at`, `active`) VALUES (2, 'React has been designed from the start for gradual adoption, and you can use as little or as much React as you need. Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.\n\n', 2, '2020-01-24', '2020-01-24', NULL);
 
 COMMIT;
 
@@ -296,6 +302,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `profile` (`id`, `first_name`, `last_name`, `image_id`, `email`, `user_id`, `job_title`, `about`) VALUES (1, 'test', 'test', 1, 'test@test.com', 1, NULL, NULL);
+INSERT INTO `profile` (`id`, `first_name`, `last_name`, `image_id`, `email`, `user_id`, `job_title`, `about`) VALUES (2, 'Java', 'Script', 2, 'reacttest@test.com', 2, 'React Developer', 'Been programming since yesterday');
 
 COMMIT;
 
@@ -316,6 +323,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (1, 1);
+INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (2, 2);
 
 COMMIT;
 
