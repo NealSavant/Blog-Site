@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `resource` (
   `resource_url` VARCHAR(5000) NOT NULL,
   `topic_id` INT NOT NULL,
   `created_at` DATETIME NOT NULL,
-  `update_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
   `image_id` INT NULL,
   `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `content` (
   `content` TEXT NOT NULL,
   `topic_id` INT NOT NULL,
   `created_at` DATETIME NOT NULL,
-  `update_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
   `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_content_topic1_idx` (`topic_id` ASC),
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `topic_comment` (
   `id` BIGINT(20) NOT NULL,
   `title` VARCHAR(100) NOT NULL,
   `created_at` DATETIME NOT NULL,
-  `update_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
   `topic_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `content` TEXT NULL,
@@ -275,7 +275,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SD_ELP`;
-INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `update_at`, `image_id`, `active`) VALUES (1, 'test', 'www.google.com', 1, '2020-01-23', '2020-01-23', NULL, NULL);
+INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `updated_at`, `image_id`, `active`) VALUES (1, 'test', 'www.google.com', 1, '2020-01-23', '2020-01-23', NULL, NULL);
 
 COMMIT;
 
@@ -285,7 +285,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SD_ELP`;
-INSERT INTO `content` (`id`, `content`, `topic_id`, `created_at`, `update_at`, `active`) VALUES (1, 'test', 1, '2020-01-23', '2020-01-23', NULL);
+INSERT INTO `content` (`id`, `content`, `topic_id`, `created_at`, `updated_at`, `active`) VALUES (1, 'test', 1, '2020-01-23', '2020-01-23', NULL);
 
 COMMIT;
 
@@ -305,7 +305,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SD_ELP`;
-INSERT INTO `topic_comment` (`id`, `title`, `created_at`, `update_at`, `topic_id`, `user_id`, `content`) VALUES (1, 'test', '2020-01-23', '2020-01-23', 1, 1, 'test');
+INSERT INTO `topic_comment` (`id`, `title`, `created_at`, `updated_at`, `topic_id`, `user_id`, `content`) VALUES (1, 'test', '2020-01-23', '2020-01-23', 1, 1, 'test');
 
 COMMIT;
 
