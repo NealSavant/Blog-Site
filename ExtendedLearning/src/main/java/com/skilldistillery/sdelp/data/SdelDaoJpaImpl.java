@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.sdelp.entities.Content;
 import com.skilldistillery.sdelp.entities.Image;
 import com.skilldistillery.sdelp.entities.Log;
+import com.skilldistillery.sdelp.entities.Profile;
 import com.skilldistillery.sdelp.entities.Resource;
 import com.skilldistillery.sdelp.entities.Topic;
 import com.skilldistillery.sdelp.entities.TopicComment;
@@ -48,6 +49,23 @@ public class SdelDaoJpaImpl implements SdelDao {
 		managedUser.setRole(user.getRole());
 		managedUser.setActive(user.getActive());
 		return managedUser;
+	}
+	
+	@Override
+	public Profile createProfile(Profile profile) {
+		em.persist(profile);
+		return profile;
+	}
+	
+	@Override
+	public Profile updateProfile(Profile profile) {
+		Profile managedProfile = em.find(Profile.class, profile.getId());
+		managedProfile.setFirstName(profile.getFirstName());
+		managedProfile.setLastName(profile.getLastName());
+		managedProfile.setEmail(profile.getEmail());
+		managedProfile.setJobTitle(profile.getJobTitle());
+		managedProfile.setAbout(profile.getAbout());
+		return managedProfile;
 	}
 
 	@Override
