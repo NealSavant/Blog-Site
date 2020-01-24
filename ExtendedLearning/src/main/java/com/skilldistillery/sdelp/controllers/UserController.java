@@ -86,6 +86,7 @@ public class UserController {
 			profile.setAbout(about);
 			Image newImage = new Image();
 			newImage.setImageUrl("https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjCnL-ss53nAhUHAZ0JHbhJCmcQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.amazon.com%2FMunchkin-White-Safety-Bath-Ducky%2Fdp%2FB000GUZC2A&psig=AOvVaw1ZQGH-0l0EMx_BFKI6ZQiX&ust=1579995311416096");
+			imagedao.addImage(newImage);
 			profile.setImage(newImage);
 			profile.setUser(user);
 			userProfileDao.createProfile(profile);
