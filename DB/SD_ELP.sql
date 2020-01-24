@@ -280,10 +280,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `updated_at`, `image_id`, `active`) VALUES (1, 'test', 'www.google.com', 1, '2020-01-23', '2020-01-23', NULL, NULL);
-<<<<<<< HEAD
-=======
 INSERT INTO `resource` (`id`, `title`, `resource_url`, `topic_id`, `created_at`, `updated_at`, `image_id`, `active`) VALUES (2, 'react_test', 'https://reactjs.org/', 2, '2020-01-24', '2020-01-24', 2, NULL);
->>>>>>> 659df0248a39fb23bf68c210ec012bb3fc2377e4
 
 COMMIT;
 
@@ -294,10 +291,7 @@ COMMIT;
 START TRANSACTION;
 USE `SD_ELP`;
 INSERT INTO `content` (`id`, `content`, `topic_id`, `created_at`, `updated_at`, `active`) VALUES (1, 'test', 1, '2020-01-23', '2020-01-23', NULL);
-<<<<<<< HEAD
-=======
 INSERT INTO `content` (`id`, `content`, `topic_id`, `created_at`, `updated_at`, `active`) VALUES (2, 'React has been designed from the start for gradual adoption, and you can use as little or as much React as you need. Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.\n\n', 2, '2020-01-24', '2020-01-24', NULL);
->>>>>>> 659df0248a39fb23bf68c210ec012bb3fc2377e4
 
 COMMIT;
 
@@ -332,4 +326,3 @@ INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (1, 1);
 INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (2, 2);
 
 COMMIT;
-
