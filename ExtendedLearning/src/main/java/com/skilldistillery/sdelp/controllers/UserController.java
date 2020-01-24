@@ -50,7 +50,7 @@ public class UserController {
 	
 	@RequestMapping(path="userHome.do")
 	public String showUserHome(HttpSession session) {
-		return "index";
+		return "user_home";
 	}
 
 }

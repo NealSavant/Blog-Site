@@ -28,7 +28,7 @@ public class ClassWithAMain {
 		System.out.println("***************************");
 		System.out.println("***************************");
 		System.out.println("***************************");
-		System.out.println(profiles.get(0).);
+		System.out.println(profiles.get(0));
 		System.out.println("***************************");
 		System.out.println("***************************");
 		System.out.println("***************************");
