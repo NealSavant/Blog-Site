@@ -3,6 +3,8 @@ package com.skilldistillery.sdelp.entities;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -48,5 +50,7 @@ public class ContentTest {
 	@DisplayName("Test Content entity mapping")
 	void test1() {
 		assertEquals("test", content.getContent());
+		assertEquals(LocalDateTime.of(2020, 01, 23, 00, 00, 00), content.getCreatedAt());
+		assertEquals(LocalDateTime.of(2020, 01, 23, 00, 00, 00), content.getUpdatedAt());
 	}
 }

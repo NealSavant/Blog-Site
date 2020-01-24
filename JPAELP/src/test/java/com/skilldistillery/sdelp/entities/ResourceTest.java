@@ -2,6 +2,8 @@ package com.skilldistillery.sdelp.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -48,5 +50,8 @@ class ResourceTest {
 	void test1() {
 		assertNotNull(resource);
 		assertEquals("test", resource.getTitle());
+		assertEquals("www.google.com", resource.getResourceUrl());
+		assertEquals(LocalDateTime.of(2020, 01, 23, 00, 00, 00), resource.getCreatedAt());
+		assertEquals(LocalDateTime.of(2020, 01, 23, 00, 00, 00), resource.getUpdatedAt());
 	}
 }
