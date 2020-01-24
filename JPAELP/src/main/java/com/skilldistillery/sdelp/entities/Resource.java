@@ -34,7 +34,7 @@ public class Resource {
 	@CreationTimestamp
 	public LocalDateTime createdAt;
 	
-	@Column(name="update_at")
+	@Column(name="updated_at")
 	@UpdateTimestamp
 	public LocalDateTime updatedAt;
 	
