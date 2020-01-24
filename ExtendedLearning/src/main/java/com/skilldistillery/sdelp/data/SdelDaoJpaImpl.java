@@ -42,8 +42,13 @@ public class SdelDaoJpaImpl implements SdelDao {
 
 	@Override
 	public User updateUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		User managedUser = em.find(User.class, user.getId());
+		managedUser.setUsername(user.getUsername());
+		managedUser.setPassword(user.getPassword());
+		managedUser.setRole(user.getRole());
+		managedUser.setActive(user.getActive());
+		
+		return managedUser;
 	}
 
 	@Override
@@ -54,14 +59,15 @@ public class SdelDaoJpaImpl implements SdelDao {
 
 	@Override
 	public List<Topic> getAllTopics() {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "select t from Topic t";
+		List<Topic> topics = em.createQuery(jpql, Topic.class).getResultList();
+		return topics;
 	}
 
 	@Override
 	public Topic getTopicById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Topic topic = em.find(Topic.class, id);
+		return topic;
 	}
 
 	@Override
