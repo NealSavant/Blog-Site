@@ -7,15 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.skilldistillery.sdelp.data.SdelDao;
-import com.skilldistillery.sdelp.data.SdelDaoJpaImpl;
+import com.skilldistillery.sdelp.data.UserProfileDAO;
+import com.skilldistillery.sdelp.data.UserProfileDAOJpaImpl;
 import com.skilldistillery.sdelp.entities.User;
 
 @Controller
 public class UserController {
 
 	@Autowired
-	SdelDao dao = new SdelDaoJpaImpl();
+	UserProfileDAO userProfileDao = new UserProfileDAOJpaImpl();
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home() {
@@ -33,7 +33,7 @@ public class UserController {
 
 	@RequestMapping(path = "login.do")
 	public String attemptLogin(@RequestParam String username, @RequestParam String password, HttpSession session) {
-		User user = dao.getUserByUsernamePassword(username, password);
+		User user = userProfileDao.getUserByUsernamePassword(username, password);
 
 		if (user != null) {
 			// need to add the profile
