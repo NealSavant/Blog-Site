@@ -50,6 +50,7 @@ public class UserController {
 	
 	@RequestMapping(path="userHome.do")
 	public String showUserHome(HttpSession session) {
+		session.setAttribute("profile", session.getAttribute("profile"));
 		return "user_home";
 	}
 

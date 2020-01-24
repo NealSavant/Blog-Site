@@ -13,3 +13,13 @@
 	display: flex;
 	position: relative;
 }
+
+.user-home {
+	display: flex;
+	position: relative;
+	width: 100%;
+	margin-left:150px;
+	padding-left: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
