@@ -5,6 +5,7 @@ import java.util.List;
 import com.skilldistillery.sdelp.entities.Content;
 import com.skilldistillery.sdelp.entities.Image;
 import com.skilldistillery.sdelp.entities.Log;
+import com.skilldistillery.sdelp.entities.Profile;
 import com.skilldistillery.sdelp.entities.Resource;
 import com.skilldistillery.sdelp.entities.Topic;
 import com.skilldistillery.sdelp.entities.TopicComment;
@@ -17,6 +18,10 @@ public interface SdelDao {
 	User createUser(User user);
 	
 	User updateUser(User user);
+	
+	Profile createProfile(Profile profile);
+	
+	Profile updateProfile(Profile profile);
 	
 	List<Topic> findTopicsBySearchTerm(String keyword);
 	
