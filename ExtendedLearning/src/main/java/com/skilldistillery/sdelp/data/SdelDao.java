@@ -22,6 +22,8 @@ public interface SdelDao {
 	
 	List<Topic> getAllTopics();
 	
+	Topic getTopicById(int id);
+	
 	Topic addTopic(Topic topic);
 	
 	Topic updateTopic(Topic topic);
