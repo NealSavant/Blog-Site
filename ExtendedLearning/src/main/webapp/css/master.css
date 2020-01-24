@@ -13,3 +13,10 @@
 	display: flex;
 	position: relative;
 }
+
+article{
+	display: flex;
+	position: relative;
+	overflow: auto;
+	
+}
