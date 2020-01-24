@@ -17,9 +17,7 @@ public interface SdelDao {
 	
 
 	
-	Content addContent(Content content);
-	
-	Content updateContent(Content content);
+
 	
 	Image addImage(Image image);
 	

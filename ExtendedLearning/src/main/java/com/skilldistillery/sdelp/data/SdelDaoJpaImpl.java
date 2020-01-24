@@ -28,19 +28,6 @@ public class SdelDaoJpaImpl implements SdelDao {
 
 
 
-	@Override
-	public Content addContent(Content content) {
-		em.persist(content);
-		return content;
-	}
-
-	@Override
-	public Content updateContent(Content content) {
-		Content managedContent = em.find(Content.class, content.getId());
-		managedContent.setContent(content.getContent());
-		managedContent.setActive(content.getActive());
-		return managedContent;
-	}
 
 	@Override
 	public Image addImage(Image image) {
