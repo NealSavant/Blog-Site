@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.skilldistillery.sdelp.entities.User;
+import com.skilldistillery.sdelp.entities.Profile;
 
 public class ClassWithAMain {
 	
@@ -14,12 +14,12 @@ public class ClassWithAMain {
 	
 	public static void main(String[] args) {
 		EntityManager em = emf.createEntityManager();
-		String jpql = "select user from User user where user.username = :username and user.password"
+		String jpql = "select profile from Profile profile where profile.user.username = :username and profile.user.password"
 				+ " = :password";
 		String username = "admin";
 		String password = "admin";
 		
-		List<User> users = em.createQuery(jpql, User.class)
+		List<Profile> profiles = em.createQuery(jpql, Profile.class)
 				.setParameter("username", username)
 				.setParameter("password", password)
 				.getResultList();
@@ -28,7 +28,7 @@ public class ClassWithAMain {
 		System.out.println("***************************");
 		System.out.println("***************************");
 		System.out.println("***************************");
-		System.out.println(users.get(0).getLogs().get(0));
+		System.out.println(profiles.get(0).);
 		System.out.println("***************************");
 		System.out.println("***************************");
 		System.out.println("***************************");

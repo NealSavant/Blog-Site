@@ -16,25 +16,25 @@ public class Profile {
 	private int id;
 	
 	@Column(name="first_name")
-	public String firstName;
+	private String firstName;
 	
 	@Column(name="last_name")
-	public String lastName;
+	private String lastName;
 	
 	@OneToOne
 	@JoinColumn(name="image_id")
-	public Image image;
+	private Image image;
 	
-	public String email;
+	private String email;
 	
 	@OneToOne
 	@JoinColumn(name="user_id")
-	public User user;
+	private User user;
 	
 	@Column(name="job_title")
-	public String jobTitle;
+	private String jobTitle;
 	
-	public String about;
+	private String about;
 
 	public int getId() {
 		return id;
