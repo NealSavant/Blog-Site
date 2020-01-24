@@ -82,6 +82,40 @@ public class UserController {
 			session.setAttribute("profile", profile);
 			return "user_home";
 		} else {
+			// probably need to add a form error message here
+			return "redirect:showCreateAccount.do";
+		}		
+	}
+	
+	@RequestMapping(path="showUpdateAccount.do")
+	public String showUpdateAccount(){
+		return "updateAccount";
+	}
+	
+	@RequestMapping(path="updateAccount.do", method = RequestMethod.POST)
+	public String attemptUpdateAccount(@RequestParam String username,
+			@RequestParam String password,
+			@RequestParam String firstName,
+			@RequestParam String lastName,
+			@RequestParam String email,
+			@RequestParam String jobTitle,
+			@RequestParam String about,
+			HttpSession session
+			) {
+		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
+			Profile profile = (Profile) session.getAttribute("profile");
+			profile.getUser().setUsername(username);
+			profile.getUser().setPassword(password);
+			profile.setFirstName(firstName);
+			profile.setLastName(lastName);
+			profile.setEmail(email);
+			profile.setJobTitle(jobTitle);
+			profile.setAbout(about);
+			userProfileDao.updateProfile(profile);
+			session.setAttribute("profile", profile);
+			return "user_home";
+		} else {
+			// probably need to add a form error message here
 			return "redirect:showCreateAccount.do";
 		}		
 	}
