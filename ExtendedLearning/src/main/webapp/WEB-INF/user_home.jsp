@@ -31,7 +31,7 @@
 			<a>Biography: ${profile.about }</a>
 			
 			<form action = "showUpdateAccount.do" method = "POST">
-				<button type = "button" class ="btn btn-info">Update Account</button>
+				<button type = "submit" class ="btn btn-info">Update Account</button>
 			</form>
 		</div>
 

@@ -93,14 +93,14 @@ public class UserController {
 			session.setAttribute("profile", profile);
 			return "user_home";
 		} else {
-			// probably need to add a form error message here
+			// TODO: probably need to add a form error message here
 			return "redirect:showCreateAccount.do";
 		}		
 	}
 	
 	@RequestMapping(path="showUpdateAccount.do")
 	public String showUpdateAccount(){
-		return "updateAccount";
+		return "create_account";
 	}
 	
 	@RequestMapping(path="updateAccount.do", method = RequestMethod.POST)
@@ -113,7 +113,6 @@ public class UserController {
 			@RequestParam String about,
 			HttpSession session
 			) {
-		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
 			Profile profile = (Profile) session.getAttribute("profile");
 			profile.getUser().setUsername(username);
 			profile.getUser().setPassword(password);
@@ -125,10 +124,7 @@ public class UserController {
 			userProfileDao.updateProfile(profile);
 			session.setAttribute("profile", profile);
 			return "user_home";
-		} else {
-			// probably need to add a form error message here
-			return "redirect:showUpdateAccount.do";
-		}		
+			// TODO: probably need to add a form error message here
 	}
 	
 	@RequestMapping(path = "logout.do")

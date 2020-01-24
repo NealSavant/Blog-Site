@@ -69,12 +69,12 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 						<legend>Update Account Details</legend>
 						<div class="form-group">
 							<label for="username">Desired Username: </label> <input
-								type="text" value="${profile.username}" name="username"
+								type="text" value="${profile.user.username}" name="username"
 								id="username" class="form-control" required />
 						</div>
 						<div class="form-group">
 							<label for="password">Desired Password: </label> <input
-								type="password" name="password" id="password"
+								type="password" value="${profile.user.password}" name="password" id="password"
 								class="form-control" required />
 						</div>
 						<div class="form-group">
