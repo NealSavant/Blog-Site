@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.sdelp.data.UserProfileDAO;
 import com.skilldistillery.sdelp.data.UserProfileDAOJpaImpl;
-import com.skilldistillery.sdelp.entities.User;
+import com.skilldistillery.sdelp.entities.Profile;
 
 @Controller
 public class UserController {
@@ -34,11 +34,11 @@ public class UserController {
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String attemptLogin(@RequestParam String username, @RequestParam String password, HttpSession session) {
-		User user = userProfileDao.getUserByUsernamePassword(username, password);
+		Profile profile = userProfileDao.getProfileByUserUsernamePassword(username, password);
 
-		if (user != null) {
+		if (profile != null) {
 			// need to add the profile
-			session.setAttribute("user", user);
+			session.setAttribute("profile", profile);
 			return "redirect:userHome.do";
 		} else {
 
@@ -50,7 +50,7 @@ public class UserController {
 	
 	@RequestMapping(path="userHome.do")
 	public String showUserHome(HttpSession session) {
-		return "home";
+		return "index";
 	}
 
 }
