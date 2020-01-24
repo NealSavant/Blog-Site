@@ -44,6 +44,7 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 	@Override
 	public User createUser(User user) {
 		em.persist(user);
+		em.flush();
 		return user;
 	}
 
@@ -70,6 +71,7 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 	@Override
 	public Profile createProfile(Profile profile) {
 		em.persist(profile);
+		em.flush();
 		return profile;
 	}
 	

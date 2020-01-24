@@ -63,7 +63,8 @@ public class UserController {
 			@RequestParam String lastName,
 			@RequestParam String email,
 			@RequestParam String jobTitle,
-			@RequestParam String about
+			@RequestParam String about,
+			HttpSession session
 			) {
 		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
 			User user = new User();
@@ -77,12 +78,12 @@ public class UserController {
 			profile.setJobTitle(jobTitle);
 			profile.setAbout(about);
 			profile.setUser(user);
-		}
-		
-		
-		
-		
-		return "user_home";
+			userProfileDao.createProfile(profile);
+			session.setAttribute("profile", profile);
+			return "user_home";
+		} else {
+			return "redirect:showCreateAccount.do";
+		}		
 	}
 	
 	@RequestMapping(path = "logout.do")
