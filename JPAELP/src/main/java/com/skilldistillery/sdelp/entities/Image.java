@@ -1,12 +1,14 @@
 package com.skilldistillery.sdelp.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Image {
@@ -18,9 +20,8 @@ public class Image {
 	@Column(name="content_img_url")
 	private String imageUrl;
 	
-	@OneToOne
-	@JoinColumn(name="image_id")
-	public Image image;
+	@ManyToMany(mappedBy="images")
+	private List<Topic> topics;
 
 	public int getId() {
 		return id;
@@ -38,13 +39,43 @@ public class Image {
 		this.imageUrl = imageUrl;
 	}
 
-	public Image getImage() {
-		return image;
+	public List<Topic> getTopics() {
+		List<Topic> copy = new ArrayList<>(topics);
+		return copy;
 	}
 
-	public void setImage(Image image) {
-		this.image = image;
+	public void setTopics(List<Topic> topics) {
+		this.topics = topics;
 	}
+
+	@Override
+	public String toString() {
+		return "Image [id=" + id + ", imageUrl=" + imageUrl + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Image other = (Image) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
+	
 
 	
 	
