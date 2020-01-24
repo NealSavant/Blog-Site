@@ -42,7 +42,6 @@ public class ContentTest {
 		em.close();
 	}
 
-	@Disabled
 	@Test
 	@DisplayName("Test Content entity mapping")
 	void test1() {
