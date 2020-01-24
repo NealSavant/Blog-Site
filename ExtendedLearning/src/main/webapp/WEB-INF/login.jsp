@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +21,7 @@
 		<div class="form-container">
 			<form action="login.do" method="POST">
 				<fieldset>
+					<legend>Login</legend>
 					<div class="form-group">
 						<label for="username">Username: </label> <input type="text"
 							name="username" id="username" class="form-control" required />
@@ -30,6 +30,7 @@
 						<label for="password">Password: </label> <input type="password"
 							name="password" id="password" class="form-control" required />
 					</div>
+					<input type="submit" value="Login" class="btn btn-primary" />
 				</fieldset>
 			</form>
 

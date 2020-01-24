@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.sdelp.data.UserProfileDAO;
@@ -31,7 +32,7 @@ public class UserController {
 
 	// attempt login
 
-	@RequestMapping(path = "login.do")
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String attemptLogin(@RequestParam String username, @RequestParam String password, HttpSession session) {
 		User user = userProfileDao.getUserByUsernamePassword(username, password);
 

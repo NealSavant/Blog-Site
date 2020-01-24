@@ -24,7 +24,7 @@
 		<nav class="header-nav">
 			<ul class="main-header-list">
 				<li><a href="home.do"><i class="fas fa-home"></i> Home</a></li>
-				<li><a href="#"><i class="fas fa-plus-square"></i> Create
+				<li><a href="createAccount.do"><i class="fas fa-plus-square"></i> Create
 						Account</a></li>
 				<li><a href="showLogin.do"><i class="fas fa-user"></i> Log In</a></li>
 			</ul>
