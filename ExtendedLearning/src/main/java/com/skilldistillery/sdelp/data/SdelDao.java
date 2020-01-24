@@ -5,11 +5,9 @@ import java.util.List;
 import com.skilldistillery.sdelp.entities.Content;
 import com.skilldistillery.sdelp.entities.Image;
 import com.skilldistillery.sdelp.entities.Log;
-import com.skilldistillery.sdelp.entities.Profile;
 import com.skilldistillery.sdelp.entities.Resource;
 import com.skilldistillery.sdelp.entities.Topic;
 import com.skilldistillery.sdelp.entities.TopicComment;
-import com.skilldistillery.sdelp.entities.User;
 
 public interface SdelDao {
 	
@@ -35,7 +33,7 @@ public interface SdelDao {
 	
 	Image addImage(Image image);
 	
-	Log writeLog(Log log);
+
 	
 	TopicComment addTopicComment(TopicComment topicComment);
 	

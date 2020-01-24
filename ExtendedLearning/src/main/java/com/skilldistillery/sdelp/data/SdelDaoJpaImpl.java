@@ -11,11 +11,9 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.sdelp.entities.Content;
 import com.skilldistillery.sdelp.entities.Image;
 import com.skilldistillery.sdelp.entities.Log;
-import com.skilldistillery.sdelp.entities.Profile;
 import com.skilldistillery.sdelp.entities.Resource;
 import com.skilldistillery.sdelp.entities.Topic;
 import com.skilldistillery.sdelp.entities.TopicComment;
-import com.skilldistillery.sdelp.entities.User;
 
 
 @Transactional
@@ -96,11 +94,7 @@ public class SdelDaoJpaImpl implements SdelDao {
 		return image;
 	}
 
-	@Override
-	public Log writeLog(Log log) {
-		em.persist(log);
-		return log;
-	}
+
 
 	@Override
 	public TopicComment addTopicComment(TopicComment topicComment) {
