@@ -116,7 +116,7 @@ public class UserController {
 			return "user_home";
 		} else {
 			// probably need to add a form error message here
-			return "redirect:showCreateAccount.do";
+			return "redirect:showUpdateAccount.do";
 		}		
 	}
 	

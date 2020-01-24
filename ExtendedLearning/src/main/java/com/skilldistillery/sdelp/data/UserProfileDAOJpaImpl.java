@@ -55,6 +55,7 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 		managedUser.setPassword(user.getPassword());
 		managedUser.setRole(user.getRole());
 		managedUser.setActive(user.getActive());
+		em.flush();
 		return managedUser;
 	}
 	
@@ -83,6 +84,7 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 		managedProfile.setEmail(profile.getEmail());
 		managedProfile.setJobTitle(profile.getJobTitle());
 		managedProfile.setAbout(profile.getAbout());
+		em.flush();
 		return managedProfile;
 	}
 
