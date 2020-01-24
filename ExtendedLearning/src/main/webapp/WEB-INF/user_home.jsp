@@ -24,11 +24,15 @@
 		<div class ="user-home">
 			<a>Username: ${profile.user.username }</a>
 			<a>First Name: ${profile.firstName }</a>
-			<a>Last Name: ${profile.lastName }</a>
+			<a>Last Name: ${profile.lastName }<br></a>
+			
 			<a>Email: ${profile.email }</a>
 			<a>Job Title: ${profile.jobTitle }</a>
 			<a>Biography: ${profile.about }</a>
-		
+			
+			<form action = "updateProfile.do" method = "POST">
+				<button type = "button" class ="btn btn-info">Update Account </button>
+			</form>
 		</div>
 
 	</article>
