@@ -2,6 +2,12 @@ package com.skilldistillery.sdelp.data;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
 import com.skilldistillery.sdelp.entities.Content;
 import com.skilldistillery.sdelp.entities.Image;
 import com.skilldistillery.sdelp.entities.Log;
@@ -10,18 +16,28 @@ import com.skilldistillery.sdelp.entities.Topic;
 import com.skilldistillery.sdelp.entities.TopicComment;
 import com.skilldistillery.sdelp.entities.User;
 
+
+@Transactional
+@Service
 public class SdelDaoJpaImpl implements SdelDao {
+	
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public User getUserByUsernamePassword(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		User user = null;
+		String jpql = "select user from User user where username = :username"
+				+ " and password = :password";
+		user = em.createQuery(jpql, User.class).setParameter("username", username)
+				.setParameter("password", password).getResultList().get(0);
+		return user;
 	}
 
 	@Override
 	public User createUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(user);
+		return user;
 	}
 
 	@Override
