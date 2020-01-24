@@ -42,6 +42,9 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
 	private List<Log> logs;
+	
+	@OneToMany(mappedBy="user")
+	private List<TopicComment> topicComments;
 
 	public int getId() {
 		return id;
@@ -106,6 +109,15 @@ public class User {
 
 	public void setLogs(List<Log> logs) {
 		this.logs = logs;
+	}
+
+	public List<TopicComment> getTopicComments() {
+		List<TopicComment> copy = new ArrayList<>(topicComments);
+		return copy;
+	}
+
+	public void setTopicComments(List<TopicComment> topicComments) {
+		this.topicComments = topicComments;
 	}
 
 	@Override
