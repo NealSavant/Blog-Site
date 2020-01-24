@@ -15,9 +15,7 @@ public interface SdelDao {
 	
 
 	
-	Resource addResource(Resource resource);
-	
-	Resource updateResource(Resource resource);
+
 	
 	Content addContent(Content content);
 	
