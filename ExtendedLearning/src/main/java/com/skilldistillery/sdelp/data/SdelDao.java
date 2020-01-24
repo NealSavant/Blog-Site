@@ -3,6 +3,7 @@ package com.skilldistillery.sdelp.data;
 import java.util.List;
 
 import com.skilldistillery.sdelp.entities.Content;
+import com.skilldistillery.sdelp.entities.Image;
 import com.skilldistillery.sdelp.entities.Log;
 import com.skilldistillery.sdelp.entities.Resource;
 import com.skilldistillery.sdelp.entities.Topic;
@@ -33,8 +34,12 @@ public interface SdelDao {
 	
 	Content updateContent(Content content);
 	
+	Image addImage(Image image);
+	
 	Log writeLog(Log log);
 	
 	TopicComment addTopicComment(TopicComment topicComment);
+	
+	TopicComment updateTopicComment(TopicComment topicComment);
 	
 }
