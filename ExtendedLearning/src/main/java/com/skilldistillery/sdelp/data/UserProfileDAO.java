@@ -11,6 +11,8 @@ public interface UserProfileDAO {
 	
 	User updateUser(User user);
 	
+	Profile getProfileByUserUsernamePassword(String username, String password);
+	
 	Profile createProfile(Profile profile);
 	
 	Profile updateProfile(Profile profile);

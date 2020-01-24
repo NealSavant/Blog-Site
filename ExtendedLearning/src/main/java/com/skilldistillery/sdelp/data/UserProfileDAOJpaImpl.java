@@ -44,6 +44,16 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 	}
 	
 	@Override
+	public Profile getProfileByUserUsernamePassword(String username, String password) {
+		Profile profile = null;
+		String jpql = "select profile from Profile profile where profile.user.username = :username"
+				+ " and profile.user.password = :password";
+		profile = em.createQuery(jpql, Profile.class).setParameter("username", username)
+				.setParameter("password", password).getResultList().get(0);
+		return profile;
+	}
+	
+	@Override
 	public Profile createProfile(Profile profile) {
 		em.persist(profile);
 		return profile;
