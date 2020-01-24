@@ -53,8 +53,9 @@ public class SdelDaoJpaImpl implements SdelDao {
 
 	@Override
 	public List<Topic> findTopicsBySearchTerm(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "select t from Topic t where t.title like '%:string%'";
+		List<Topic> topics = em.createQuery(jpql, Topic.class).setParameter("string", keyword).getResultList();
+		return topics;
 	}
 
 	@Override
