@@ -50,6 +50,9 @@ public class Topic {
 	
 	@OneToMany(mappedBy="topic")
 	public List<Resource> resources;
+	
+	@OneToMany(mappedBy="topic")
+	public List<Log> logs;
 
 	public int getId() {
 		return id;
@@ -118,6 +121,15 @@ public class Topic {
 
 	public void setResources(List<Resource> resources) {
 		this.resources = resources;
+	}
+
+	public List<Log> getLogs() {
+		List<Log> copy = new ArrayList<>(logs);
+		return copy;
+	}
+
+	public void setLogs(List<Log> logs) {
+		this.logs = logs;
 	}
 
 	@Override
