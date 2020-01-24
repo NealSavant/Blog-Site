@@ -9,6 +9,13 @@
     </provider>
 
 		<!-- table entities here -->
+		<class>com.skilldistillery.sdelp.entities.Content</class>
+		<class>com.skilldistillery.sdelp.entities.Image</class>
+		<class>com.skilldistillery.sdelp.entities.Log</class>
+		<class>com.skilldistillery.sdelp.entities.Profile</class>
+		<class>com.skilldistillery.sdelp.entities.Resource</class>
+		<class>com.skilldistillery.sdelp.entities.Topic</class>
+		<class>com.skilldistillery.sdelp.entities.TopicComment</class>
 		<class>com.skilldistillery.sdelp.entities.User</class>
 
 
