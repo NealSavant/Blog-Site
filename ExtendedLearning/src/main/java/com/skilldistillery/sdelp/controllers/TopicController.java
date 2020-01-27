@@ -42,7 +42,7 @@ public class TopicController {
 	public String showAllTopics(Model model) {
 		List<Topic> topics = topicdao.getAllTopics();
 		model.addAttribute("topics", topics);
-		return "allTopics";
+		return "content_index";
 	}
 	
 	@RequestMapping(path="showTopicsBySearch.do")
