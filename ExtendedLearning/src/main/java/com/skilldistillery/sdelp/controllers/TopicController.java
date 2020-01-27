@@ -31,7 +31,7 @@ public class TopicController {
 	@Autowired
 	ResourceDAO resourcedao = new ResourceDAOJpaImpl();
 	
-	@RequestMapping(path="showSingleTopic.do", method = RequestMethod.POST)
+	@RequestMapping(path="showSingleTopic.do", method = RequestMethod.GET)
 	public String showTopicList(@RequestParam("topicId") Integer cid, Model model) {
 		Topic topic = topicdao.getTopicById(cid);
 		model.addAttribute("topic", topic);
@@ -81,7 +81,7 @@ public class TopicController {
 		model.addAttribute("topic", newTopic);
 		
 		
-		return "topic";
+		return "content_index";
 	}
 	
 	@RequestMapping(path="showUpdateTopic.do")

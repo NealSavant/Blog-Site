@@ -19,17 +19,14 @@
 	</div>
 
 	<div class="main-container">
-	
-		<h3>${topic.title}</h3>
-		<p>
-			URL: ${resource.resource_url} <br> 
-			Created:
-			${resource.created_at}
-		</p>
+		<div class="cards"">
 
-		<h3>Article</h3>
-		<p>
-		<c:foreach>${topic.contents}</p>
+
+			<h3>${topic.title}</h3>
+			<p>${topic.contents}</p>
+			<p>Created: ${topic.createdAt}</p>
+		</div>
+
 	</div>
 
 

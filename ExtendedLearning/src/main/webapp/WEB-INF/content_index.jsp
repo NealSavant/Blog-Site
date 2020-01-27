@@ -28,7 +28,7 @@
 				<c:forEach var="topic" items="${topics}">
 					<div class="card w-50">
 						<div class="card-body">
-							<form action="showSingleTopic.do" method="POST">
+							<form action="showSingleTopic.do" method="GET">
 								<h5 class="card-title">${topic.title }</h5>
 								<p class="card-text">Created: ${topic.createdAt}</p>
 								<input type="hidden" value="${topic.id}" name="topicId" /> 
