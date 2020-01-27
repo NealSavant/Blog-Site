@@ -6,8 +6,8 @@
 	<div class="sidebar">
 		<h2>Sidebar</h2>
 		<ul>
-			<li><a href="#">Crash Courses</a></li>
-			<li><a href="#">Link</a></li>
+			<li><a href="showAllTopics.do">Article Index</a></li>
+			<li><a href="">Topic WireFrame</a></li>
 			<li><a href="#">Link to another place</a></li>
 		</ul>
 
