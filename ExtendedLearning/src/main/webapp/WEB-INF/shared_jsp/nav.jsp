@@ -8,8 +8,10 @@
 		<ul>
 			<li><a href="showAllTopics.do">Article Index</a></li>
 			<li><a href="">Topic WireFrame</a></li>
-			<li><a href="#">Link to another place</a></li>
+			<li><a href="">Link to another place</a></li>
 		</ul>
-
+		<form action="createPost.do">
+		<input type="submit" value="Post">
+		</form>
 	</div>
 </div>
