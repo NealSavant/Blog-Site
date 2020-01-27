@@ -18,6 +18,22 @@
 	<h4>User Management</h4>
 	
 	<c:forEach var="user" items="${users }">
+		Username: ${user.username }
+		Active: ${user.active } <br>
+		
+		
+		<c:if test="${user.active }">
+			<form action="disableUser.do" method="GET">
+  				<input type="submit" value="Disable account: ${user.username }" />
+  			</form>
+  		</c:if>
+  		
+  		
+		<c:if test="${not user.active }">
+			<form action="enableUser.do" method="GET">
+  				<input type="submit" value="Activate account: ${user.username }" />
+  			</form>
+  		</c:if>
 	
 	
 	</c:forEach>
