@@ -18,7 +18,19 @@
 		<jsp:include page="shared_jsp/nav.jsp" />
 	</div>
 
-	<main></main>
+	<div class="main-container">
+	
+		<h3>${topic.title}</h3>
+		<p>
+			URL: ${resource.resource_url} <br> 
+			Created:
+			${resource.created_at}
+		</p>
+
+		<h3>Article</h3>
+		<p>
+		<c:foreach>${topic.contents}</p>
+	</div>
 
 
 
