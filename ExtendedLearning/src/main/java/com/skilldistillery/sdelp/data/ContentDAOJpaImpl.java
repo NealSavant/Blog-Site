@@ -19,6 +19,7 @@ public class ContentDAOJpaImpl implements ContentDAO {
 	@Override
 	public Content addContent(Content content) {
 		em.persist(content);
+		em.flush();
 		return content;
 	}
 

@@ -41,6 +41,7 @@ public class TopicDAOJpaImpl implements TopicDAO {
 	@Override
 	public Topic addTopic(Topic topic) {
 		em.persist(topic);
+		em.flush();
 		return topic;
 	}
 
