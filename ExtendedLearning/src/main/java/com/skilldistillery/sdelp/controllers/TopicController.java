@@ -48,6 +48,9 @@ public class TopicController {
 		if (topic != null) {
 			try {
 				Profile profile = (Profile) session.getAttribute("profile");
+				if (profile == null) {
+					return "topic_page";
+				}
 				Log log = new Log();
 				log.setTopic(topic);
 				log.setUser(profile.getUser());
