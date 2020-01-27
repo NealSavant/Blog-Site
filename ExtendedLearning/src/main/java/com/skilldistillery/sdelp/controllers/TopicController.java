@@ -89,7 +89,7 @@ public class TopicController {
 		Topic topic = topicdao.getTopicById(cid);
 		model.addAttribute("topic", topic);
 		
-		return "updateTopic";
+		return "update_topic";
 	}
 	
 	@RequestMapping(path="attemptUpdateTopic.do", method = RequestMethod.POST)
@@ -115,6 +115,6 @@ public class TopicController {
 		model.addAttribute("topic", updatedTopic);
 		
 		
-		return "topic";
+		return "content_index";
 	}
 }

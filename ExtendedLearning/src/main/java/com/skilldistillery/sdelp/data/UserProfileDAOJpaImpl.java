@@ -1,5 +1,7 @@
 package com.skilldistillery.sdelp.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -86,6 +88,13 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 		managedProfile.setAbout(profile.getAbout());
 		em.flush();
 		return managedProfile;
+	}
+	
+	@Override
+	public List<User> getAllNonAdminUsers(){
+		String jpql = "select user from User user where user.role = 'USER'";
+		List<User> nonAdminUsers = em.createQuery(jpql, User.class).getResultList();
+		return nonAdminUsers;
 	}
 
 }
