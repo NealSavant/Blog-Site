@@ -1,9 +1,12 @@
 package com.skilldistillery.sdelp.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -142,5 +145,17 @@ public class UserController {
 		return "user_home";
 	}
 	
+	// Allows User to be directed to create a post page
+	
+	@RequestMapping(path = "createPost.do")
+	public String createPost() {
+		return "create_content";
+	}
 
+	@RequestMapping(path="showAdminPage.do")
+	public String showAdminPage(Model model) {
+		List<User> nonAdminUsers = userProfileDao.getAllNonAdminUsers();
+		model.addAttribute("users", nonAdminUsers);
+		return "admin/admin_home";
+	}
 }

@@ -38,6 +38,7 @@
 					<c:otherwise>
 						<li><a href="userHome.do"><c:out
 									value="Welcome, ${profile.firstName} ${profile.lastName}" /></a></li>
+						<li><a href="createPost.do"><i class="fas fa-clipboard"></i> Create an Article</a></li>
 						<li><a href="logout.do"><i class="fas fa-sign-out-alt"></i>
 								Log Out</a></li>
 					</c:otherwise>

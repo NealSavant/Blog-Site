@@ -40,8 +40,8 @@ public class TopicController {
 	@Autowired
 	LogDAO logdao = new LogDAOJpaImpl();
 
-	@RequestMapping(path = "showSingleTopic.do")
-	public String showTopicList(@RequestParam Integer cid, Model model, HttpSession session) {
+	@RequestMapping(path="showSingleTopic.do", method = RequestMethod.GET)
+	public String showTopicList(@RequestParam("topicId") Integer cid, Model model, HttpSession session) {
 		Topic topic = topicdao.getTopicById(cid);
 		model.addAttribute("topic", topic);
 		if (topic != null) {
@@ -55,23 +55,22 @@ public class TopicController {
 				e.printStackTrace();
 			}
 		}
-
-		return "topic";
+		return "topic_page";
 	}
 
 	@RequestMapping(path = "showAllTopics.do")
 	public String showAllTopics(Model model) {
 		List<Topic> topics = topicdao.getAllTopics();
 		model.addAttribute("topics", topics);
-		return "allTopics";
+		return "content_index";
 	}
 
-	@RequestMapping(path = "showTopicsBySearch.do")
-	public String showTopicsBySearch(@RequestParam String keyword, Model model) {
+	@RequestMapping(path="showTopicsBySearch.do", method = RequestMethod.POST)
+	public String showTopicsBySearch(@RequestParam("keyword") String keyword, Model model) {
 		List<Topic> topics = topicdao.findTopicsBySearchTerm(keyword);
-		model.addAttribute("keyword", keyword);
+//		model.addAttribute("keyword", keyword);
 		model.addAttribute("topics", topics);
-		return "keywordTopics";
+		return "content_index";
 	}
 
 	@RequestMapping(path = "showNewTopic.do")
@@ -97,16 +96,14 @@ public class TopicController {
 
 		Topic newTopic = topicdao.getTopicById(addTopic.getId());
 		model.addAttribute("topic", newTopic);
-
-		return "topic";
+		return "content_index";
 	}
 
 	@RequestMapping(path = "showUpdateTopic.do")
 	public String updateTopic(Model model, @RequestParam Integer cid) {
 		Topic topic = topicdao.getTopicById(cid);
 		model.addAttribute("topic", topic);
-
-		return "updateTopic";
+		return "update_topic";
 	}
 
 	@RequestMapping(path = "attemptUpdateTopic.do", method = RequestMethod.POST)
@@ -125,8 +122,7 @@ public class TopicController {
 		resourcedao.updateResource(updatingFirstResource);
 
 		Topic updatedTopic = topicdao.getTopicById(tid);
-		model.addAttribute("topic", updatedTopic);
-
-		return "topic";
+		model.addAttribute("topic", updatedTopic);	
+		return "content_index";
 	}
 }
