@@ -21,11 +21,17 @@
 
 
 				<h3>${topic.title}</h3>
+				<c:if test="${profile.id != null }">
+					<form action="showUpdateTopic.do">
+						<input type="hidden" value="${content.id}">
+						<!--pass content id into content update page  -->
+						<button type="submit" class="btn btn-primary">Update Page</button>
+					</form>
+				</c:if>
 
 				<c:forEach var="content" items="${topic.contents}">
 					<p>${content.content}</p>
 				</c:forEach>
-
 				<p>Last Updated: ${topic.updatedAt}</p>
 			</div>
 
