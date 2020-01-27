@@ -20,7 +20,7 @@ public class TopicController {
 	TopicDAO topicdao = new TopicDAOJpaImpl();
 	
 	@RequestMapping(path="showSingleTopic.do")
-	public String showTopicList(@RequestParam int cid, Model model) {
+	public String showTopicList(@RequestParam Integer cid, Model model) {
 		Topic topic = topicdao.getTopicById(cid);
 		model.addAttribute("topic", topic);
 		return "topic";
@@ -48,20 +48,22 @@ public class TopicController {
 	
 	@RequestMapping(path="attemptCreateTopic.do", method = RequestMethod.POST)
 	public String attemptCreateTopic(Model model) {
-		
+
 		
 		return "topic";
 	}
 	
 	@RequestMapping(path="showUpdateTopic.do")
-	public String updateTopic() {
-		
+	public String updateTopic(Model model, @RequestParam Integer cid) {
+		Topic topic = topicdao.getTopicById(cid);
+		model.addAttribute("topic", topic);
 		
 		return "updateTopic";
 	}
 	
 	@RequestMapping(path="attemptUpdateTopic.do", method = RequestMethod.POST)
 	public String attemptUpdateTopic(Model model) {
+
 		
 		
 		return "topic";
