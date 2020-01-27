@@ -97,9 +97,9 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 								name="jobTitle" value="${profile.jobTitle}" id="jobTitle"
 								class="form-control" />
 						</div>
-						<div class="form-group">
+						<div class="form-group"><!--find a way to save bio  -->
 							<label for="about">Biography: </label>
-							<textarea name="about" value="${profile.about}" id="about"
+							<textarea name="about"  id="about"
 								class="form-control"></textarea>
 						</div>
 						<input type="submit" value="Update Account"
