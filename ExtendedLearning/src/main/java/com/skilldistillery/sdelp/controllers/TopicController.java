@@ -31,11 +31,11 @@ public class TopicController {
 	@Autowired
 	ResourceDAO resourcedao = new ResourceDAOJpaImpl();
 	
-	@RequestMapping(path="showSingleTopic.do")
-	public String showTopicList(@RequestParam Integer cid, Model model) {
+	@RequestMapping(path="showSingleTopic.do", method = RequestMethod.POST)
+	public String showTopicList(@RequestParam("topicId") Integer cid, Model model) {
 		Topic topic = topicdao.getTopicById(cid);
 		model.addAttribute("topic", topic);
-		return "topic";
+		return "topic_page";
 	}
 	
 	@RequestMapping(path="showAllTopics.do")
