@@ -24,6 +24,7 @@
 		
 		<c:if test="${user.active }">
 			<form action="disableUser.do" method="GET">
+				<input type="hidden" name="uid" value="${user.id }">
   				<input type="submit" value="Disable account: ${user.username }" />
   			</form>
   		</c:if>
@@ -31,6 +32,7 @@
   		
 		<c:if test="${not user.active }">
 			<form action="enableUser.do" method="GET">
+				<input type="hidden" name="uid" value="${user.id }">
   				<input type="submit" value="Activate account: ${user.username }" />
   			</form>
   		</c:if>
