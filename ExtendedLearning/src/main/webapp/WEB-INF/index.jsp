@@ -10,16 +10,13 @@
 </head>
 <body>
 
-	<header class="main-header">
-		<jsp:include page="shared_jsp/header.jsp" />
-	</header>
+	<!-- HEADER -->
+	<jsp:include page="shared_jsp/header.jsp" />
 
-	<article>
+	<article class = "container">
+		
 
-		<div class="nav-wrapper">
-
-			<jsp:include page="shared_jsp/nav.jsp" />
-		</div>
+		<jsp:include page="shared_jsp/nav.jsp" />
 
 		<div class="main-container">
 			<a>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
@@ -117,7 +114,6 @@
 				generated Lorem Ipsum is therefore always free from repetition,
 				injected humour, or non-characteristic words etc.</a>
 		</div>
-
 
 	</article>
 

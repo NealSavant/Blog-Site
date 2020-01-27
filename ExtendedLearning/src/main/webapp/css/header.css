@@ -12,7 +12,13 @@
 	flex-wrap: wrap;
 }
 
-
+.fixed-container{
+	position: sticky;
+	padding: 20px;
+	top: 0px;
+	background: aqua;
+	z-index: 2;
+}
 .container {
 	width: 960px;
 	max-width: 100%;
