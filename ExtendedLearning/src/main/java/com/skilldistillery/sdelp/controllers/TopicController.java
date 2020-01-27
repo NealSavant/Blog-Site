@@ -42,15 +42,15 @@ public class TopicController {
 	public String showAllTopics(Model model) {
 		List<Topic> topics = topicdao.getAllTopics();
 		model.addAttribute("topics", topics);
-		return "allTopics";
+		return "content_index";
 	}
 	
-	@RequestMapping(path="showTopicsBySearch.do")
-	public String showTopicsBySearch(@RequestParam String keyword, Model model) {
+	@RequestMapping(path="showTopicsBySearch.do", method = RequestMethod.POST)
+	public String showTopicsBySearch(@RequestParam("keyword") String keyword, Model model) {
 		List<Topic> topics = topicdao.findTopicsBySearchTerm(keyword);
-		model.addAttribute("keyword", keyword);
+//		model.addAttribute("keyword", keyword);
 		model.addAttribute("topics", topics);
-		return "keywordTopics";
+		return "content_index";
 	}
 	
 	@RequestMapping(path="showNewTopic.do")
