@@ -6,7 +6,7 @@
 	height: 100%;
 	background: #a2b9bc;
 	left: 0;
-	top: 12;
+	z-index: 2;
 }
 
 .nav-wrapper .sidebar h2 {
@@ -27,17 +27,15 @@
 	color: #d2cff1;
 }
 /*  spacing for glyphicons from fontawesome*/
-.nav-wrapper .sidebar ul li a .fas{
+.nav-wrapper .sidebar ul li a .fas {
 	display: block;
 	width: 25px;
-	
 }
 
-.nav-wrapper .sidebar ul li :hover{
+.nav-wrapper .sidebar ul li :hover {
 	background: #b9ced2;
-	
 }
 
-.nav-wrapper .sidebar ul li :hover a{
+.nav-wrapper .sidebar ul li :hover a {
 	color: #fff;
 }

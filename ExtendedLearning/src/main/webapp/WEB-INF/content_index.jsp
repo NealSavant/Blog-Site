@@ -9,10 +9,15 @@
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
 <body>
-	<jsp:include page="shared_jsp/header.jsp" />
 
-	<div class="container">
-		<jsp:include page="shared_jsp/nav.jsp" />
+	<header class="main-header">
+		<jsp:include page="shared_jsp/header.jsp" />
+	</header>
+
+	<article>
+		<div class="nav-wrapper">
+			<jsp:include page="shared_jsp/nav.jsp" />
+		</div>
 
 		<div class="main-container">
 			<div class="cards">
@@ -43,7 +48,7 @@
 			</div>
 		</div>
 
-	</div>
+	</article>
 
 
 
