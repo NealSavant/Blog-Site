@@ -1,5 +1,6 @@
 package com.skilldistillery.sdelp.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -50,6 +51,7 @@ public class TopicController {
 				Log log = new Log();
 				log.setTopic(topic);
 				log.setUser(profile.getUser());
+				log.setTimeStamp(LocalDateTime.now());
 				logdao.writeLog(log);
 			} catch (ClassCastException e) {
 				e.printStackTrace();
