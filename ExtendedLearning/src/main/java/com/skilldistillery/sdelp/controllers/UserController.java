@@ -142,5 +142,11 @@ public class UserController {
 		return "user_home";
 	}
 	
+	// Allows User to be directed to create a post page
+	
+	@RequestMapping(path = "createPost.do")
+	public String createPost() {
+		return "create_content";
+	}
 
 }
