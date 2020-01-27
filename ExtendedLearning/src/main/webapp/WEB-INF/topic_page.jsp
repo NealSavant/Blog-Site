@@ -22,10 +22,15 @@
 
 				<h3>${topic.title}</h3>
 				<c:if test="${profile.id != null }">
+					<!-- any logged in user can update a page right now -->
 					<form action="showUpdateTopic.do">
-						<input type="hidden" value="${content.id}">
-						<!--pass content id into content update page  -->
-						<button type="submit" class="btn btn-primary">Update Page</button>
+						<c:forEach var="content" items="${topic.contents}">
+
+							<input type="hidden" value="${content.id}" name="cid">
+							<!--pass content id into content update page  -->
+							<button type="submit" class="btn btn-primary">Update
+								Page</button>
+						</c:forEach>
 					</form>
 				</c:if>
 
