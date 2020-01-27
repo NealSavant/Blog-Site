@@ -13,22 +13,20 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<div class="nav-wrapper">
-
+	<div class="container">
 		<jsp:include page="shared_jsp/nav.jsp" />
-	</div>
 
-	<div class="main-container">
-		<div class="cards">
+		<div class="main-container">
+			<div class="cards">
 
 
-			<h3>${topic.title}</h3>
-			<p>${topic.contents}</p>
-			<p>Created: ${topic.createdAt}</p>
+				<h3>${topic.title}</h3>
+				<p>${topic.contents}</p>
+				<p>Last Updated: ${topic.updatedAt}</p>
+			</div>
+
 		</div>
-
 	</div>
-
 
 
 
