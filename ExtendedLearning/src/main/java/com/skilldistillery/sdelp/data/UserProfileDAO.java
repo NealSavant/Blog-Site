@@ -22,5 +22,7 @@ public interface UserProfileDAO {
 	boolean checkIfUsernameAndEmailAreAvailable(String username, String email);
 
 	List<User> getAllNonAdminUsers();
+	
+	User getUserById(int uid);
 
 }

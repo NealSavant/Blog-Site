@@ -158,4 +158,20 @@ public class UserController {
 		model.addAttribute("users", nonAdminUsers);
 		return "admin/admin_home";
 	}
+	
+	@RequestMapping(path="disableUser.do")
+	public String disableUser(@RequestParam Integer uid) {
+		User userToDisable = userProfileDao.getUserById(uid);
+		userToDisable.setActive(false);
+		userProfileDao.updateUser(userToDisable);	
+		return "redirect:showAdminPage.do";
+	}
+	
+	@RequestMapping(path="enableUser.do")
+	public String enableUser(@RequestParam Integer uid) {
+		User userToEnable = userProfileDao.getUserById(uid);
+		userToEnable.setActive(true);
+		userProfileDao.updateUser(userToEnable);	
+		return "redirect:showAdminPage.do";
+	}
 }
