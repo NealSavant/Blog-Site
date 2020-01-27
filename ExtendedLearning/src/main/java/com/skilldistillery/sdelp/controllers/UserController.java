@@ -27,6 +27,7 @@ public class UserController {
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home() {
+		
 		return "index";
 	}
 
