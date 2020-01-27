@@ -21,7 +21,11 @@
 
 
 				<h3>${topic.title}</h3>
-				<p>${topic.contents}</p>
+
+				<c:foreach var="content" items="${topic.contents}">
+					<p>${content.content}</p>
+				</c:foreach>
+
 				<p>Last Updated: ${topic.updatedAt}</p>
 			</div>
 
