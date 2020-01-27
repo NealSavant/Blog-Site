@@ -18,25 +18,30 @@
 	</div>
 
 	<div class="main-container">
-		<form class="form-inline">
-			<input class="form-control mr-sm-2" type="search"
-				placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
-		<c:if test="${not empty topics}">
-		<c:forEach var="topic" items="${topics}">
-		<form action="showAllTopics.do">
-			<div class="card w-50">
-		  <div class="card-body">
-		    <h5 class="card-title">${topic.title }</h5>
-		    <p class="card-text">Content: </p>
-		    <a href="#" class="btn btn-primary">Button</a>
-		  </div>
+		<div class="cards">
+			<form class="form-inline" action="showTopicsBySearch.do"
+				method="POST">
+				<input class="form-control mr-sm-2" type="text" name="keyword"
+					placeholder="Search" aria-label="Search"/>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+					Topics</button>
+			</form>
+
+			<c:if test="${not empty topics}">
+				<c:forEach var="topic" items="${topics}">
+					<form action="showAllTopics.do">
+						<div class="card w-50">
+							<div class="card-body">
+								<h5 class="card-title">${topic.title }</h5>
+								<p class="card-text">Content:</p>
+								<a href="" class="btn btn-primary">View Page</a>
+							</div>
+						</div>
+
+					</form>
+				</c:forEach>
+			</c:if>
 		</div>
-		
-		</form>
-		</c:forEach>
-		</c:if>
 	</div>
 
 

@@ -20,8 +20,8 @@ public class TopicDAOJpaImpl implements TopicDAO {
 	
 	@Override
 	public List<Topic> findTopicsBySearchTerm(String keyword) {
-		String jpql = "select t from Topic t where t.title like '%:string%'";
-		List<Topic> topics = em.createQuery(jpql, Topic.class).setParameter("string", keyword).getResultList();
+		String jpql = "select t from Topic t where t.title like :string";
+		List<Topic> topics = em.createQuery(jpql, Topic.class).setParameter("string", "%" + keyword + "%").getResultList();
 		return topics;
 	}
 

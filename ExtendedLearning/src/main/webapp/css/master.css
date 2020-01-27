@@ -41,3 +41,8 @@
 	max-width: inherit;
 	
 }
+.cards{
+	display: inline-block;
+	margin-left: 50px;
+	padding: 5px;
+}
