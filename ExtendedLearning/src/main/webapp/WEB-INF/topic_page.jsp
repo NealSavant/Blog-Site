@@ -13,9 +13,10 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<div class="container">
-		<jsp:include page="shared_jsp/nav.jsp" />
-
+	<article>
+		<div class="nav-wrapper">
+			<jsp:include page="shared_jsp/nav.jsp" />
+		</div>
 		<div class="main-container">
 			<div class="cards">
 
@@ -41,7 +42,7 @@
 			</div>
 
 		</div>
-	</div>
+	</article>
 
 
 

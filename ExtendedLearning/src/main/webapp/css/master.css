@@ -30,15 +30,13 @@
 }
 
 .main-container{
-	flex-shrink: 0;
 	display: flex;
 	position: relative;
-	margin-left:50px;
-	margin-right:50px;
+	width: 100%;
+	margin-left:150px;
 	padding-left: 50px;
 	padding-top: 50px;
 	padding-bottom: 50px;
-	max-width: inherit;
 	
 }
 .cards{
