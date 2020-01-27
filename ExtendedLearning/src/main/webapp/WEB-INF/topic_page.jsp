@@ -18,6 +18,7 @@
 		<jsp:include page="shared_jsp/nav.jsp" />
 	</div>
 
+
 	<main>
 		<c:if test="${not empty topic}">
 		<article>
@@ -25,6 +26,17 @@
 		</article>
 		</c:if>
 	</main>
+
+	<div class="main-container">
+		<div class="cards"">
+
+
+			<h3>${topic.title}</h3>
+			<p>${topic.contents}</p>
+			<p>Created: ${topic.createdAt}</p>
+		</div>
+
+	</div>
 
 
 
