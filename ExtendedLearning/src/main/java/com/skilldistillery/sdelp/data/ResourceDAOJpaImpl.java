@@ -18,6 +18,7 @@ public class ResourceDAOJpaImpl implements ResourceDAO {
 	@Override
 	public Resource addResource(Resource resource) {
 		em.persist(resource);
+		em.flush();
 		return resource;
 	}
 
