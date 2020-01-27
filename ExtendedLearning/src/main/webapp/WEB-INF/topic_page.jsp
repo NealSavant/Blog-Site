@@ -18,17 +18,8 @@
 		<jsp:include page="shared_jsp/nav.jsp" />
 	</div>
 
-
-	<main>
-		<c:if test="${not empty topic}">
-		<article>
-		<p>${topic.topic}</p>
-		</article>
-		</c:if>
-	</main>
-
 	<div class="main-container">
-		<div class="cards"">
+		<div class="cards">
 
 
 			<h3>${topic.title}</h3>
