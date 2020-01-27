@@ -93,8 +93,26 @@ public class TopicController {
 	}
 	
 	@RequestMapping(path="attemptUpdateTopic.do", method = RequestMethod.POST)
-	public String attemptUpdateTopic(Model model) {
-
+	public String attemptUpdateTopic(Model model,
+			@RequestParam Integer tid,
+			@RequestParam String title,
+			@RequestParam String content,
+			@RequestParam String resourceTitle,
+			@RequestParam String resourceUrl) {
+		Topic updatingTopic = topicdao.getTopicById(tid);
+		Content updatingFirstContent = updatingTopic.getContents().get(0);
+		Resource updatingFirstResource = updatingTopic.getResources().get(0);
+		
+		updatingTopic.setTitle(title);
+		topicdao.updateTopic(updatingTopic);
+		updatingFirstContent.setContent(content);
+		contentdao.updateContent(updatingFirstContent);
+		updatingFirstResource.setTitle(resourceTitle);
+		updatingFirstResource.setResourceUrl(resourceUrl);
+		resourcedao.updateResource(updatingFirstResource);
+		
+		Topic updatedTopic = topicdao.getTopicById(tid);
+		model.addAttribute("topic", updatedTopic);
 		
 		
 		return "topic";
