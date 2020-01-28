@@ -114,7 +114,8 @@ public class TopicController {
 
 		Topic newTopic = topicdao.getTopicById(addTopic.getId());
 		model.addAttribute("topic", newTopic);
-		return "content_index";
+		
+		return "redirect:showSingleTopic.do?topicId=" + newTopic.getId();
 	}
 
 	@RequestMapping(path = "showUpdateTopic.do")
