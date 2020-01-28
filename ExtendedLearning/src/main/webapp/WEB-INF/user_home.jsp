@@ -8,7 +8,6 @@
 <title>Extended Learning</title>
 
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
-<link rel="stylesheet" href="/css/profile-page.css">
 </head>
 <body>
 
@@ -25,26 +24,31 @@
 		<div class="main-container">
 
 			<c:if test="${profile != null}">
-				<div class="profile-info">
-					<div class="profile-image">
-						<img alt="image" src="${profile.image.imageUrl}" width="300px"
-							height="300px">
+				<div class="row profile-info">
+					<div class="card col-md-6">
+						<img alt="image" src="${profile.image.imageUrl}" class="card-img-top">
+						<div class="card-body">
+							<h5>${profile.user.username }</h5>
+							<form action="showUpdateAccount.do" method="POST">
+								<button type="submit" class="btn btn-info">Update Account</button>
+							</form>
+						</div>
 					</div>
 
-					<a>Username: ${profile.user.username }</a> <a>First Name:
-						${profile.firstName }</a> <a>Last Name: ${profile.lastName }</a> <a>Email:
-						${profile.email }</a> <br> <a>Job Title: ${profile.jobTitle }</a>
-					<a>Biography: ${profile.about }</a>
-
-					<form action="showUpdateAccount.do" method="POST">
-						<button type="submit" class="btn btn-info">Update Account</button>
-					</form>
-
+					<div class="card col-md-6">
+					<div class="card-body">
+						<p>First Name: ${profile.firstName }</p>
+						<p>Last Name: ${profile.lastName }</p>
+						<p>Email: ${profile.email }</p>
+						<p>Job Title: ${profile.jobTitle }</p>
+						<p>Biography: ${profile.about }</p>
+						</div>
+					</div>
 				</div>
-
-
-				<div class="profile-logs">
+				
+				<div class="row profile-logs">
 					<c:if test="${logs != null }">
+					<div>
 						<table class="table table-striped">
 							<thead class="thead-light">
 								<tr>
@@ -52,20 +56,20 @@
 									<th scope="col">Date visited</th>
 								</tr>
 							</thead>
+								<tbody>
 							<c:forEach var="log" items="${logs }">
 
-								<tbody>
 									<tr>
 										<td scope="row">${log.topic.title }</td>
 										<td scope="row">viewed at: ${log.timeStamp }</td>
 									</tr>
-								</tbody>
 							</c:forEach>
+								</tbody>
 						</table>
+					</div>
 					</c:if>
-
-
 				</div>
+				
 			</c:if>
 		</div>
 
