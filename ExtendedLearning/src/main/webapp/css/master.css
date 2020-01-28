@@ -45,7 +45,8 @@
 	padding: 5px;
 }
 
-.commentBox{
+.userComment{
 	width: 300px;
 	background-color: gray;
+	margin: 15px;
 }
