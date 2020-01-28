@@ -29,7 +29,7 @@
 
 				<c:if test="${not empty topics}">
 					<c:forEach var="topic" items="${topics}">
-						<div class="card w-50">
+						<div class="card w-200">
 							<div class="card-body">
 								<form action="showSingleTopic.do" method="GET">
 									<h5 class="card-title">${topic.title }</h5>
