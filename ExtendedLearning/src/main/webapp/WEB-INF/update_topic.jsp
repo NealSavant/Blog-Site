@@ -8,7 +8,8 @@
 <title>Update Content</title>
 </head>
 <body>
-	<form action="attemptUpdateTopic.do">
+	<form action="attemptUpdateTopic.do" method="POST">
+		<input type="hidden" value="${topic.id}" name="tid">
 		<label for="title">Title</label><br> <input type="text"
 			name="title" value="${topic.title}"><br> <input
 			type="hidden" value="${content.id}" name="cid">
