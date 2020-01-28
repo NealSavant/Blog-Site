@@ -104,8 +104,11 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 	}
 	
 	@Override
-	public Profile getProfileById(int uid) {
-		Profile profile = em.find(Profile.class, uid);
+	public Profile getProfileByUserId(int uid) {
+		String jpql = "select profile from Profile profile where profile.user.id = :uid";
+		
+		
+		Profile profile = em.createQuery(jpql, Profile.class).setParameter("uid", uid).getSingleResult();
 		return profile;
 	}
 

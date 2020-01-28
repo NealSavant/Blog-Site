@@ -181,7 +181,7 @@ public class UserController {
 	
 	@RequestMapping(path="showUser.do")
 	public String showUser(@RequestParam("uid") Integer uid, Model model) {
-		Profile showProfile = userProfileDao.getProfileById(uid);
+		Profile showProfile = userProfileDao.getProfileByUserId(uid);
 		model.addAttribute("otherProfile", showProfile);
 		return "show_user";
 	}
