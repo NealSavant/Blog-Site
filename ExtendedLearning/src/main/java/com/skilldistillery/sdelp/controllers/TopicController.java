@@ -114,7 +114,8 @@ public class TopicController {
 
 		Topic newTopic = topicdao.getTopicById(addTopic.getId());
 		model.addAttribute("topic", newTopic);
-		return "content_index";
+		
+		return "redirect:showSingleTopic.do?topicId=" + newTopic.getId();
 	}
 
 	@RequestMapping(path = "showUpdateTopic.do")
@@ -141,7 +142,7 @@ public class TopicController {
 
 		Topic updatedTopic = topicdao.getTopicById(tid);
 		model.addAttribute("topic", updatedTopic);	
-		return "content_index";
+		return "topic_page";
 	}
 	
 	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
