@@ -181,6 +181,7 @@ CREATE TABLE IF NOT EXISTS `topic_comment` (
   `topic_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `content` TEXT NULL,
+  `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_post_topic1_idx` (`topic_id` ASC),
   INDEX `fk_post_user1_idx` (`user_id` ASC),
@@ -312,7 +313,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SD_ELP`;
-INSERT INTO `topic_comment` (`id`, `title`, `created_at`, `updated_at`, `topic_id`, `user_id`, `content`) VALUES (1, 'test', '2020-01-23', '2020-01-23', 1, 1, 'test');
+INSERT INTO `topic_comment` (`id`, `title`, `created_at`, `updated_at`, `topic_id`, `user_id`, `content`, `active`) VALUES (1, 'test', '2020-01-23', '2020-01-23', 1, 1, 'test', NULL);
 
 COMMIT;
 
