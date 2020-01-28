@@ -21,9 +21,11 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
  -->
 		<div class="main-container">
 			<c:if test="${fail }">
-				<h4>Username and/or Email already in use</h4>
+				<div>
+					<h4>Username and/or Email already in use</h4>
+				</div>
 			</c:if>
-		
+		<div>
 			<c:if test="${profile.id == 0 or profile == null}">
 				<form action="createAccount.do" method="POST">
 					<fieldset>
@@ -122,7 +124,7 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 
 
 
-
+	</div>
 		</div>
 
 
