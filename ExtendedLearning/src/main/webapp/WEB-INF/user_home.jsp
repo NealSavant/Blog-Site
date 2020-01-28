@@ -14,28 +14,37 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<article>
+	<main>
 
 		<div class= "nav-wrapper">
 
 			<jsp:include page="shared_jsp/nav.jsp" />
 		</div>
-	
+	<c:if test="${not empty profile.image.imageUrl}">
 		<div class ="user-home">
-			<a>Username: ${profile.user.username }</a>
-			<a>First Name: ${profile.firstName }</a>
-			<a>Last Name: ${profile.lastName }<br></a>
+			<img alt="image" src="${profile.image.imageUrl}" width="300px" height="300px"><br>
 			
-			<a>Email: ${profile.email }</a>
+			
+			<a>Username: ${profile.user.username }</a>
+			
+			<a>First Name: ${profile.firstName }</a>
+		
+			<a>Last Name: ${profile.lastName }</a>
+			
+			<a>Email: ${profile.email }</a><br>
+			
 			<a>Job Title: ${profile.jobTitle }</a>
+			
 			<a>Biography: ${profile.about }</a>
 			
 			<form action = "showUpdateAccount.do" method = "POST">
 				<button type = "submit" class ="btn btn-info">Update Account</button>
 			</form>
 		</div>
+		</c:if>
+		
 
-	</article>
+	</main>
 
 
 

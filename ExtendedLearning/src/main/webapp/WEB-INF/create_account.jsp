@@ -32,7 +32,7 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 								required />
 						</div>
 						<div class="form-group">
-							<label for="password">Desired Password: </label> <input
+							gi<label for="password">Desired Password: </label> <input
 								type="password" name="password" id="password"
 								class="form-control" required />
 						</div>
@@ -55,6 +55,10 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 						<div class="form-group">
 							<label for="about">Biography: </label>
 							<textarea name="about" id="about" class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="image">Image URL: </label> <input type="url"
+								name="image" id="image" class="form-control" />
 						</div>
 						<input type="submit" value="Create Account"
 							class="btn btn-primary" />
@@ -102,6 +106,12 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 							<textarea name="about"  id="about"
 								class="form-control"></textarea>
 						</div>
+						<div class="form-group">
+							<label for="image">Image URL: </label> <input type="url"
+								name="image" value="${profile.image.imageUrl}" id="image"
+								class="form-control" />
+						</div>
+						
 						<input type="submit" value="Update Account"
 							class="btn btn-primary" />
 					</fieldset>
