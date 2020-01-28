@@ -56,6 +56,10 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 							<label for="about">Biography: </label>
 							<textarea name="about" id="about" class="form-control"></textarea>
 						</div>
+						<div class="form-group">
+							<label for="image">Image URL: </label> <input type="url"
+								name="image" id="image" class="form-control" />
+						</div>
 						<input type="submit" value="Create Account"
 							class="btn btn-primary" />
 					</fieldset>
@@ -102,6 +106,12 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 							<textarea name="about"  id="about"
 								class="form-control"></textarea>
 						</div>
+						<div class="form-group">
+							<label for="image">Image URL: </label> <input type="url"
+								name="image" value="${profile.image.imageUrl}" id="image"
+								class="form-control" />
+						</div>
+						
 						<input type="submit" value="Update Account"
 							class="btn btn-primary" />
 					</fieldset>

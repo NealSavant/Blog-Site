@@ -69,7 +69,7 @@ public class UserController {
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
 	public String attemptCreateAccount(@RequestParam String username, @RequestParam String password,
 			@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-			@RequestParam String jobTitle, @RequestParam String about, HttpSession session) {
+			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session) {
 		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
 			User user = new User();
 			user.setUsername(username);
@@ -83,8 +83,7 @@ public class UserController {
 			profile.setJobTitle(jobTitle);
 			profile.setAbout(about);
 			Image newImage = new Image();
-			newImage.setImageUrl(
-					"https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjCnL-ss53nAhUHAZ0JHbhJCmcQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.amazon.com%2FMunchkin-White-Safety-Bath-Ducky%2Fdp%2FB000GUZC2A&psig=AOvVaw1ZQGH-0l0EMx_BFKI6ZQiX&ust=1579995311416096");
+			newImage.setImageUrl(image);
 			imagedao.addImage(newImage);
 			profile.setImage(newImage);
 			profile.setUser(user);
@@ -105,7 +104,7 @@ public class UserController {
 	@RequestMapping(path = "updateAccount.do", method = RequestMethod.POST)
 	public String attemptUpdateAccount(@RequestParam String username, @RequestParam String password,
 			@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-			@RequestParam String jobTitle, @RequestParam String about, HttpSession session) {
+			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session) {
 		Profile profile = (Profile) session.getAttribute("profile");
 		profile.getUser().setUsername(username);
 		profile.getUser().setPassword(password);
@@ -114,6 +113,10 @@ public class UserController {
 		profile.setEmail(email);
 		profile.setJobTitle(jobTitle);
 		profile.setAbout(about);
+		Image newImage = new Image();
+		newImage.setImageUrl(image);
+		imagedao.addImage(newImage);
+		profile.setImage(newImage);
 		userProfileDao.updateProfile(profile);
 		session.setAttribute("profile", profile);
 		return "user_home";
