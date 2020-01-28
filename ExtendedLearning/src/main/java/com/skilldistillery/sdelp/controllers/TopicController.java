@@ -157,6 +157,7 @@ public class TopicController {
 		comment.setTitle(title);
 		comment.setUser(userdao.getUserById(userId));
 		comment.setTopic(topicdao.getTopicById(topicId));
+		comment.setActive(true);
 		
 		comment = commentdao.addTopicComment(comment);
 //		model.addAttribute("comment", comment);
