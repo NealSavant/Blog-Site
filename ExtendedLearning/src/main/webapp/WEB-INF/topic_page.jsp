@@ -44,22 +44,24 @@
 				<!-- display comments below content -->
 				<c:if test="${not empty topic.topicComments}">
 					<c:forEach var="comment" items="${topic.topicComments}">
-						<div class="commentBox">
-							<ul>
+						<c:if test="${comment.active }">
+							<div class="commentBox">
+								<ul>
 							<!--<li><c:forEach var="u" items="${topicComments.user}">${u.}</c:forEach></li>-->
-								<li>Title: ${comment.title}</li>
-								<li>Author: ${comment.user.username }</li>
-								<li>Comment: ${comment.content }</li>
-								<li>Created at: ${comment.createdAt }</li>
-							</ul>
-						</div>
-						<c:if test="${profile.user.role == 'ADMIN' }">
-							<div>
-								<form action="hideComment.do" method="GET">
-									<input type="hidden" name="cid" value="${comment.id }">
-  									<input type="submit" value="Hide this comment" />
-  								</form>
+									<li>Title: ${comment.title}</li>
+									<li>Author: ${comment.user.username }</li>
+									<li>Comment: ${comment.content }</li>
+									<li>Created at: ${comment.createdAt }</li>
+								</ul>
 							</div>
+							<c:if test="${profile.user.role == 'ADMIN' }">
+								<div>
+									<form action="hideComment.do" method="GET">
+										<input type="hidden" name="cid" value="${comment.id }">
+  										<input type="submit" value="Hide this comment" />
+  									</form>
+								</div>
+							</c:if>
 						</c:if>
 					</c:forEach>
 				</c:if>

@@ -41,6 +41,8 @@ public class TopicComment {
 	private User user;
 	
 	private String content;
+	
+	private Boolean active;
 
 	public int getId() {
 		return id;
@@ -98,10 +100,18 @@ public class TopicComment {
 		this.content = content;
 	}
 
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
 	@Override
 	public String toString() {
 		return "TopicComment [id=" + id + ", title=" + title + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ ", topic=" + topic + ", user=" + user + ", content=" + content + "]";
+				+ ", topic=" + topic + ", user=" + user + ", content=" + content + ", active=" + active + "]";
 	}
 
 	@Override

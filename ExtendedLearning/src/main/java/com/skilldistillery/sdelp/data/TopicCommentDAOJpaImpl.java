@@ -36,7 +36,7 @@ public class TopicCommentDAOJpaImpl implements TopicCommentDAO {
 		TopicComment managedTopicComment = em.find(TopicComment.class, topicComment.getId());
 		managedTopicComment.setTitle(topicComment.getTitle());
 		managedTopicComment.setContent(topicComment.getContent());
-		// need to update active field
+		managedTopicComment.setActive(topicComment.getActive());
 		return managedTopicComment;
 	}
 	

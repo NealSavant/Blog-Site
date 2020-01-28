@@ -168,7 +168,7 @@ public class TopicController {
 	public String hideComment(Model model,
 			@RequestParam("cid") Integer cid) {
 		TopicComment tc = commentdao.getTopicCommentById(cid);
-		// tc.setActive(false);
+		tc.setActive(false);
 		commentdao.updateTopicComment(tc);
 		Topic topic = tc.getTopic();
 		model.addAttribute("topic", topic);
