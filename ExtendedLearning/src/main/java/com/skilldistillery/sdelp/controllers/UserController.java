@@ -57,6 +57,7 @@ public class UserController {
 		if (profile != null) {
 			// need to add the profile
 			session.setAttribute("profile", profile);
+			session.setAttribute("logs", profile.getUser().getLogs());
 			return "redirect:userHome.do";
 		} else {
 
