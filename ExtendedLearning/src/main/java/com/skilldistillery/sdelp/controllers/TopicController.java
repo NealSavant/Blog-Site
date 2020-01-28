@@ -67,6 +67,8 @@ public class TopicController {
 				log.setUser(profile.getUser());
 				log.setTimeStamp(LocalDateTime.now());
 				logdao.writeLog(log);
+				List<TopicComment> comments = commentdao.getAllCommentsForTopic(topic);
+				model.addAttribute("comments", comments);
 			} catch (ClassCastException e) {
 				e.printStackTrace();
 			}
