@@ -33,6 +33,7 @@ public class TopicCommentDAOJpaImpl implements TopicCommentDAO {
 		return managedTopicComment;
 	}
 	
+	@Override
 	public List<TopicComment> getAllCommentsForTopic(Topic topic){
 		String jpql = "select tc from TopicComment tc where tc.topic = :topic ";
 		
