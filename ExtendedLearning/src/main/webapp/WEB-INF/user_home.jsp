@@ -41,7 +41,14 @@
 				<button type = "submit" class ="btn btn-info">Update Account</button>
 			</form>
 		</div>
-		</c:if>
+		<div class="user-page-history">
+			<ul>
+				<c:forEach var="log" items="${profile.user.logs }">
+					<li>${log.topic.title } viewed at: ${log.timeStamp }</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
 		
 
 	</main>
