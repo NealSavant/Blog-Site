@@ -18,6 +18,7 @@ public class LogDAOJpaImpl implements LogDAO {
 	@Override
 	public Log writeLog(Log log) {
 		em.persist(log);
+		em.flush();
 		return log;
 	}
 

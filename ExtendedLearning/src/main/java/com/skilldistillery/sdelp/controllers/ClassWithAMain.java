@@ -6,7 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.skilldistillery.sdelp.entities.Profile;
+import com.skilldistillery.sdelp.data.TopicDAO;
+import com.skilldistillery.sdelp.data.TopicDAOJpaImpl;
+import com.skilldistillery.sdelp.entities.Topic;
+import com.skilldistillery.sdelp.entities.TopicComment;
 
 public class ClassWithAMain {
 	
@@ -14,21 +17,16 @@ public class ClassWithAMain {
 	
 	public static void main(String[] args) {
 		EntityManager em = emf.createEntityManager();
-		String jpql = "select profile from Profile profile where profile.user.username = :username and profile.user.password"
-				+ " = :password";
-		String username = "admin";
-		String password = "admin";
+		String jpql = "select tc from TopicComment tc where tc.topic = :topic";
+		Topic firstTopic = em.find(Topic.class, 1);
 		
-		List<Profile> profiles = em.createQuery(jpql, Profile.class)
-				.setParameter("username", username)
-				.setParameter("password", password)
-				.getResultList();
+		List<TopicComment> comments = em.createQuery(jpql, TopicComment.class).setParameter("topic", firstTopic).getResultList();
 		
 		
 		System.out.println("***************************");
 		System.out.println("***************************");
 		System.out.println("***************************");
-		System.out.println(profiles.get(0));
+		System.out.println(comments.get(0));
 		System.out.println("***************************");
 		System.out.println("***************************");
 		System.out.println("***************************");

@@ -1,9 +1,12 @@
 package com.skilldistillery.sdelp.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,13 +24,13 @@ public class UserController {
 
 	@Autowired
 	UserProfileDAO userProfileDao = new UserProfileDAOJpaImpl();
-	
+
 	@Autowired
 	ImageDAO imagedao = new ImageDAOJpaImpl();
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home() {
-		
+
 		return "index";
 	}
 
@@ -37,9 +40,9 @@ public class UserController {
 	public String showLogin() {
 		return "login";
 	}
-	
+
 	// show create account page to user
-	
+
 	@RequestMapping(path = "showCreateAccount.do")
 	public String showCreateAccount() {
 		return "create_account";
@@ -54,31 +57,26 @@ public class UserController {
 		if (profile != null) {
 			// need to add the profile
 			session.setAttribute("profile", profile);
+			session.setAttribute("logs", profile.getUser().getLogs());
 			return "redirect:userHome.do";
 		} else {
 
 			return "redirect:showLogin.do";
 		}
 	}
-	
+
 	// attempt create account
-	
-	@RequestMapping(path="createAccount.do", method = RequestMethod.POST)
-	public String attemptCreateAccount(@RequestParam String username,
-			@RequestParam String password,
-			@RequestParam String firstName,
-			@RequestParam String lastName,
-			@RequestParam String email,
-			@RequestParam String jobTitle,
-			@RequestParam String about,
-			HttpSession session
-			) {
+
+	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
+	public String attemptCreateAccount(@RequestParam String username, @RequestParam String password,
+			@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
+			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session) {
 		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
 			User user = new User();
 			user.setUsername(username);
 			user.setPassword(password);
 			user.setRole("USER");
-			userProfileDao.createUser(user);	//backend handles profile and user table in one method
+			userProfileDao.createUser(user); // backend handles profile and user table in one method
 			Profile profile = new Profile();
 			profile.setFirstName(firstName);
 			profile.setLastName(lastName);
@@ -86,67 +84,97 @@ public class UserController {
 			profile.setJobTitle(jobTitle);
 			profile.setAbout(about);
 			Image newImage = new Image();
-			newImage.setImageUrl("https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjCnL-ss53nAhUHAZ0JHbhJCmcQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.amazon.com%2FMunchkin-White-Safety-Bath-Ducky%2Fdp%2FB000GUZC2A&psig=AOvVaw1ZQGH-0l0EMx_BFKI6ZQiX&ust=1579995311416096");
+			newImage.setImageUrl(image);
 			imagedao.addImage(newImage);
 			profile.setImage(newImage);
 			profile.setUser(user);
 			userProfileDao.createProfile(profile);
 			session.setAttribute("profile", profile);
-			return "user_home";
+			return "redirect:userHome.do";
 		} else {
 			// TODO: probably need to add a form error message here
 			return "redirect:showCreateAccount.do";
-		}		
+		}
 	}
-	
-	@RequestMapping(path="showUpdateAccount.do")
-	public String showUpdateAccount(){
+
+	@RequestMapping(path = "showUpdateAccount.do")
+	public String showUpdateAccount() {
 		return "create_account";
 	}
-	
-	@RequestMapping(path="updateAccount.do", method = RequestMethod.POST)
-	public String attemptUpdateAccount(@RequestParam String username,
-			@RequestParam String password,
-			@RequestParam String firstName,
-			@RequestParam String lastName,
-			@RequestParam String email,
-			@RequestParam String jobTitle,
-			@RequestParam String about,
-			HttpSession session
-			) {
-			Profile profile = (Profile) session.getAttribute("profile");
-			profile.getUser().setUsername(username);
-			profile.getUser().setPassword(password);
-			profile.setFirstName(firstName);
-			profile.setLastName(lastName);
-			profile.setEmail(email);
-			profile.setJobTitle(jobTitle);
-			profile.setAbout(about);
-			userProfileDao.updateProfile(profile);
-			session.setAttribute("profile", profile);
-			return "user_home";
-			// TODO: probably need to add a form error message here
+
+	@RequestMapping(path = "updateAccount.do", method = RequestMethod.POST)
+	public String attemptUpdateAccount(@RequestParam String username, @RequestParam String password,
+			@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
+			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session) {
+		Profile profile = (Profile) session.getAttribute("profile");
+		profile.getUser().setUsername(username);
+		profile.getUser().setPassword(password);
+		profile.setFirstName(firstName);
+		profile.setLastName(lastName);
+		profile.setEmail(email);
+		profile.setJobTitle(jobTitle);
+		profile.setAbout(about);
+		Image newImage = new Image();
+		newImage.setImageUrl(image);
+		imagedao.addImage(newImage);
+		profile.setImage(newImage);
+		userProfileDao.updateProfile(profile);
+		session.setAttribute("profile", profile);
+		return "user_home";
+		// TODO: probably need to add a form error message here
 	}
-	
+
 	@RequestMapping(path = "logout.do")
 	public String logout(HttpSession session) {
-		session.removeAttribute("profile");	//remove profile from session
+		session.removeAttribute("profile"); // remove profile from session
 		return "redirect:home.do";
 	}
-	
+
 	// show user homepage
-	
-	@RequestMapping(path="userHome.do")
+
+	@RequestMapping(path = "userHome.do")
 	public String showUserHome(HttpSession session) {
 		session.setAttribute("profile", session.getAttribute("profile"));
 		return "user_home";
 	}
-	
+
 	// Allows User to be directed to create a post page
-	
+
 	@RequestMapping(path = "createPost.do")
 	public String createPost() {
 		return "create_content";
 	}
 
+	@RequestMapping(path = "showAdminPage.do")
+	public String showAdminPage(Model model) {
+		List<User> nonAdminUsers = userProfileDao.getAllNonAdminUsers();
+		model.addAttribute("users", nonAdminUsers);
+		return "admin/admin_home";
+	}
+
+	@RequestMapping(path = "disableUser.do")
+	public String disableUser(@RequestParam Integer uid, HttpSession session) {
+		Profile adminCheck = (Profile) session.getAttribute("profile");
+		if (adminCheck.getUser().getRole().equals("ADMIN")) {
+			User userToDisable = userProfileDao.getUserById(uid);
+			userToDisable.setActive(false);
+			userProfileDao.updateUser(userToDisable);
+			return "redirect:showAdminPage.do";
+		} else {
+			return "redirect:home.do";
+		}
+	}
+
+	@RequestMapping(path = "enableUser.do")
+	public String enableUser(@RequestParam Integer uid, HttpSession session) {
+		Profile adminCheck = (Profile) session.getAttribute("profile");
+		if (adminCheck.getUser().getRole().equals("ADMIN")) {
+			User userToEnable = userProfileDao.getUserById(uid);
+			userToEnable.setActive(true);
+			userProfileDao.updateUser(userToEnable);
+			return "redirect:showAdminPage.do";
+		} else {
+			return "redirect:home.do";
+		}
+	}
 }

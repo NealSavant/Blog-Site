@@ -2,6 +2,8 @@ package com.skilldistillery.sdelp.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -48,6 +50,7 @@ class ProfileTest {
 		assertEquals("test", profile.getFirstName());
 		assertEquals("test", profile.getLastName());
 		assertEquals("test@test.com", profile.getEmail());
+		assertEquals(LocalDateTime.of(2020, 1, 23, 0, 0, 0), profile.getUser().getLogs().get(0).getTimeStamp());
 	}
 
 }

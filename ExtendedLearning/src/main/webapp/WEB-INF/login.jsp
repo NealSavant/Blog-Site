@@ -9,16 +9,12 @@
 </head>
 <body>
 
-	<header class="main-header">
-		<jsp:include page="shared_jsp/header.jsp" />
-	</header>
+	<jsp:include page="shared_jsp/header.jsp" />
 
-	<article>
-		<div class="nav-wrapper">
-			<jsp:include page="shared_jsp/nav.jsp" />
-		</div>
+	<article class="containergrid">
+		<jsp:include page="shared_jsp/nav.jsp" />
 
-		<div class="form-container">
+		<div class="main-container">
 			<form action="login.do" method="POST">
 				<fieldset>
 					<legend>Login</legend>

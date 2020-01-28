@@ -13,3 +13,4 @@
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/side-nav.css">
 <link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/comments.css">
