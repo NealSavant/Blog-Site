@@ -174,7 +174,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `topic_comment` ;
 
 CREATE TABLE IF NOT EXISTS `topic_comment` (
-  `id` BIGINT(20) NOT NULL,
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NOT NULL,
   `created_at` DATETIME NOT NULL,
   `updated_at` DATETIME NOT NULL,
@@ -326,3 +326,4 @@ INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (1, 1);
 INSERT INTO `topic_image` (`topic_id`, `image_id`) VALUES (2, 2);
 
 COMMIT;
+
