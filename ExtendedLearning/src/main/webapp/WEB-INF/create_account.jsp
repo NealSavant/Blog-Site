@@ -32,7 +32,7 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 								required />
 						</div>
 						<div class="form-group">
-							<label for="password">Desired Password: </label> <input
+							gi<label for="password">Desired Password: </label> <input
 								type="password" name="password" id="password"
 								class="form-control" required />
 						</div>
