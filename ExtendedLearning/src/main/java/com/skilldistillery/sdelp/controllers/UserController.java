@@ -90,7 +90,7 @@ public class UserController {
 			profile.setUser(user);
 			userProfileDao.createProfile(profile);
 			session.setAttribute("profile", profile);
-			return "user_home";
+			return "redirect:userHome.do";
 		} else {
 			// TODO: probably need to add a form error message here
 			return "redirect:showCreateAccount.do";
