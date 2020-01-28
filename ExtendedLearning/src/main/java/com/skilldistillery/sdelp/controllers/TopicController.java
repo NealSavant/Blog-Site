@@ -18,13 +18,18 @@ import com.skilldistillery.sdelp.data.LogDAO;
 import com.skilldistillery.sdelp.data.LogDAOJpaImpl;
 import com.skilldistillery.sdelp.data.ResourceDAO;
 import com.skilldistillery.sdelp.data.ResourceDAOJpaImpl;
+import com.skilldistillery.sdelp.data.TopicCommentDAO;
+import com.skilldistillery.sdelp.data.TopicCommentDAOJpaImpl;
 import com.skilldistillery.sdelp.data.TopicDAO;
 import com.skilldistillery.sdelp.data.TopicDAOJpaImpl;
+import com.skilldistillery.sdelp.data.UserProfileDAO;
+import com.skilldistillery.sdelp.data.UserProfileDAOJpaImpl;
 import com.skilldistillery.sdelp.entities.Content;
 import com.skilldistillery.sdelp.entities.Log;
 import com.skilldistillery.sdelp.entities.Profile;
 import com.skilldistillery.sdelp.entities.Resource;
 import com.skilldistillery.sdelp.entities.Topic;
+import com.skilldistillery.sdelp.entities.TopicComment;
 
 @Controller
 public class TopicController {
@@ -39,9 +44,15 @@ public class TopicController {
 	ResourceDAO resourcedao = new ResourceDAOJpaImpl();
 	
 	@Autowired
+	TopicCommentDAO commentdao = new TopicCommentDAOJpaImpl();
+	
+	@Autowired
+	UserProfileDAO userdao;
+	
+	@Autowired
 	LogDAO logdao = new LogDAOJpaImpl();
 
-	@RequestMapping(path="showSingleTopic.do", method = RequestMethod.GET)
+	@RequestMapping(path = "showSingleTopic.do", method = RequestMethod.GET)
 	public String showTopicList(@RequestParam("topicId") Integer cid, Model model, HttpSession session) {
 		Topic topic = topicdao.getTopicById(cid);
 		model.addAttribute("topic", topic);
@@ -70,7 +81,7 @@ public class TopicController {
 		return "content_index";
 	}
 
-	@RequestMapping(path="showTopicsBySearch.do", method = RequestMethod.POST)
+	@RequestMapping(path = "showTopicsBySearch.do", method = RequestMethod.POST)
 	public String showTopicsBySearch(@RequestParam("keyword") String keyword, Model model) {
 		List<Topic> topics = topicdao.findTopicsBySearchTerm(keyword);
 //		model.addAttribute("keyword", keyword);
@@ -130,4 +141,28 @@ public class TopicController {
 		model.addAttribute("topic", updatedTopic);	
 		return "content_index";
 	}
+	
+	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
+	public String addComment(Model model, 
+			@RequestParam("title") String title, 
+			@RequestParam("comment") String content, 
+			@RequestParam("topicId") Integer topicId, 
+			HttpSession session){
+		int userId = ((Profile) session.getAttribute("profile")).getUser().getId();
+		Topic topic = topicdao.getTopicById(topicId);
+		TopicComment comment = new TopicComment();
+		comment.setContent(content);
+		comment.setTitle(title);
+		comment.setUser(userdao.getUserById(userId));
+		comment.setTopic(topicdao.getTopicById(topicId));
+		
+		comment = commentdao.addTopicComment(comment);
+//		model.addAttribute("comment", comment);
+		model.addAttribute("topic", topic);
+		return "topic_page";
+	}
+//	public String updateComments(Model model) {
+//		
+//	}
+	
 }
