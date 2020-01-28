@@ -60,7 +60,6 @@ public class UserController {
 			session.setAttribute("logs", profile.getUser().getLogs());
 			return "redirect:userHome.do";
 		} else {
-
 			return "redirect:showLogin.do";
 		}
 	}
@@ -91,10 +90,10 @@ public class UserController {
 			profile.setUser(user);
 			userProfileDao.createProfile(profile);
 			session.setAttribute("profile", profile);
+			session.removeAttribute("fail");
 			return "redirect:userHome.do";
 		} else {
-			model.addAttribute("fail", "username and/or email already taken");
-			// TODO: probably need to add a form error message here
+			session.setAttribute("fail", true);
 			return "redirect:showCreateAccount.do";
 		}
 	}

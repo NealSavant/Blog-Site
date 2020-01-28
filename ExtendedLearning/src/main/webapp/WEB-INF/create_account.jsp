@@ -20,8 +20,8 @@
 SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
  -->
 		<div class="main-container">
-			<c:if test="${not empty fail }">
-				<h4>${fail }</h4>
+			<c:if test="${fail }">
+				<h4>Username and/or Email already in use</h4>
 			</c:if>
 		
 			<c:if test="${profile.id == 0 or profile == null}">
