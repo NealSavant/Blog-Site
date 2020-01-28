@@ -53,6 +53,14 @@
 								<li>Created at: ${comment.createdAt }</li>
 							</ul>
 						</div>
+						<c:if test="${profile.user.role == 'ADMIN' }">
+							<div>
+								<form action="hideComment.do" method="GET">
+									<input type="hidden" name="cid" value="${comment.id }">
+  									<input type="submit" value="Hide this comment" />
+  								</form>
+							</div>
+						</c:if>
 					</c:forEach>
 				</c:if>
 

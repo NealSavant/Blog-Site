@@ -24,12 +24,19 @@ public class TopicCommentDAOJpaImpl implements TopicCommentDAO {
 		em.flush();
 		return topicComment;
 	}
+	
+	@Override
+	public TopicComment getTopicCommentById(int tid) {
+		TopicComment tc = em.find(TopicComment.class, tid);
+		return tc;
+	}
 
 	@Override
 	public TopicComment updateTopicComment(TopicComment topicComment) {
 		TopicComment managedTopicComment = em.find(TopicComment.class, topicComment.getId());
 		managedTopicComment.setTitle(topicComment.getTitle());
 		managedTopicComment.setContent(topicComment.getContent());
+		// need to update active field
 		return managedTopicComment;
 	}
 	
