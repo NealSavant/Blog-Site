@@ -29,8 +29,7 @@
 
 							<input type="hidden" value="${content.id}" name="cid">
 							<!--pass content id into content update page  -->
-							<button type="submit" class="btn btn-primary">Update
-								Page</button>
+							<button type="submit" class="btn btn-primary">Edit Post</button>
 						</c:forEach>
 					</form>
 				</c:if>
