@@ -2,6 +2,8 @@ package com.skilldistillery.sdelp.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -45,7 +47,7 @@ class LogTest {
 	@DisplayName("Test user entity mapping")
 	void test1() {
 		assertNotNull(log);
-		assertEquals("2020-01-23", log.getTimeStamp());
+		assertEquals(LocalDateTime.of(2020, 01, 23, 00, 00, 00), log.getTimeStamp());
 	}
 
 }
