@@ -70,7 +70,8 @@ public class UserController {
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
 	public String attemptCreateAccount(@RequestParam String username, @RequestParam String password,
 			@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session) {
+			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session
+			, Model model) {
 		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
 			User user = new User();
 			user.setUsername(username);
@@ -92,6 +93,7 @@ public class UserController {
 			session.setAttribute("profile", profile);
 			return "redirect:userHome.do";
 		} else {
+			model.addAttribute("fail", "username and/or email already taken");
 			// TODO: probably need to add a form error message here
 			return "redirect:showCreateAccount.do";
 		}
