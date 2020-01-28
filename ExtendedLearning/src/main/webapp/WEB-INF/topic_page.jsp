@@ -44,14 +44,13 @@
 				<!-- display comments below content -->
 				<c:if test="${not empty topic.topicComments}">
 					<c:forEach var="comment" items="${topic.topicComments}">
-						<ul>
-						<li>
-						Title: ${comment.title}
-						</li>
-						<li>
-						Comment: ${comment.content }
-						</li>
-						</ul>
+						<div class="commentBox">
+							<ul>
+							<!--<li><c:forEach var="u" items="${topicComments.user}">${u.}</c:forEach></li>-->
+								<li>Title: ${comment.title}</li>
+								<li>Comment: ${comment.content }</li>
+							</ul>
+						</div>
 					</c:forEach>
 				</c:if>
 
