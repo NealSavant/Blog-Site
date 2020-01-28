@@ -48,6 +48,7 @@
 							<ul>
 							<!--<li><c:forEach var="u" items="${topicComments.user}">${u.}</c:forEach></li>-->
 								<li>Title: ${comment.title}</li>
+								<li>Author: ${comment.user.username }</li>
 								<li>Comment: ${comment.content }</li>
 							</ul>
 						</div>
