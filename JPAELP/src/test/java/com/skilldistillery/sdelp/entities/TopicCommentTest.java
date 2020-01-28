@@ -46,5 +46,6 @@ class TopicCommentTest {
 	@DisplayName("Test Content entity mapping")
 	void test1() {
 		assertEquals("test", topicComment.getTitle());
+		assertTrue(topicComment.getActive());
 	}
 }
