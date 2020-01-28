@@ -157,9 +157,21 @@ public class TopicController {
 		comment.setTitle(title);
 		comment.setUser(userdao.getUserById(userId));
 		comment.setTopic(topicdao.getTopicById(topicId));
+		comment.setActive(true);
 		
 		comment = commentdao.addTopicComment(comment);
 //		model.addAttribute("comment", comment);
+		model.addAttribute("topic", topic);
+		return "topic_page";
+	}
+	
+	@RequestMapping(path="hideComment.do")
+	public String hideComment(Model model,
+			@RequestParam("cid") Integer cid) {
+		TopicComment tc = commentdao.getTopicCommentById(cid);
+		tc.setActive(false);
+		commentdao.updateTopicComment(tc);
+		Topic topic = tc.getTopic();
 		model.addAttribute("topic", topic);
 		return "topic_page";
 	}
