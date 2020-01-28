@@ -142,7 +142,7 @@ public class TopicController {
 
 		Topic updatedTopic = topicdao.getTopicById(tid);
 		model.addAttribute("topic", updatedTopic);	
-		return "content_index";
+		return "topic_page";
 	}
 	
 	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
