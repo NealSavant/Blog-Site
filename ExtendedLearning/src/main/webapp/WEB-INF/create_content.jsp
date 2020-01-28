@@ -23,13 +23,7 @@
 					<label for="title">Title</label><br>
 					<input type="text" name="title"><br>
 					<textarea rows="10" cols="50" id="createContent" name="content">Write something here</textarea>
-					<br> <label>Resources</label><br>
-					<input type="text" name="resourceTitle" placeholder="title"><input
-						type="url" name="resourceUrl" placeholder="resource url"><br>
-					<label>Resources</label><br>
-					<input type="text" name="resourceTitle" placeholder="title"><input
-						type="url" name="resourceUrl" placeholder="resource url"><br>
-					<label>Resources</label><br>
+					<br> <label>Resource</label><br>
 					<input type="text" name="resourceTitle" placeholder="title"><input
 						type="url" name="resourceUrl" placeholder="resource url"><br>
 					<!-- 	<label for="image">Link an Image</label><br><input type="url" name="image" placeholder="optional"> -->

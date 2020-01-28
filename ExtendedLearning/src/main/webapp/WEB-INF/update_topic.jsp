@@ -24,18 +24,6 @@
 			<input type="url" name="resourceUrl" value="${resource.resourceUrl}">
 			<br>
 		</c:forEach>
-		<label>Resources</label> <br>
-		<c:forEach var="resource" items="${topic.resources}">
-			<input type="text" name="resourceTitle" value="${resource.title}">
-			<input type="url" name="resourceUrl" value="${resource.resourceUrl}">
-			<br>
-		</c:forEach>
-		<label>Resources</label> <br>
-		<c:forEach var="resource" items="${topic.resources}">
-			<input type="text" name="resourceTitle" value="${resource.title}">
-			<input type="url" name="resourceUrl" value="${resource.resourceUrl}">
-			<br>
-		</c:forEach>
 		<!-- 	<label for="image">Link an Image</label><br><input type="url" name="image" placeholder="optional"> -->
 		<!-- <input type="file" id="snippet" name="image" accept="image/png, image/jpeg"><br> -->
 		<input type="submit" value="Update">
