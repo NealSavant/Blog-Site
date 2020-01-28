@@ -46,7 +46,8 @@
 						<c:forEach var="comment" items="${topic.topicComments}">
 							<c:if test="${comment.active }">
 								<div class="userComment">
-									<div class="commentAuthor">${comment.user.username }
+									<div class="commentAuthor">
+										<a href="showUser.do?uid=${comment.user.id }">${comment.user.username }</a>
 										<span class="commentDateTime"> ${comment.createdAt}</span>
 									</div>
 									<div class="commentTitle">${comment.title}</div>
