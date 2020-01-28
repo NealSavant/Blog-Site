@@ -150,7 +150,7 @@ public class UserController {
 	public String showAdminPage(Model model) {
 		List<User> nonAdminUsers = userProfileDao.getAllNonAdminUsers();
 		model.addAttribute("users", nonAdminUsers);
-		return "admin/admin_home";
+		return "admin_home";
 	}
 
 	@RequestMapping(path = "disableUser.do")
