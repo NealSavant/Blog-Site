@@ -50,6 +50,7 @@
 								<li>Title: ${comment.title}</li>
 								<li>Author: ${comment.user.username }</li>
 								<li>Comment: ${comment.content }</li>
+								<li>Created at: ${comment.createdAt }</li>
 							</ul>
 						</div>
 					</c:forEach>
