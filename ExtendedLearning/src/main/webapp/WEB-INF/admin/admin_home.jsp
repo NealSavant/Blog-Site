@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Extended Learning</title>
-<jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
+<jsp:include page="/WEB-INF/shared_jsp/jsp_scripts/styleTop.jsp" />
 
 </head>
 <body>
 	<header class="main-header">
-		<jsp:include page="shared_jsp/header.jsp" />
+		<jsp:include page="/WEB-INF/shared_jsp/header.jsp" />
 	</header>
 	
 	<h4>User Management</h4>
@@ -47,9 +47,9 @@
 
 
 	<footer>
-		<jsp:include page="shared_jsp/footer.jsp" />
+		<jsp:include page="/WEB-INF/shared_jsp/footer.jsp" />
 	</footer>
 
-	<jsp:include page="shared_jsp/jsp_scripts/styleBot.jsp" />
+	<jsp:include page="/WEB-INF/shared_jsp/jsp_scripts/styleBot.jsp" />
 </body>
 </html>
