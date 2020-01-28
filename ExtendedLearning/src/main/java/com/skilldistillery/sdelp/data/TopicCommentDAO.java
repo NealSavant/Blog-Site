@@ -13,4 +13,6 @@ public interface TopicCommentDAO {
 
 	List<TopicComment> getAllCommentsForTopic(Topic topic);
 
+	TopicComment getTopicCommentById(int tid);
+
 }
