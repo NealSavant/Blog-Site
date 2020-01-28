@@ -1,1 +1,20 @@
 @charset "UTF-8";
+
+.userComment{
+	width: 300px;
+	background-color: #c6c5c7;
+	margin: 15px;
+}
+
+.commentAuthor{
+	font-weight: bold;
+	color: black;
+}
+.commentContent{
+	color: black;
+	
+}
+
+.commentDateTime{
+	color: gray;
+}
