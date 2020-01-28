@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .nav-wrapper .sidebar {
-	position: fixed;
 	width: 150px;
 	height: 100%;
 	background: #a2b9bc;

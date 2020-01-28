@@ -14,14 +14,12 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<article>
-		<div class="nav-wrapper">
-			<jsp:include page="shared_jsp/nav.jsp" />
-		</div>
+	<article class="containergrid">
+		<jsp:include page="shared_jsp/nav.jsp" />
 		<!-- TODO: SEND USERNAME/PASSWORD TO USER TABLE
 SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
  -->
-		<div class="form-container">
+		<div class="main-container">
 			<c:if test="${profile.id == 0 or profile == null}">
 				<form action="createAccount.do" method="POST">
 					<fieldset>
@@ -78,8 +76,8 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 						</div>
 						<div class="form-group">
 							<label for="password">Desired Password: </label> <input
-								type="password" value="${profile.user.password}" name="password" id="password"
-								class="form-control" required />
+								type="password" value="${profile.user.password}" name="password"
+								id="password" class="form-control" required />
 						</div>
 						<div class="form-group">
 							<label for="firstName">First Name: </label> <input type="text"
@@ -101,17 +99,17 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 								name="jobTitle" value="${profile.jobTitle}" id="jobTitle"
 								class="form-control" />
 						</div>
-						<div class="form-group"><!--find a way to save bio  -->
+						<div class="form-group">
+							<!--find a way to save bio  -->
 							<label for="about">Biography: </label>
-							<textarea name="about"  id="about"
-								class="form-control"></textarea>
+							<textarea name="about" id="about" class="form-control"></textarea>
 						</div>
 						<div class="form-group">
 							<label for="image">Image URL: </label> <input type="url"
 								name="image" value="${profile.image.imageUrl}" id="image"
 								class="form-control" />
 						</div>
-						
+
 						<input type="submit" value="Update Account"
 							class="btn btn-primary" />
 					</fieldset>
