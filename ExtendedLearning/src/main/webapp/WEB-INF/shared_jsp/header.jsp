@@ -27,6 +27,7 @@
 		<nav class="header-nav">
 			<ul class="main-header-list">
 				<li><a href="home.do"><i class="fas fa-home"></i> Home</a></li>
+				<li><a href="showAllTopics.do">Article Index</a></li>
 				<!-- prompted to login or create an account -->
 				<c:choose>
 					<c:when test="${profile.id == 0 or profile == null}">
