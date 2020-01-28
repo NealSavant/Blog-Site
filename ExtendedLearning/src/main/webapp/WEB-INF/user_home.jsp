@@ -21,32 +21,51 @@
 
 
 		<div class="main-container">
-			<c:if test="${not empty profile.image.imageUrl}">
-				<div class="user-home">
-					<img alt="image" src="${profile.image.imageUrl}" width="300px"
-						height="300px"><br> <a>Username:
-						${profile.user.username }</a> <a>First Name: ${profile.firstName }</a>
+			<c:if test="${profile != null}">
+				<div class="profile-info">
+					<div class="profile-image">
+						<img alt="image" src="${profile.image.imageUrl}" width="300px"
+							height="300px">
+					</div>
 
-					<a>Last Name: ${profile.lastName }</a> <a>Email:
-						${profile.email }</a><br> <a>Job Title: ${profile.jobTitle }</a>
+					<a>Username: ${profile.user.username }</a> <a>First Name:
+						${profile.firstName }</a> <a>Last Name: ${profile.lastName }</a> <a>Email:
+						${profile.email }</a> <br> <a>Job Title: ${profile.jobTitle }</a>
 					<a>Biography: ${profile.about }</a>
 
 					<form action="showUpdateAccount.do" method="POST">
 						<button type="submit" class="btn btn-info">Update Account</button>
 					</form>
+
+				</div>
+
+
+				<div class="profile-logs">
+					<c:if test="${logs != null }">
+						<table class="table table-striped">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">Topic Title</th>
+									<th scope="col">Date visited</th>
+								</tr>
+							</thead>
+							<c:forEach var="log" items="${logs }">
+
+								<tbody>
+									<tr>
+										<td scope="row">${log.topic.title }</td>
+										<td scope="row">viewed at: ${log.timeStamp }</td>
+									</tr>
+								</tbody>
+							</c:forEach>
+						</table>
+					</c:if>
+
+
 				</div>
 			</c:if>
 		</div>
 
-		<div class="user-page-history">
-			<ul>
-				<c:forEach var="log" items="${logs }">
-					<li>${log.topic.title } viewed at: ${log.timeStamp }</li>
-				</c:forEach>
-			</ul>
-		</div>
-
-		
 
 
 	</article>
