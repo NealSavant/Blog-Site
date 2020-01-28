@@ -13,10 +13,10 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<article>
-		<div class="nav-wrapper">
-			<jsp:include page="shared_jsp/nav.jsp" />
-		</div>
+	<article class="containergrid">
+
+		<jsp:include page="shared_jsp/nav.jsp" />
+
 		<div class="main-container">
 			<div class="cards">
 
@@ -50,7 +50,7 @@
 									<div class="commentAuthor">${comment.user.username }
 										<span class="commentDateTime"> ${comment.createdAt}</span>
 									</div>
-									<div class="commentTitle">Title: ${comment.title}</div>
+									<div class="commentTitle">${comment.title}</div>
 									<div class="commentContent">${comment.content }</div>
 
 

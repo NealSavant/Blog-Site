@@ -14,7 +14,7 @@
 <body>
 	<jsp:include page="shared_jsp/header.jsp" />
 
-	<div class="container">
+	<article class = "containergrid">
 		<jsp:include page="shared_jsp/nav.jsp" />
 
 		<div class="main-container">
@@ -32,7 +32,7 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	</article>
 
 	<footer>
 		<jsp:include page="shared_jsp/footer.jsp" />

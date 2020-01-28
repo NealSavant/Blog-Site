@@ -13,7 +13,7 @@
 	<!-- HEADER -->
 	<jsp:include page="shared_jsp/header.jsp" />
 
-	<article>
+	<article class = "containergrid">
 
 
 		<jsp:include page="shared_jsp/nav.jsp" />
