@@ -21,6 +21,7 @@ public class TopicCommentDAOJpaImpl implements TopicCommentDAO {
 	@Override
 	public TopicComment addTopicComment(TopicComment topicComment) {
 		em.persist(topicComment);
+		em.flush();
 		return topicComment;
 	}
 
