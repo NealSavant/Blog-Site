@@ -97,9 +97,16 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 		return nonAdminUsers;
 	}
 	
+	@Override
 	public User getUserById(int uid) {
 		User user = em.find(User.class, uid);
 		return user;
+	}
+	
+	@Override
+	public Profile getProfileById(int uid) {
+		Profile profile = em.find(Profile.class, uid);
+		return profile;
 	}
 
 }

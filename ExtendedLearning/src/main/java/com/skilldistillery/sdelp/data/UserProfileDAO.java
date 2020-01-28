@@ -25,4 +25,6 @@ public interface UserProfileDAO {
 	
 	User getUserById(int uid);
 
+	Profile getProfileById(int uid);
+
 }

@@ -178,4 +178,11 @@ public class UserController {
 			return "redirect:home.do";
 		}
 	}
+	
+	@RequestMapping(path="showUser.do")
+	public String showUser(@RequestParam("uid") Integer uid, Model model) {
+		Profile showProfile = userProfileDao.getProfileById(uid);
+		model.addAttribute("otherProfile", showProfile);
+		return "show_user";
+	}
 }
