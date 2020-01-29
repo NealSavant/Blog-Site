@@ -61,18 +61,25 @@
 						<div class="col">
 							<p>image goes here</p>
 						</div>
+						<div class="col">
+							<form action="updateResource.do" method="POST">
+								<input type="hidden" value="${topic.id }" name="topicId" /> <br>
+								<button type="submit" class="btn btn-info pull-right">Update</button>
+							</form>
+						</div>
 					</div>
+					<hr>
 				</c:forEach>
-				<hr>
 				<div class="resource-footer">
-					<form action="addComment.do" method="POST">
-						<textarea class="form-control" placeholder="write a comment..."
-							rows="3" name="comment" id="comment"></textarea>
+					<hr>
+					<form action="addResource.do" method="POST">
 						<input type="hidden" value="${topic.id }" name="topicId" /> <br>
-						<button type="submit" class="btn btn-info pull-right">Post</button>
+						<button type="submit" class="btn btn-success pull-right">Add
+							Resource</button>
 					</form>
-
 				</div>
+				<hr>
+
 			</div>
 
 
