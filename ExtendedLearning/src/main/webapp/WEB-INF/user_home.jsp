@@ -18,10 +18,9 @@
 
 
 		<div class="container">
-
 			<c:if test="${profile != null}">
-			<div class="row">
-					<div class="">
+				<div class="row">
+					<div class="col-md-6">
 						<div class="card">
 							<img alt="image" src="${profile.image.imageUrl}" class="card-img-top">
 							<div class="card-body">
@@ -32,7 +31,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="">
+					<div class="col-md-6">
 						<div class="card">
 							<div class="card-body">
 								<p>First Name: ${profile.firstName }</p>
@@ -42,12 +41,13 @@
 								<p>Biography: ${profile.about }</p>
 							</div>
 						</div>
-				</div>
+					</div>
 				
 				
 				<div class="row">
 					<c:if test="${logs != null }">
-						<div>
+						<div class="col">
+							<div class="d-flex justify-content-center">
 							<table class="table table-striped">
 								<thead class="thead-light">
 									<tr>
@@ -64,6 +64,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							</div>
 						</div>
 					</c:if>
 				</div>
