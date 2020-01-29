@@ -37,11 +37,13 @@
 								<ul class="nav nav-tabs" id="myTab" role="tablist">
 									<li class="nav-item"><a class="nav-link active"
 										id="home-tab" data-toggle="tab" href="#home" role="tab"
-										aria-controls="home" aria-selected="true">Account
-											Information</a></li>
+										aria-controls="home" aria-selected="true">Account</a></li>
 									<li class="nav-item"><a class="nav-link" id="profile-tab"
 										data-toggle="tab" href="#profile" role="tab"
 										aria-controls="profile" aria-selected="false">View History</a></li>
+									<li class="nav-item"><a class="nav-link" id="profile-tab"
+										data-toggle="tab" href="#profile" role="tab"
+										aria-controls="profile" aria-selected="false">Comments</a></li>
 								</ul>
 							</div>
 						</div>
@@ -101,14 +103,13 @@
 															</tr>
 														</thead>
 														<c:forEach var="log" items="${logs }">
-
-															<tbody>
-																<tr>
-																	<td scope="row"><a
-																		href="showSingleTopic.do?topicId=${log.topic.id}">${log.topic.title }</a></td>
-																	<td scope="row">${log.timeStamp }</td>
-																</tr>
-															</tbody>
+																<tbody>
+																	<tr>
+																		<td scope="row"><a
+																			href="showSingleTopic.do?topicId=${log.topic.id}">${log.topic.title }</a></td>
+																		<td scope="row">${log.timeStamp }</td>
+																	</tr>
+																</tbody>
 														</c:forEach>
 													</table>
 												</c:if>
