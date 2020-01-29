@@ -14,12 +14,9 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<article class="containergrid">
-		<jsp:include page="shared_jsp/nav.jsp" />
 		<!-- TODO: SEND USERNAME/PASSWORD TO USER TABLE
 SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
  -->
-		<div class="main-container">
 			<c:if test="${fail }">
 				<div>
 					<h4>Username and/or Email already in use</h4>
