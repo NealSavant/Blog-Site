@@ -122,10 +122,8 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 
 
 	</div>
-		</div>
 
 
-	</article>
 
 
 

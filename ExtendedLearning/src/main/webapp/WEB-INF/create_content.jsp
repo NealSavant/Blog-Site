@@ -14,10 +14,7 @@
 <body>
 	<jsp:include page="shared_jsp/header.jsp" />
 
-	<article class = "containergrid">
-		<jsp:include page="shared_jsp/nav.jsp" />
 
-		<div class="main-container">
 			<div class="cards">
 				<form action="attemptCreateTopic.do" method="POST">
 					<label for="title">Title</label><br>
@@ -31,8 +28,6 @@
 					<input type="submit" value="Post">
 				</form>
 			</div>
-		</div>
-	</article>
 
 	<footer>
 		<jsp:include page="shared_jsp/footer.jsp" />
