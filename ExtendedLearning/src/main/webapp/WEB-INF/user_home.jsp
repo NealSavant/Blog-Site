@@ -106,8 +106,8 @@
 
 															<tbody>
 																<tr>
-																	<td scope="row">${log.topic.title }</td>
-																	<td scope="row">viewed at: ${log.timeStamp }</td>
+																	<td scope="row"><a href="showSingleTopic.do?topicId=${log.topic.id}">${log.topic.title }</a></td>
+																	<td scope="row">${log.timeStamp }</td>
 																</tr>
 															</tbody>
 														</c:forEach>

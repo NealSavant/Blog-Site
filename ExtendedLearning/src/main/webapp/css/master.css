@@ -42,9 +42,6 @@
 }
 
 .cards {
-	display: flex;
-	flex-wrap: wrap;
-	margin-left: 50px;
 	padding: 5px;
 	position: relative;
 }
