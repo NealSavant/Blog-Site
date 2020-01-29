@@ -1,1 +1,34 @@
-@charset "UTF-8";
+body,
+
+body * {
+	margin: unset;
+	box-sizing: unset;
+	box-sizing: unset;
+	padding: unset;
+	font-size: unset;
+	text-decoration: unset;
+}
+
+
+
+article  {
+	
+	padding: 0.5in 0 !important;
+	
+	display: grid;
+	grid-template-columns: 1fr 0.5in [start] 1.25in 5in 1.25in [end] 0.5in 1fr !important;
+	
+	padding: 0.5in 0 !important;
+}
+
+article * {	grid-column: start / end !important; }
+
+@media (max-width: 8.5in) {
+	article {grid-template-columns: 1fr 5% [start] 15% 60% 15% [end] 5% 1fr !important;} 
+}
+
+.debug-center {
+	display:flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+}

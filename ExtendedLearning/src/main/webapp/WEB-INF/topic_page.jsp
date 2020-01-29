@@ -13,21 +13,19 @@
 	<header class="main-header">
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
-
-
-		<jsp:include page="shared_jsp/nav.jsp" />
 		
 
 <!-- Page Content -->
-  <div class="container">
-
+  <article class="gridcontainer">
+		<jsp:include page="shared_jsp/nav.jsp" />
+	<div class="main-container">
     <div class="row">
 
       <!-- Post Content Column -->
-      <div class="col-lg-8">
+      <div class="col">
 
         <!-- Title -->
-        <h1 class="mt-4">${topic.title}</h1>
+        <h1 class="title">${topic.title}</h1>
 
         <!-- Author -->
         <p class="lead">
@@ -60,7 +58,7 @@
         <hr>
 
         <!-- Comments Form -->
-        <div class="card my-4">
+        <div class="card">
         <c:if test="${profile.id == null}">
           <p>Log in to leave a comment!</p>
         </c:if>
@@ -80,10 +78,9 @@
           
 
         <!-- display comments below content -->
-        <div class="media mb-4">
+        <div class="media">
           <c:if test="${not empty topic.topicComments}">
             <c:forEach var="comment" items="${topic.topicComments}">
-          <img class="d-flex mr-3 rounded-circle" src="${profile.image.imageUrl}" alt="">
             <c:if test="${comment.active }">
           <div class="media-body">
             <h5 class="mt-0">${comment.user.username}</h5>
@@ -91,15 +88,16 @@
             <p>${comment.content }</p>
             <p>${topic.createdAt}</p>
           </div>
-        
-        <div>
         <c:if test="${profile.user.role == 'ADMIN' }">
+        <div>
+        
             <form action="hideComment.do" method="GET">
               <input type="hidden" name="cid" value="${comment.id }">
               <input type="submit" value="Hide this comment" />
             </form>
-            </c:if>
+            
           </div>
+          </c:if>
       </c:if>
     </c:forEach>
   	</c:if>
@@ -127,11 +125,12 @@
       </c:if>
     </div>
   </div>
-</div>
+  </div>
+</article>
 
 <!-- Side Widget -->
 <c:if test="${profile.id != null }">
-    <div class="card my-4">
+    <div class="card">
           <h5 class="card-header">Side Widget</h5>
           <div class="card-body">
             <!-- any logged in user can update a page right now -->
