@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 	list-style: none;
 	text-decoration: none;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Exo 2', sans-serif;
 }
 
 .nav-wrapper {
@@ -38,7 +38,7 @@
 
 .containergrid {
 	display: grid;
-	grid-template-columns: 1fr 8fr;
+	grid-template-columns: 1fr 7fr 1fr;
 }
 
 .cards {

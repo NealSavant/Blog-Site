@@ -106,10 +106,12 @@ public class TopicController {
 		addContent.setContent(content);
 		addContent.setTopic(addTopic);
 		contentdao.addContent(addContent);
+		
 		Resource addResource = new Resource();
 		addResource.setTitle(resourceTitle);
 		addResource.setResourceUrl(resourceUrl);
 		addResource.setTopic(addTopic);
+		
 		resourcedao.addResource(addResource);
 
 		Topic newTopic = topicdao.getTopicById(addTopic.getId());
@@ -147,7 +149,6 @@ public class TopicController {
 	
 	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
 	public String addComment(Model model, 
-			@RequestParam("title") String title, 
 			@RequestParam("comment") String content, 
 			@RequestParam("topicId") Integer topicId, 
 			HttpSession session){
@@ -155,7 +156,6 @@ public class TopicController {
 		Topic topic = topicdao.getTopicById(topicId);
 		TopicComment comment = new TopicComment();
 		comment.setContent(content);
-		comment.setTitle(title);
 		comment.setUser(userdao.getUserById(userId));
 		comment.setTopic(topicdao.getTopicById(topicId));
 		comment.setActive(true);
@@ -177,6 +177,11 @@ public class TopicController {
 		return "topic_page";
 	}
 //	public String updateComments(Model model) {
+//		
+//	}
+	
+	//TODO: JP :)
+//	public String updateResource(Model model) {
 //		
 //	}
 	

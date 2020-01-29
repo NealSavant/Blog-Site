@@ -1,151 +1,203 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Extended Learning</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
+
 </head>
 <body>
 
-	<header class="main-header">
-		<jsp:include page="shared_jsp/header.jsp" />
-	</header>
-		
-
-
 	<jsp:include page="shared_jsp/header.jsp" />
 
-<!-- Page Content -->
-  <article class="gridcontainer">
+
+
+
+	<!-- Page Content -->
+	<article class="containergrid">
 		<jsp:include page="shared_jsp/nav.jsp" />
-	<div class="main-container">
+		<div class="main-container">
+			<div class="content-container">
+				<!-- Title -->
+				<h1 class="title">${topic.title}</h1>
+				<hr>
 
-        <!-- Title -->
-        <h1 class="title">${topic.title}</h1>
+				<!-- Author 
+			<p class="lead">
+				by <a href="#">${user.username}</a>
+			</p>
 
-        <!-- Author -->
-        <p class="lead">
-          by
-          <a href="#">${user.username}</a>
-        </p>
+			<hr>
 
-        <hr>
+		
+			<p>${topic.createdAt}</p>
 
-        <!-- Date/Time -->
-        <p>${topic.createdAt}</p>
+			<hr>-->
 
-        <hr>
-
-        <%-- <!-- Preview Image -->
+				<%-- <!-- Preview Image -->
         <img class="img-fluid rounded" src="${topic.image.imageUrl}" alt="image"> --%>
-
-        <hr>
-
-        <!-- Post Content -->		
 				<c:forEach var="content" items="${topic.contents}">
 					<p style="white-space: pre-line">${content.content}</p>
 				</c:forEach>
-
-        <c:forEach var="resource" items="${topic.resources}">
-          <p>${resource.title}</p>
-          <a href="${resource.resourceUrl}">${resource.resourceUrl}</a>
-        </c:forEach>
-
-        <hr>
-
-        <!-- Comments Form -->
-        <div class="card">
-        <c:if test="${profile.id == null}">
-          <p>Log in to leave a comment!</p>
-        </c:if>
-          <c:if test="${profile.id != null}">
-          <h5 class="card-header">Leave a Comment:</h5>
-          <form action="addComment.do" method="POST">
-          <div class="card-body">
-              <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
-              </div>
-              <input type="hidden" value="${topic.id }" name="topicId" />
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-            </form>
-            </c:if>
-            </div>
-          
-
-        <!-- display comments below content -->
-        <div class="media">
-          <c:if test="${not empty topic.topicComments}">
-            <c:forEach var="comment" items="${topic.topicComments}">
-            <c:if test="${comment.active }">
-          <div class="media-body">
-            <h5 class="mt-0">${comment.user.username}</h5>
-            <p>${comment.title}<p>
-            <p>${comment.content }</p>
-            <p>${topic.createdAt}</p>
-          </div>
-        <c:if test="${profile.user.role == 'ADMIN' }">
-        <div>
-        
-            <form action="hideComment.do" method="GET">
-              <input type="hidden" name="cid" value="${comment.id }">
-              <input type="submit" value="Hide this comment" />
-            </form>
-            
-          </div>
-          </c:if>
-      </c:if>
-    </c:forEach>
-  	</c:if>
-	</div>
-
-      <!-- foreach topic_comment where topic.id == topic_comment.topic_id -->
-      <c:if test="${profile.id == null}">
-        <p>Log in to leave a comment!</p>
-      </c:if>
-      <c:if test="${profile.id != null}">
-        <p>Leave a comment!</p>
-        <form action="addComment.do" method="POST">
-
-          <label for="title">Add a title:</label>
-          <textarea class="form-control" rows="1" cols="25" name="title"
-            id="title"></textarea>
-          <label for="title">Comment:</label>
-          <textarea class="form-control" rows="5" cols="50" name="comment"
-            id="comment"></textarea>
-          <input type="hidden" value="${topic.id }" name="topicId" /> <label
-            for="button">Commenting as <a>${profile.firstName}</a>
-          </label>
-          <button type="submit" class="btn btn-primary">Post</button>
-        </form>
-      </c:if>
-    </div>
-</article>
-
-<!-- Side Widget -->
-<c:if test="${profile.id != null }">
-    <div class="card">
-          <h5 class="card-header">Side Widget</h5>
-          <div class="card-body">
-            <!-- any logged in user can update a page right now -->
-            <form action="showUpdateTopic.do">
-              <c:forEach var="content" items="${topic.contents}">
-
-                <input type="hidden" value="${content.id}" name="cid">
-                <!--pass content id into content update page  -->
-                <button type="submit" class="btn btn-primary">Edit Post</button>
-              </c:forEach>
-            </form>
-          </div>
-        </div>
-      </c:if>
+				<hr>
+			</div>
 
 
 
+
+			<!-- Resources -->
+			<div class="resources-container">
+				<h3>Resources</h3>
+				<c:forEach var="resource" items="${topic.resources}">
+					<div class="row">
+						<div class="col">
+							<p>${resource.title}</p>
+							<a href="${resource.resourceUrl}">${resource.resourceUrl}</a>
+						</div>
+						<div class="col">
+							<p>image goes here</p>
+						</div>
+					</div>
+				</c:forEach>
+				<hr>
+				<div class="resource-footer">
+					<form action="addComment.do" method="POST">
+						<textarea class="form-control" placeholder="write a comment..."
+							rows="3" name="comment" id="comment"></textarea>
+						<input type="hidden" value="${topic.id }" name="topicId" /> <br>
+						<button type="submit" class="btn btn-info pull-right">Post</button>
+					</form>
+
+				</div>
+			</div>
+
+
+
+			<div class="comment-section">
+
+
+				<!-- Comments Form -->
+				<div class="row bootstrap snippets">
+					<div class="col-md-6 col-md-offset-2 col-sm-12">
+						<div class="comment-wrapper">
+							<h3>Comment Section</h3>
+							<div class="panel panel-info">
+								<c:choose>
+									<c:when test="${profile.id != null }">
+										<div class="panel-heading">Leave a Comment as
+											${profile.firstName}</div>
+									</c:when>
+									<c:otherwise>
+										<div class="panel-heading">
+											<h4>Login to add a comment!</h4>
+										</div>
+									</c:otherwise>
+								</c:choose>
+								<div class="panel-body">
+									<c:if test="${profile.id != null }">
+										<form action="addComment.do" method="POST">
+											<textarea class="form-control"
+												placeholder="write a comment..." rows="3" name="comment"
+												id="comment"></textarea>
+											<input type="hidden" value="${topic.id }" name="topicId" />
+											<br>
+											<button type="submit" class="btn btn-info pull-right">Post</button>
+										</form>
+									</c:if>
+									<div class="clearfix"></div>
+									<hr>
+									<ul class="media-list">
+										<c:choose>
+											<c:when test="${not empty topic.topicComments}">
+												<c:forEach var="comment" items="${topic.topicComments}">
+													<c:if test="${comment.active }">
+														<li class="media"><a href="" class="pull-left"> <img
+																src="" alt="" class="img-circle">
+														</a>
+															<div class="media-body">
+																<span class="text-muted pull-right"> <small
+																	class="text-muted">${comment.createdAt}</small>
+																</span> <strong class="text-success"><a
+																	href="showUser.do?uid=${comment.user.id }">${comment.user.username}</a></strong>
+																<p>${comment.content }</p>
+															</div> <c:if test="${profile.user.role == 'ADMIN' }">
+																<div>
+
+																	<form action="hideComment.do" method="GET">
+																		<input type="hidden" name="cid" value="${comment.id }">
+																		<input type="submit" class="btn btn-outline-danger"
+																			value="Hide this comment" />
+																	</form>
+
+																</div>
+															</c:if></li>
+
+													</c:if>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<li class="media">
+													<div class="media-body">Start a comment thread!</div>
+												</li>
+											</c:otherwise>
+										</c:choose>
+									</ul>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<!-- end of comment section -->
+
+		</div>
+		<!--end of main container (center of grid)  -->
+
+
+
+		<!-- side widget -->
+		<div class="nav-wrapper">
+			<div class="sidewidget">
+
+				<div class="card">
+					<h5 class="card-header">Side Widget</h5>
+					<div class="card-body">
+						<ul>
+							<li><a href="">To Article</a></li>
+
+
+							<!-- any logged in user can update a page right now -->
+							<c:if test="${profile.id != null }">
+								<li>
+									<form action="showUpdateTopic.do">
+										<c:forEach var="content" items="${topic.contents}">
+
+											<input type="hidden" value="${content.id}" name="cid">
+											<!--pass content id into content update page  -->
+											<button type="submit" class="btn btn-primary">Edit
+												Article</button>
+										</c:forEach>
+									</form>
+								</li>
+							</c:if>
+							<li><a href="">To Resources</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+	</article>
 
 
 

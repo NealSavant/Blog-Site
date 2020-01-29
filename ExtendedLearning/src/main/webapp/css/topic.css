@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/*  
+.userComment{
+	width: 300px;
+	background-color: #c6c5c7;
+	margin: 15px;
+}
+
+.commentAuthor{
+	font-weight: bold;
+	color: black;
+}
+.commentContent{
+	color: black;
+	
+}
+.commentTitle{
+	font-style: italic; 
+}
+
+.commentDateTime{
+	color: gray;
+}
+
+.media-body{
+	
+}*/
+.resources-container {
+	width: 100%;
+}
+
+.resource-container {
+	
+}
+
+.comment-section {
+	width: 100%;
+	justify-content: center;
+	display: flex;
+}
+
+/* from bootdey.com */
+.comment-wrapper .panel-body {
+	max-height: 650px;
+	width: 500px;
+	overflow: auto;
+}
+
+.comment-wrapper .media-list .media img {
+	width: 64px;
+	height: 64px;
+	border: 2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+	border-bottom: 1px dashed #efefef;
+	margin-bottom: 25px;
+}
+
