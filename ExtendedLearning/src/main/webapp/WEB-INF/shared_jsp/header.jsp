@@ -9,32 +9,44 @@
 <!DOCTYPE html>
 
 <!--Top style nav bar for account information  -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			<a class="navbar-brand" href="home.do">SD-ELP<i class="fas fa-home"></i></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     				<span class="navbar-toggler-icon"></span>
   				</button>
   				
   			<div class="collapse navbar-collapse" id="navbarSupportedContent">	
-			<ul>
-				<li><a href="showAllTopics.do">Article Index</a></li>
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="showAllTopics.do">Article Index</a>
+				</li>
 				<!-- prompted to login or create an account -->
 				<c:choose>
 					<c:when test="${profile.id == 0 or profile == null}">
-						<li><a href="showCreateAccount.do"><i
-								class="fas fa-plus-square"></i> Create Account</a></li>
-						<li><a href="showLogin.do"><i class="fas fa-user"></i>
-								Log In</a></li>
+						<li class="nav-item">
+							<a class="nav-link" href="showCreateAccount.do"><i class="fas fa-plus-square"></i> Create Account</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="showLogin.do"><i class="fas fa-user"></i>
+								Log In</a>
+						</li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="userHome.do"><c:out
-									value="Welcome, ${profile.firstName} ${profile.lastName}" /></a></li>
-						<li><a href="createPost.do"><i class="fas fa-clipboard"></i> Create an Article</a></li>
+						<li class="nav-item">
+							<a class="nav-link" href="userHome.do"><c:out value="Welcome, ${profile.firstName} ${profile.lastName}" /></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="createPost.do"><i class="fas fa-clipboard"></i> Create an Article</a>
+						</li>
 						<c:if test="${profile.user.role == 'ADMIN' }">
-							<li><a href="showAdminPage.do">Admin</a></li>
+							<li class="nav-item">
+								<a class="nav-link" href="showAdminPage.do">Admin</a>
+							</li>
 						</c:if>
-						<li><a href="logout.do"><i class="fas fa-sign-out-alt"></i>
-								Log Out</a></li>
+						<li class="nav-item">
+							<a class="nav-link" href="logout.do"><i class="fas fa-sign-out-alt"></i>
+								Log Out</a>
+						</li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
