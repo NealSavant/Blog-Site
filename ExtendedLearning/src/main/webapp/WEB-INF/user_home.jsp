@@ -43,7 +43,7 @@
 						</div>
 					</div>
 				
-				
+				<div class="container">
 				<div class="row">
 					<c:if test="${logs != null }">
 						<div class="col">
@@ -67,6 +67,7 @@
 							</div>
 						</div>
 					</c:if>
+				</div>
 				</div>
 				
 				
