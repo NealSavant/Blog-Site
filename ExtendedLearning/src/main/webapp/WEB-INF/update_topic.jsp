@@ -6,9 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Update Content</title>
+<jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
 <body>
-
+<header class="main-header">
+		<jsp:include page="shared_jsp/header.jsp" />
+	</header>
+	
 	<article class="containergrid">
 		<form action="attemptUpdateTopic.do" method="POST">
 			<input type="hidden" value="${topic.id}" name="tid"> <label
