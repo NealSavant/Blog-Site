@@ -6,7 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Update Content</title>
+<jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
+
 </head>
+
+	<jsp:include page="shared_jsp/header.jsp" />
+
 <body>
 
 		<form action="attemptUpdateTopic.do" method="POST">
