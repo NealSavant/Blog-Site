@@ -15,7 +15,6 @@
 	</header>
 
 	<article class="containergrid">
-		<jsp:include page="shared_jsp/nav.jsp" />
 
 		<div class="main-container">
 			<div class="cards">

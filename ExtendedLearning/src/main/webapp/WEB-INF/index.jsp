@@ -16,8 +16,6 @@
 	<article class = "containergrid">
 
 
-		<jsp:include page="shared_jsp/nav.jsp" />
-
 		<div class="main-container">
 			<a>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
 				printing and typesetting industry. Lorem Ipsum has been the

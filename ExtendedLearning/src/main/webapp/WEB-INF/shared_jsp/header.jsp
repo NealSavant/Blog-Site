@@ -15,7 +15,7 @@
 			<h2>SD Extended Learning Platform</h2>
 		</div>
 		<div class="row">
-			<a>Take your Full Stack development skill to new levels.</a>
+			<a>Take your Full Stack development to new levels.</a>
 		</div>
 
 	</div>

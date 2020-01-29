@@ -15,7 +15,6 @@
 	</header>
 
 	<article class="containergrid">
-		<jsp:include page="shared_jsp/nav.jsp" />
 		<!-- TODO: SEND USERNAME/PASSWORD TO USER TABLE
 SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
  -->
