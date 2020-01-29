@@ -7,9 +7,11 @@
 <title>Login</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
-<body>
-
 	<jsp:include page="shared_jsp/header.jsp" />
+
+
+<body style="padding-top: 65px">
+
 	
 <div class="container">
 	<div class="d-flex justify-content-center">

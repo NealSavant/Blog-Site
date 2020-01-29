@@ -8,10 +8,10 @@
 <title>Extended Learning</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
-<body>
 
 	<!-- HEADER -->
 	<jsp:include page="shared_jsp/header.jsp" />
+<body>
 
 		<div class="container">
 			<div class="jumbotron">

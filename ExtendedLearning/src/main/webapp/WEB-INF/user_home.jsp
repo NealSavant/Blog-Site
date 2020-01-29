@@ -9,13 +9,13 @@
 
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
-<body>
+
 
 	<header class="main-header">
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-
+<body style="padding-top: 65px">
 
 		<div class="container">
 			<c:if test="${profile != null}">

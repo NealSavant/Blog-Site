@@ -8,13 +8,22 @@
 <title>Extended Learning</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
-<body>
 	<header class="main-header">
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
+<body style="padding-top: 65px">
 
 
+
+
+			<div class="container">
 				<h3>${topic.title}</h3>
+				<c:forEach var="content" items="${topic.contents}">
+					<p>${content.content}</p>
+				</c:forEach>
+				<p>Last Updated: ${topic.updatedAt}</p>
+				
+			
 				<c:if test="${profile.id != null }">
 					<!-- any logged in user can update a page right now -->
 					<form action="showUpdateTopic.do">
@@ -26,17 +35,14 @@
 						</c:forEach>
 					</form>
 				</c:if>
+			</div>
 
-				<c:forEach var="content" items="${topic.contents}">
-					<p>${content.content}</p>
-				</c:forEach>
-				<p>Last Updated: ${topic.updatedAt}</p>
-
-
+			<div class="container">
 				<!-- display comments below content -->
 				<div class="commentSection">
 					<c:if test="${not empty topic.topicComments}">
 						<c:forEach var="comment" items="${topic.topicComments}">
+							<div class="container">
 							<c:if test="${comment.active }">
 								<div class="userComment">
 									<div class="commentAuthor">
@@ -57,6 +63,7 @@
 									</div>
 								</c:if>
 							</c:if>
+							</div>
 						</c:forEach>
 					</c:if>
 
@@ -82,7 +89,7 @@
 						</form>
 					</c:if>
 				</div>
-
+			</div>
 
 
 
