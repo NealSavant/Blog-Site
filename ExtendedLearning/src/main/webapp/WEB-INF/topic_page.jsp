@@ -21,7 +21,7 @@
 	<article class="containergrid">
 		<jsp:include page="shared_jsp/nav.jsp" />
 		<div class="main-container">
-			<div class="content-container">
+			<div class="content-container" id="content">
 				<!-- Title -->
 				<h1 class="title">${topic.title}</h1>
 				<hr>
@@ -50,7 +50,7 @@
 
 
 			<!-- Resources -->
-			<div class="resources-container">
+			<div class="resources-container" id="resources">
 				<h3>Resources</h3>
 				<c:forEach var="resource" items="${topic.resources}">
 					<div class="row">
@@ -77,7 +77,7 @@
 
 
 
-			<div class="comment-section">
+			<div class="comment-section" id="comments">
 
 
 				<!-- Comments Form -->
@@ -170,7 +170,7 @@
 					<h5 class="card-header">Side Widget</h5>
 					<div class="card-body">
 						<ul>
-							<li><a href="">To Article</a></li>
+							<li><a href="#top">Article</a></li>
 
 
 							<!-- any logged in user can update a page right now -->
@@ -187,7 +187,8 @@
 									</form>
 								</li>
 							</c:if>
-							<li><a href="">To Resources</a></li>
+							<li><a href="#resources">Resources</a></li>
+							<li><a href="#comments">Comments</a></li>
 						</ul>
 					</div>
 				</div>
