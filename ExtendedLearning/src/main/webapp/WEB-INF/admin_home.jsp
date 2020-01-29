@@ -13,7 +13,6 @@
 <body>
 	<jsp:include page="shared_jsp/header.jsp" />
 	
-	<article class="main-container">
 		<jsp:include page="shared_jsp/nav.jsp" />
 
 		<h4>User Management</h4>
@@ -44,7 +43,6 @@
 
 
 
-	</article>
 
 
 	<footer>

@@ -14,22 +14,23 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<article class="containergrid">
-		<jsp:include page="shared_jsp/nav.jsp" />
 
-		<div class="main-container">
+
 			<div class="cards">
-				<form class="form-inline" action="showTopicsBySearch.do"
-					method="POST">
-					<input class="form-control mr-sm-2" type="text" name="keyword"
-						placeholder="Search" aria-label="Search" />
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
-						Topics</button>
-				</form>
-
+				<div class="row">
+					<form class="form-inline" action="showTopicsBySearch.do"
+						method="POST">
+						<input class="form-control mr-sm-2" type="text" name="keyword"
+							placeholder="Search" aria-label="Search" />
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+							Topics</button>
+					</form>
+				</div>
+				
 				<c:if test="${not empty topics}">
+				<div class="row">
 					<c:forEach var="topic" items="${topics}">
-						<div class="card w-200">
+						<div class="card" style="width:200px">
 							<div class="card-body">
 								<form action="showSingleTopic.do" method="GET">
 									<h5 class="card-title">${topic.title }</h5>
@@ -42,11 +43,10 @@
 
 
 					</c:forEach>
+				</div>
 				</c:if>
 			</div>
-		</div>
 
-	</article>
 
 
 
