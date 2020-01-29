@@ -60,7 +60,6 @@ public class UserController {
 			session.setAttribute("logs", profile.getUser().getLogs());
 			return "redirect:userHome.do";
 		} else {
-
 			return "redirect:showLogin.do";
 		}
 	}
@@ -70,7 +69,8 @@ public class UserController {
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
 	public String attemptCreateAccount(@RequestParam String username, @RequestParam String password,
 			@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session) {
+			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session
+			, Model model) {
 		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
 			User user = new User();
 			user.setUsername(username);
@@ -84,15 +84,22 @@ public class UserController {
 			profile.setJobTitle(jobTitle);
 			profile.setAbout(about);
 			Image newImage = new Image();
-			newImage.setImageUrl(image);
+			//if user wants an image, else, give it skill distillery logo
+			if(image == null || image == "") {
+				newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
+			} else {
+				newImage.setImageUrl(image);
+			}
+			
 			imagedao.addImage(newImage);
 			profile.setImage(newImage);
 			profile.setUser(user);
 			userProfileDao.createProfile(profile);
 			session.setAttribute("profile", profile);
+			session.removeAttribute("fail");
 			return "redirect:userHome.do";
 		} else {
-			// TODO: probably need to add a form error message here
+			session.setAttribute("fail", true);
 			return "redirect:showCreateAccount.do";
 		}
 	}
@@ -115,7 +122,12 @@ public class UserController {
 		profile.setJobTitle(jobTitle);
 		profile.setAbout(about);
 		Image newImage = new Image();
-		newImage.setImageUrl(image);
+		//if user wants an image, else, give it skill distillery logo
+		if(image == null || image == "") {
+			newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
+		} else {
+			newImage.setImageUrl(image);
+		}
 		imagedao.addImage(newImage);
 		profile.setImage(newImage);
 		userProfileDao.updateProfile(profile);
@@ -149,7 +161,7 @@ public class UserController {
 	public String showAdminPage(Model model) {
 		List<User> nonAdminUsers = userProfileDao.getAllNonAdminUsers();
 		model.addAttribute("users", nonAdminUsers);
-		return "admin/admin_home";
+		return "admin_home";
 	}
 
 	@RequestMapping(path = "disableUser.do")
@@ -176,5 +188,12 @@ public class UserController {
 		} else {
 			return "redirect:home.do";
 		}
+	}
+	
+	@RequestMapping(path="showUser.do")
+	public String showUser(@RequestParam("uid") Integer uid, Model model) {
+		Profile showProfile = userProfileDao.getProfileByUserId(uid);
+		model.addAttribute("otherProfile", showProfile);
+		return "show_user";
 	}
 }
