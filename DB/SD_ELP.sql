@@ -271,7 +271,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SD_ELP`;
-INSERT INTO `image` (`id`, `content_img_url`) VALUES (1, 'https://imgur.com/jPSss9P');
+INSERT INTO `image` (`id`, `content_img_url`) VALUES (1, 'https://cdn4.iconfinder.com/data/icons/general24/png/256/administrator.png');
 INSERT INTO `image` (`id`, `content_img_url`) VALUES (2, 'https://i.imgur.com/TBN3q4j.png');
 INSERT INTO `image` (`id`, `content_img_url`) VALUES (3, 'https://i.imgur.com/r8lFFTl.png');
 INSERT INTO `image` (`id`, `content_img_url`) VALUES (4, 'https://img.icons8.com/plasticine/2x/user.png');
