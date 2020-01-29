@@ -23,10 +23,6 @@
   <article class="gridcontainer">
 		<jsp:include page="shared_jsp/nav.jsp" />
 	<div class="main-container">
-    <div class="row">
-
-      <!-- Post Content Column -->
-      <div class="col">
 
         <!-- Title -->
         <h1 class="title">${topic.title}</h1>
@@ -49,13 +45,9 @@
 
         <hr>
 
-        <!-- Post Content -->
-        <c:forEach var="content" items="${topic.contents}">
-					<p>${content.content}</p>
-		</c:forEach>			
+        <!-- Post Content -->		
 				<c:forEach var="content" items="${topic.contents}">
 					<p style="white-space: pre-line">${content.content}</p>
-
 				</c:forEach>
 
         <c:forEach var="resource" items="${topic.resources}">
@@ -132,8 +124,6 @@
         </form>
       </c:if>
     </div>
-  </div>
-  </div>
 </article>
 
 <!-- Side Widget -->
