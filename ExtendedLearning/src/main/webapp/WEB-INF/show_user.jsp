@@ -8,11 +8,11 @@
 <title>Extended Learning</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
-<body>
 
-	<header class="main-header">
+	<header>
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
+<body style="padding-top: 65px">
 
 			<c:if test="${otherProfile != null}">
 					<img alt="image" src="${otherProfile.image.imageUrl}" width="300px"

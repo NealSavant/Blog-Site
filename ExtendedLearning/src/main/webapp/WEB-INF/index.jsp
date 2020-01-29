@@ -11,7 +11,7 @@
 
 	<!-- HEADER -->
 	<jsp:include page="shared_jsp/header.jsp" />
-<body>
+<body style="padding-top: 65px">
 
 		<div class="container">
 			<div class="jumbotron">
