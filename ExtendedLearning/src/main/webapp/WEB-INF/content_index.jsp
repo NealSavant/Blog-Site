@@ -28,20 +28,24 @@
 				</form>
 
 				<c:if test="${not empty topics}">
-					<c:forEach var="topic" items="${topics}">
-						<div class="card w-50">
-							<div class="card-body">
-								<form action="showSingleTopic.do" method="GET">
-									<h5 class="card-title">${topic.title }</h5>
-									<p class="card-text">Created: ${topic.createdAt}</p>
-									<input type="hidden" value="${topic.id}" name="topicId" />
-									<button type="submit" class="btn btn-primary">View</button>
-								</form>
-							</div>
+					<div class="container">
+						<div class="row">
+							<c:forEach var="topic" items="${topics}">
+								<div class="col-sm">
+									<div class="card">
+										<div class="card-header">${topic.title }</div>
+										<div class="card-body">
+											<form action="showSingleTopic.do" method="GET">
+												<input type="hidden" value="${topic.id}" name="topicId" />
+												<button type="submit" class="btn btn-info">View</button>
+											</form>
+											<div class="card-footer text-muted">Created: ${topic.createdAt}</div>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
-
-
-					</c:forEach>
+					</div>
 				</c:if>
 			</div>
 		</div>

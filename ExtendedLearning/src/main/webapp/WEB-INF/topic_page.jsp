@@ -10,10 +10,14 @@
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
 <body>
+
 	<header class="main-header">
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 		
+
+
+	<jsp:include page="shared_jsp/header.jsp" />
 
 <!-- Page Content -->
   <article class="gridcontainer">
@@ -48,6 +52,10 @@
         <!-- Post Content -->
         <c:forEach var="content" items="${topic.contents}">
 					<p>${content.content}</p>
+		</c:forEach>			
+				<c:forEach var="content" items="${topic.contents}">
+					<p style="white-space: pre-line">${content.content}</p>
+
 				</c:forEach>
 
         <c:forEach var="resource" items="${topic.resources}">
@@ -161,14 +169,13 @@
 	<jsp:include page="shared_jsp/jsp_scripts/styleBot.jsp" />
 </body>
 <script type="text/javascript">
-
-function urlify(text) {
-    var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
-    //var urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.replace(urlRegex, function(url,b,c) {
-        var url2 = (c == 'www.') ?  'http://' +url : url;
-        return '<a href="' +url2+ '" target="_blank">' + url + '</a>';
-    }) 
-}
+	function urlify(text) {
+		var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
+		//var urlRegex = /(https?:\/\/[^\s]+)/g;
+		return text.replace(urlRegex, function(url, b, c) {
+			var url2 = (c == 'www.') ? 'http://' + url : url;
+			return '<a href="' +url2+ '" target="_blank">' + url + '</a>';
+		})
+	}
 </script>
 </html>

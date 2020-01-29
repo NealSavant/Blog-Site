@@ -12,9 +12,7 @@
 </head>
 <body>
 
-	<header class="main-header">
-		<jsp:include page="shared_jsp/header.jsp" />
-	</header>
+	<jsp:include page="shared_jsp/header.jsp" />
 
 	<article class="containergrid">
 
@@ -29,7 +27,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="profile-img">
-								<img alt="image" src= "${profile.image.imageUrl}">
+								<img alt="image" src="${profile.image.imageUrl}">
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -39,11 +37,13 @@
 								<ul class="nav nav-tabs" id="myTab" role="tablist">
 									<li class="nav-item"><a class="nav-link active"
 										id="home-tab" data-toggle="tab" href="#home" role="tab"
-										aria-controls="home" aria-selected="true">Account
-											Information</a></li>
+										aria-controls="home" aria-selected="true">Account </a></li>
 									<li class="nav-item"><a class="nav-link" id="profile-tab"
 										data-toggle="tab" href="#profile" role="tab"
 										aria-controls="profile" aria-selected="false">View History</a></li>
+									<li class="nav-item"><a class="nav-link" id="profile-tab"
+										data-toggle="tab" href="#profile" role="tab"
+										aria-controls="profile" aria-selected="false">Comments</a></li>
 								</ul>
 							</div>
 						</div>
@@ -106,8 +106,9 @@
 
 															<tbody>
 																<tr>
-																	<td scope="row">${log.topic.title }</td>
-																	<td scope="row">viewed at: ${log.timeStamp }</td>
+																	<td scope="row"><a
+																		href="showSingleTopic.do?topicId=${log.topic.id}">${log.topic.title }</a></td>
+																	<td scope="row">${log.timeStamp }</td>
 																</tr>
 															</tbody>
 														</c:forEach>
