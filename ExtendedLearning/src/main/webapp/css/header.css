@@ -63,3 +63,8 @@ html, body {
 	color: #F34A4E;
 	background: #FED0D1;
 }
+
+.navbar {
+	position: sticky;
+	z-index: 2;
+}

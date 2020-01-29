@@ -15,7 +15,7 @@
 			<h2>SD Extended Learning Platform</h2>
 		</div>
 		<div class="row">
-			<a>Take your Full Stack development skill to new levels.</a>
+			<a>Take your Full Stack development to new levels.</a>
 		</div>
 
 	</div>
@@ -34,13 +34,20 @@
 								class="fas fa-plus-square"></i> Create Account</a></li>
 						<li><a href="showLogin.do"><i class="fas fa-user"></i>
 								Log In</a></li>
+						<li><a href="showAllTopics.do"><i class="fas fa-book"></i>
+								Article Index</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="userHome.do"><c:out
-									value="Welcome, ${profile.firstName} ${profile.lastName}" /></a></li>
-						<li><a href="createPost.do"><i class="fas fa-clipboard"></i> Create an Article</a></li>
+						<li><a href="userHome.do"><i class="fas fa-user"></i>
+								Profile</a></li>
+						<li><a href="showAllTopics.do"><i class="fas fa-book"></i>
+								Article Index</a></li>
+
+						<li><a href="createPost.do"><i class="fas fa-clipboard"></i>
+								Create an Article</a></li>
 						<c:if test="${profile.user.role == 'ADMIN' }">
-							<li><a href="showAdminPage.do">Admin</a></li>
+							<li><a href="showAdminPage.do"><i
+									class="fas fa-users-cog"></i> Admin Panel</a></li>
 						</c:if>
 						<li><a href="logout.do"><i class="fas fa-sign-out-alt"></i>
 								Log Out</a></li>

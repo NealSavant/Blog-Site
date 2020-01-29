@@ -12,8 +12,7 @@
 	<jsp:include page="shared_jsp/header.jsp" />
 
 	<article class="containergrid">
-		<jsp:include page="shared_jsp/nav.jsp" />
-
+<jsp:include page="shared_jsp/nav.jsp"/>
 		<div class="main-container">
 			<form action="login.do" method="POST">
 				<fieldset>

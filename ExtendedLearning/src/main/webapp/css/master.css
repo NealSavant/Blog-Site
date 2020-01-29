@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 	list-style: none;
 	text-decoration: none;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Exo 2', sans-serif;
 }
 
 .nav-wrapper {
@@ -20,10 +20,6 @@
 	display: flex;
 	position: relative;
 	width: 100%;
-	margin-left: 150px;
-	padding-left: 50px;
-	padding-top: 50px;
-	padding-bottom: 50px;
 	flex-shrink: 0;
 }
 
@@ -34,6 +30,7 @@
 
 .main-container {
 	display: flex;
+	flex-wrap: wrap;
 	position: relative;
 	width: 100%;
 	padding: 30px;
@@ -41,13 +38,60 @@
 
 .containergrid {
 	display: grid;
-	grid-template-columns: 1fr 8fr;
+	grid-template-columns: 1fr 7fr 1fr;
 }
 
 .cards {
-	display: flex;
-	flex-wrap: wrap;
-	margin-left: 50px;
 	padding: 5px;
 	position: relative;
 }
+
+.user-page-history{
+	display: flex;
+	position: relative;
+}
+
+.profile-info{
+	padding: 10px;
+	
+}
+.profile-logs{
+	padding: 10px;
+	
+}
+.profile-image{
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

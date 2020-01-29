@@ -15,38 +15,42 @@
 	</header>
 
 	<article class="containergrid">
-		<jsp:include page="shared_jsp/nav.jsp" />
+	
+		<jsp:include page="shared_jsp/nav.jsp"/>
+		
+			<div class="main-container">
+				<div class="cards">
+					<form class="form-inline" action="showTopicsBySearch.do"
+						method="POST">
+						<input class="form-control mr-sm-2" type="text" name="keyword"
+							placeholder="Search" aria-label="Search" />
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+							Topics</button>
+					</form>
 
-		<div class="main-container">
-			<div class="cards">
-				<form class="form-inline" action="showTopicsBySearch.do"
-					method="POST">
-					<input class="form-control mr-sm-2" type="text" name="keyword"
-						placeholder="Search" aria-label="Search" />
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
-						Topics</button>
-				</form>
-
-				<c:if test="${not empty topics}">
-					<c:forEach var="topic" items="${topics}">
-						<div class="card w-50">
-							<div class="card-body">
-								<form action="showSingleTopic.do" method="GET">
-									<h5 class="card-title">${topic.title }</h5>
-									<p class="card-text">Created: ${topic.createdAt}</p>
-									<input type="hidden" value="${topic.id}" name="topicId" />
-									<button type="submit" class="btn btn-primary">View</button>
-								</form>
+					<c:if test="${not empty topics}">
+						<div class="container">
+							<div class="row">
+								<c:forEach var="topic" items="${topics}">
+									<div class="col-sm">
+										<div class="card">
+											<div class="card-header">${topic.title }</div>
+											<div class="card-body">
+												<form action="showSingleTopic.do" method="GET">
+													<input type="hidden" value="${topic.id}" name="topicId" />
+													<button type="submit" class="btn btn-info">View</button>
+												</form>
+												<div class="card-footer text-muted">Created:
+													${topic.createdAt}</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
-
-
-					</c:forEach>
-				</c:if>
-			</div>
-		</div>
-
-	</article>
+					</c:if>
+				</div>
+			</div></article>
 
 
 
