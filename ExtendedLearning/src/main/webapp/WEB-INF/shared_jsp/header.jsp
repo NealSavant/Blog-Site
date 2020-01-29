@@ -8,25 +8,15 @@
 
 <!DOCTYPE html>
 
-<!--Static title at top of every page  -->
-<header class="main-header">
-	<div class="container">
-		<div class="row">
-			<h2>SD Extended Learning Platform</h2>
-		</div>
-		<div class="row">
-			<a>Take your Full Stack development skill to new levels.</a>
-		</div>
-
-	</div>
-</header>
-
 <!--Top style nav bar for account information  -->
-<div class="fixed-container">
-	<div class="row">
-		<nav class="header-nav">
-			<ul class="main-header-list">
-				<li><a href="home.do"><i class="fas fa-home"></i> Home</a></li>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="home.do">SD-ELP<i class="fas fa-home"></i></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    				<span class="navbar-toggler-icon"></span>
+  				</button>
+  				
+  			<div class="collapse navbar-collapse" id="navbarSupportedContent">	
+			<ul>
 				<li><a href="showAllTopics.do">Article Index</a></li>
 				<!-- prompted to login or create an account -->
 				<c:choose>
@@ -48,6 +38,7 @@
 					</c:otherwise>
 				</c:choose>
 			</ul>
+			</div>
+			
+			
 		</nav>
-	</div>
-</div>
