@@ -46,8 +46,7 @@
 				
 				
 				<div class="row">
-					<div class="profile-logs">
-						<c:if test="${logs != null }">
+					<c:if test="${logs != null }">
 						<div>
 							<table class="table table-striped">
 								<thead class="thead-light">
@@ -66,8 +65,7 @@
 								</tbody>
 							</table>
 						</div>
-						</c:if>
-					</div>
+					</c:if>
 				</div>
 				
 				

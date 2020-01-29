@@ -13,11 +13,6 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<article class="containergrid">
-
-		<div class="main-container">
-			<div class="cards">
-
 
 				<h3>${topic.title}</h3>
 				<c:if test="${profile.id != null }">
@@ -87,9 +82,7 @@
 						</form>
 					</c:if>
 				</div>
-			</div>
-		</div>
-	</article>
+
 
 
 
@@ -104,15 +97,4 @@
 
 	<jsp:include page="shared_jsp/jsp_scripts/styleBot.jsp" />
 </body>
-<script type="text/javascript">
-
-function urlify(text) {
-    var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
-    //var urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.replace(urlRegex, function(url,b,c) {
-        var url2 = (c == 'www.') ?  'http://' +url : url;
-        return '<a href="' +url2+ '" target="_blank">' + url + '</a>';
-    }) 
-}
-</script>
 </html>

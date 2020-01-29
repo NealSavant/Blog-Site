@@ -14,34 +14,15 @@
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
-	<article class="containergrid">
-
-
-		<jsp:include page="shared_jsp/nav.jsp" />
-
-
-		<div class="main-container">
 			<c:if test="${otherProfile != null}">
-				<div class="profile-info">
-					<div class="profile-image">
-						<img alt="image" src="${otherProfile.image.imageUrl}" width="300px"
-							height="300px">
-					</div>
+					<img alt="image" src="${otherProfile.image.imageUrl}" width="300px"
+						height="300px">
 
 					<a>Username: ${otherProfile.user.username }</a> <a>First Name:
 						${otherProfile.firstName }</a> <a>Last Name: ${otherProfile.lastName }</a> <a>Email:
 						${otherProfile.email }</a> <br> <a>Job Title: ${otherProfile.jobTitle }</a>
 					<a>Biography: ${otherProfile.about }</a>
-
-				</div>
 			</c:if>
-		</div>
-
-
-
-	</article>
-
-
 
 	<footer>
 		<jsp:include page="shared_jsp/footer.jsp" />

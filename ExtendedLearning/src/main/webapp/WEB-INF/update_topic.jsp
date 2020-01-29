@@ -9,18 +9,22 @@
 </head>
 <body>
 
-	<article class="containergrid">
 		<form action="attemptUpdateTopic.do" method="POST">
-			<input type="hidden" value="${topic.id}" name="tid"> <label
-				for="title">Title</label><br> <input type="text" name="title"
-				value="${topic.title}"><br> <input type="hidden"
-				value="${content.id}" name="cid">
+			<input type="hidden" value="${topic.id}" name="tid"> 
+			<label for="title">Title</label>
+				<br> 
+			<input type="text" name="title" value="${topic.title}">
+				<br> 
+			<input type="hidden" value="${content.id}" name="cid">
 			<textarea rows="10" cols="50" id="createContent" name="content">
-			<c:forEach var="content" items="${topic.contents}">${content.content}</c:forEach>
+				<c:forEach var="content" items="${topic.contents}">
+					${content.content}
+				</c:forEach>
 			</textarea>
 
-
-			<br> <label>Resources</label> <br>
+			<br> 
+			<label>Resources</label>
+			<br>
 			<c:forEach var="resource" items="${topic.resources}">
 				<input type="text" name="resourceTitle" value="${resource.title}">
 				<input type="url" name="resourceUrl" value="${resource.resourceUrl}">
@@ -30,6 +34,5 @@
 			<!-- <input type="file" id="snippet" name="image" accept="image/png, image/jpeg"><br> -->
 			<input type="submit" value="Update">
 		</form>
-	</article>
 </body>
 </html>

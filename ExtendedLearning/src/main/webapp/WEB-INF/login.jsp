@@ -11,10 +11,6 @@
 
 	<jsp:include page="shared_jsp/header.jsp" />
 
-	<article class="containergrid">
-		<jsp:include page="shared_jsp/nav.jsp" />
-
-		<div class="main-container">
 			<form action="login.do" method="POST">
 				<fieldset>
 					<legend>Login</legend>
@@ -29,15 +25,6 @@
 					<input type="submit" value="Login" class="btn btn-primary" />
 				</fieldset>
 			</form>
-
-
-
-		</div>
-
-
-	</article>
-
-
 
 	<footer>
 		<jsp:include page="shared_jsp/footer.jsp" />

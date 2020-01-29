@@ -13,7 +13,6 @@
 	<!-- HEADER -->
 	<jsp:include page="shared_jsp/header.jsp" />
 
-	<article>
 		<div class="container">
 			<div class="jumbotron">
   				<h1 class="display-4">Welcome to SD ELP!</h1>
@@ -26,7 +25,6 @@
 
 
 
-	</article>
 
 
 
