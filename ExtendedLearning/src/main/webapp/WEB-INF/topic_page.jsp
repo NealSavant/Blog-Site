@@ -34,7 +34,7 @@
 				</c:if>
 
 				<c:forEach var="content" items="${topic.contents}">
-					<p>${content.content}</p>
+					<p style="white-space: pre-line">${content.content}</p>
 				</c:forEach>
 				<p>Last Updated: ${topic.updatedAt}</p>
 

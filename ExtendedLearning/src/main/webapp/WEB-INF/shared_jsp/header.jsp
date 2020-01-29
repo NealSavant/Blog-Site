@@ -36,11 +36,10 @@
 								Log In</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="userHome.do"><c:out
-									value="Welcome, ${profile.firstName} ${profile.lastName}" /></a></li>
+						<li><a href="userHome.do"><i class="fas fa-user"></i> Profile</a></li>
 						<li><a href="createPost.do"><i class="fas fa-clipboard"></i> Create an Article</a></li>
 						<c:if test="${profile.user.role == 'ADMIN' }">
-							<li><a href="showAdminPage.do">Admin</a></li>
+							<li><a href="showAdminPage.do"><i class="fas fa-users-cog"></i> Admin Panel</a></li>
 						</c:if>
 						<li><a href="logout.do"><i class="fas fa-sign-out-alt"></i>
 								Log Out</a></li>

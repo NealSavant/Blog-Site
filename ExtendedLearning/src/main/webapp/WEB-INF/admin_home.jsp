@@ -11,36 +11,63 @@
 
 </head>
 <body>
+
 	<jsp:include page="shared_jsp/header.jsp" />
-	
-	<article class="main-container">
+
+
+	<article class="containergrid">
+
 		<jsp:include page="shared_jsp/nav.jsp" />
 
-		<h4>User Management</h4>
+		<div class="main-container">
 
-		<c:forEach var="user" items="${users }">
-		Username: ${user.username }
-		Active: ${user.active } <br>
+			<div class="row">
+				<div class="col-md-6">
+					<h4>User Management</h4>
+					<div class="profile-logs">
+						<c:if test="${logs != null }">
+							<table class="table table-striped">
+
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">User Profile</th>
+										<th scope="col">User Enabled</th>
+										<th scope="col">Toggle Status</th>
+									</tr>
+								</thead>
+								<c:forEach var="user" items="${users }">
+
+									<tbody>
+										<tr>
+											<td scope="row"><a href="showUser.do?uid=${user.id}">${user.username }</a></td>
+											<td scope="row">${user.active }</td>
+											<td scope="row"><c:if test="${user.active }">
+													<form action="disableUser.do" method="GET">
+														<input type="hidden" name="uid" value="${user.id }">
+														<button class="btn btn-outline-danger" type="submit">Disable
+														</button>
+													</form>
+												</c:if> <c:if test="${not user.active }">
+													<form action="enableUser.do" method="GET">
+														<input type="hidden" name="uid" value="${user.id }">
+														<button type="submit" class="btn btn-outline-success">Enable</button>
+													</form>
+												</c:if></td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</table>
+						</c:if>
 
 
-			<c:if test="${user.active }">
-				<form action="disableUser.do" method="GET">
-					<input type="hidden" name="uid" value="${user.id }"> <input
-						type="submit" value="Disable account: ${user.username }" />
-				</form>
-			</c:if>
+					</div>
 
 
-			<c:if test="${not user.active }">
-				<form action="enableUser.do" method="GET">
-					<input type="hidden" name="uid" value="${user.id }"> <input
-						type="submit" value="Activate account: ${user.username }" />
-				</form>
-			</c:if>
 
+				</div>
 
-		</c:forEach>
-
+			</div>
+		</div>
 
 
 

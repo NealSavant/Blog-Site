@@ -12,9 +12,7 @@
 </head>
 <body>
 
-	<header class="main-header">
-		<jsp:include page="shared_jsp/header.jsp" />
-	</header>
+	<jsp:include page="shared_jsp/header.jsp" />
 
 	<article class="containergrid">
 
@@ -29,7 +27,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="profile-img">
-								<img alt="image" src= "${profile.image.imageUrl}">
+								<img alt="image" src="${profile.image.imageUrl}">
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -106,7 +104,8 @@
 
 															<tbody>
 																<tr>
-																	<td scope="row"><a href="showSingleTopic.do?topicId=${log.topic.id}">${log.topic.title }</a></td>
+																	<td scope="row"><a
+																		href="showSingleTopic.do?topicId=${log.topic.id}">${log.topic.title }</a></td>
 																	<td scope="row">${log.timeStamp }</td>
 																</tr>
 															</tbody>
