@@ -40,9 +40,10 @@
 				
 				
 				<c:if test="${not empty topics}">
-					<div class="row">
+					<div class="container">
+					<div class="d-flex flex-wrap align-content-stretch">
+
 						<c:forEach var="topic" items="${topics}">
-							<div class="col">
 								<div class="card" style="width:200px">
 									<div class="card-body">
 										<form action="showSingleTopic.do" method="GET">
@@ -53,9 +54,11 @@
 										</form>
 									</div>
 								</div>
-							</div>
+
 
 						</c:forEach>
+
+					</div>
 					</div>
 				</c:if>
 			</div>
