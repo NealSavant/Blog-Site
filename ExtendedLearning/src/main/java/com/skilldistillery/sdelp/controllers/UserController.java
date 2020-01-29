@@ -84,7 +84,13 @@ public class UserController {
 			profile.setJobTitle(jobTitle);
 			profile.setAbout(about);
 			Image newImage = new Image();
-			newImage.setImageUrl(image);
+			//if user wants an image, else, give it skill distillery logo
+			if(image == null || image == "") {
+				newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
+			} else {
+				newImage.setImageUrl(image);
+			}
+			
 			imagedao.addImage(newImage);
 			profile.setImage(newImage);
 			profile.setUser(user);
@@ -116,7 +122,12 @@ public class UserController {
 		profile.setJobTitle(jobTitle);
 		profile.setAbout(about);
 		Image newImage = new Image();
-		newImage.setImageUrl(image);
+		//if user wants an image, else, give it skill distillery logo
+		if(image == null || image == "") {
+			newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
+		} else {
+			newImage.setImageUrl(image);
+		}
 		imagedao.addImage(newImage);
 		profile.setImage(newImage);
 		userProfileDao.updateProfile(profile);

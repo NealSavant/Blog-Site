@@ -86,6 +86,7 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 		managedProfile.setEmail(profile.getEmail());
 		managedProfile.setJobTitle(profile.getJobTitle());
 		managedProfile.setAbout(profile.getAbout());
+		managedProfile.setImage(profile.getImage());
 		em.flush();
 		return managedProfile;
 	}
