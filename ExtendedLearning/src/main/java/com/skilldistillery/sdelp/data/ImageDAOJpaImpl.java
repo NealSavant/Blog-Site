@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.sdelp.entities.Image;
+import com.skilldistillery.sdelp.entities.Resource;
 
 @Transactional
 @Service
@@ -20,6 +21,14 @@ public class ImageDAOJpaImpl implements ImageDAO {
 		em.persist(image);
 		em.flush();
 		return image;
+	}
+	
+	@Override
+	public Image updateImage(Image image) {
+		Image managedImage = em.find(Image.class, image.getId());
+		managedImage.setImageUrl(image.getImageUrl());
+		em.flush();
+		return managedImage;
 	}
 
 }

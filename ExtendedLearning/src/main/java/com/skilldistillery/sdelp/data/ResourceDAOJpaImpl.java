@@ -21,6 +21,12 @@ public class ResourceDAOJpaImpl implements ResourceDAO {
 		em.flush();
 		return resource;
 	}
+	
+	@Override
+	public Resource getResourceById(int id) {
+		Resource resource = em.find(Resource.class, id);
+		return resource;
+	}
 
 	@Override
 	public Resource updateResource(Resource resource) {
@@ -28,7 +34,10 @@ public class ResourceDAOJpaImpl implements ResourceDAO {
 		managedResource.setTitle(resource.getTitle());
 		managedResource.setResourceUrl(resource.getResourceUrl());
 		managedResource.setActive(resource.getActive());
+		em.flush();
 		return managedResource;
 	}
+	
+	
 
 }

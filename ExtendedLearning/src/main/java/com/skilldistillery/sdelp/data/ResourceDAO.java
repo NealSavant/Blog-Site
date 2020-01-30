@@ -8,4 +8,6 @@ public interface ResourceDAO {
 	
 	Resource updateResource(Resource resource);
 
+	Resource getResourceById(int id);
+
 }
