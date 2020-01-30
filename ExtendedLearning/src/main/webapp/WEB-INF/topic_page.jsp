@@ -141,7 +141,7 @@
 												<c:forEach var="comment" items="${topic.topicComments}">
 													<c:if test="${comment.active }">
 														<li class="media"><a href="" class="pull-left"> <img
-																src="" alt="" class="img-circle">
+																src="${profile.image.imageUrl }" alt="" class="img-circle">
 														</a>
 															<div class="media-body">
 																<span class="text-muted pull-right"> <small
