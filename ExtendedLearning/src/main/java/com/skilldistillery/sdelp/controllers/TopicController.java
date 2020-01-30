@@ -207,8 +207,8 @@ public class TopicController {
 			@RequestParam("resourceUrl") String resourceUrl,
 			@RequestParam("image") String image) {
 		Resource newResource = new Resource();
-		newResource.setTitle("TBD");
-		newResource.setResourceUrl("TBD");
+		newResource.setTitle(title);
+		newResource.setResourceUrl(resourceUrl);
 		newResource.setTopic(topicdao.getTopicById(tid));
 		Image newImage = new Image();
 		if(image == null || image == "") {

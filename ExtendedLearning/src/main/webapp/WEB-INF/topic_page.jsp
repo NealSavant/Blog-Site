@@ -79,6 +79,7 @@
 							<div class="col">
 								<form action="showUpdateResource.do">
 									<input type="hidden" value="${topic.id }" name="topicId" /> <br>
+									<input type="hidden" value="${resource.id }" name="resourceId" /> <br>
 									<button type="submit" class="btn btn-info pull-right">Update</button>
 								</form>
 							</div>

@@ -25,11 +25,14 @@
 				<h6>
 					<label for="title">Describe URL</label>
 				</h6>
-				<input type="text" id="title" name="resourceTitle"> <input
-					type="url" name="resourceUrl"> <br>
+				<input type="text" id="title" name="resourceTitle"> 
+				<h6>
+					<label for="url">Enter URL</label>
+				</h6>
+				<input type="url" name="resourceUrl"> <br>
 				<h6>Link an Image</h6>
-				<input type="hidden" value="${topic.id}"> <input type="url"
-					name="image" placeholder="optional">
+				<input type="hidden" value="${topic.id}" name="topicId"> 
+				<input type="url" name="image" placeholder="optional">
 				<!-- <input type="file" id="snippet" name="image" accept="image/png, image/jpeg"><br> -->
 				<input type="submit" value="Add">
 			</form>
