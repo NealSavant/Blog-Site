@@ -21,6 +21,12 @@ public class ResourceDAOJpaImpl implements ResourceDAO {
 		em.flush();
 		return resource;
 	}
+	
+	@Override
+	public Resource getResourceById(int id) {
+		Resource resource = em.find(Resource.class, id);
+		return resource;
+	}
 
 	@Override
 	public Resource updateResource(Resource resource) {

@@ -225,17 +225,28 @@ public class TopicController {
 	@RequestMapping(path="showUpdateResource.do")
 	public String showUpdateResource(@RequestParam("topicId") int tid, @RequestParam("resourceId") int rid
 			, Model model) {
-		
+		model.addAttribute("topic", topicdao.getTopicById(tid));
+		model.addAttribute("resource", resourcedao.getResourceById(rid));
 		
 		return "update_resource";
 	}
 	
 	@RequestMapping(path="attemptUpdateResource.do", method = RequestMethod.POST)
 	public String attemptUpdateResource(@RequestParam("topicId") int tid,
+			@RequestParam("") int rid,
 			@RequestParam("resourceTitle") String title,
 			@RequestParam("resourceUrl") String resourceUrl,
 			@RequestParam("image") String image) {
-			
+		Resource updatedResource = resourcedao.getResourceById(rid);
+		
+		Image updatedImage = updatedResource.getImage();
+		updatedImage.setImageUrl(image);
+		updatedImage = imagedao.updateImage(updatedImage);
+		
+		updatedResource.setImage(updatedImage);
+		updatedResource.setTitle(title);
+		updatedResource.setResourceUrl(resourceUrl);
+		resourcedao.updateResource(updatedResource);
 		
 		
 		return "redirect:showSingleTopic.do?topicId=" + tid;
