@@ -17,7 +17,7 @@
 		<div class="main-container">
 			<h4>Updating Resource from ${topic.title}</h4>
 			<hr>
-			<form action="" method="POST">
+			<form action="attemptUpdateResource.do" method="POST">
 
 				<br>
 				<h6>Resource</h6>

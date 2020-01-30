@@ -17,7 +17,7 @@
 		<div class="main-container">
 			<h4>Adding Resource to ${topic.title}</h4>
 			<hr>
-			<form action="" method="POST">
+			<form action="attemptAddResource.do" method="POST">
 
 				<br>
 				<h6>Resource</h6>
