@@ -20,14 +20,18 @@
 			<form action="" method="POST">
 
 				<br>
-				<h6>Resource</h6><br>
-				<h6><label for="title">Describe URL</label></h6> <input type="text"
-					id="title" name="resourceTitle"> <input type="url"
-					name="resourceUrl"> <br>
+				<h6>Resource</h6>
+				<br>
+				<h6>
+					<label for="title">Describe URL</label>
+				</h6>
+				<input type="text" id="title" name="resourceTitle"> <input
+					type="url" name="resourceUrl"> <br>
 				<h6>Link an Image</h6>
-				<input type="url" name="image" placeholder="optional">
+				<input type="hidden" value="${topic.id}"> <input type="url"
+					name="image" placeholder="optional">
 				<!-- <input type="file" id="snippet" name="image" accept="image/png, image/jpeg"><br> -->
-				<input type="submit" value="Update">
+				<input type="submit" value="Add">
 			</form>
 		</div>
 	</article>
