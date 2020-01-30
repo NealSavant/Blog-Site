@@ -46,7 +46,7 @@
 	overflow: auto;
 }
 
-.comment-wrapper .media-list .media img {
+.comment-wrapper .media-list .media .img-circle {
 	width: 64px;
 	height: 64px;
 	border: 2px solid #e5e7e8;
