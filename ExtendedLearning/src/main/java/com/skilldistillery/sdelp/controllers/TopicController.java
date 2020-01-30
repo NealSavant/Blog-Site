@@ -63,12 +63,25 @@ public class TopicController {
 					return "topic_page";
 				}
 				Log log = new Log();
+				//checks if log is already present, if so, updates date and does not add new log to profile
+				List<Log> currentLogList = logdao.retrieveCurrentLogs(profile.getUser().getId());
+//				for (Log logCheck : currentLogList) {
+//					
+//					// if topic ID from current logs equals current topic id
+//					if(logCheck.getTopic().getId() == topic.getId()) {
+//						log.setTimeStamp(LocalDateTime.now());//set time
+//						logdao.retrieveCurrentLogs(log);
+//						
+//					}
+//				}
+				
 				log.setTopic(topic);
 				log.setUser(profile.getUser());
 				log.setTimeStamp(LocalDateTime.now());
 				logdao.writeLog(log);
 				List<TopicComment> comments = commentdao.getAllCommentsForTopic(topic);
 				model.addAttribute("comments", comments);
+				model.addAttribute("logList", currentLogList);
 			} catch (ClassCastException e) {
 				e.printStackTrace();
 			}
