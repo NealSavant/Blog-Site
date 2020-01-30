@@ -30,12 +30,13 @@
 				<!-- prompted to login or create an account -->
 				<c:choose>
 					<c:when test="${profile.id == 0 or profile == null}">
+						<li><a href="showAllTopics.do"><i class="fas fa-book"></i>
+								Article Index</a></li>
 						<li><a href="showCreateAccount.do"><i
 								class="fas fa-plus-square"></i> Create Account</a></li>
 						<li><a href="showLogin.do"><i class="fas fa-user"></i>
 								Log In</a></li>
-						<li><a href="showAllTopics.do"><i class="fas fa-book"></i>
-								Article Index</a></li>
+
 					</c:when>
 					<c:otherwise>
 

@@ -108,7 +108,7 @@
 																<th scope="col">Date visited</th>
 															</tr>
 														</thead>
-														<c:forEach var="log" items="${logs }">
+														<c:forEach var="log" items="${logList }">
 
 															<tbody>
 																<tr>
