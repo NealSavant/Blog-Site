@@ -89,7 +89,7 @@
 				<div class="resource-footer">
 					<hr>
 					<c:if test="${profile.id != null }">
-						<form action="addResource.do" method="POST">
+						<form action="showAddResource.do" method="POST">
 							<input type="hidden" value="${topic.id }" name="topicId" /> <br>
 							<button type="submit" class="btn btn-success pull-right">Add
 								Resource</button>

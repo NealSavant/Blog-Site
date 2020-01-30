@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.sdelp.data.ContentDAO;
 import com.skilldistillery.sdelp.data.ContentDAOJpaImpl;
+import com.skilldistillery.sdelp.data.ImageDAO;
+import com.skilldistillery.sdelp.data.ImageDAOJpaImpl;
 import com.skilldistillery.sdelp.data.LogDAO;
 import com.skilldistillery.sdelp.data.LogDAOJpaImpl;
 import com.skilldistillery.sdelp.data.ResourceDAO;
@@ -23,8 +25,8 @@ import com.skilldistillery.sdelp.data.TopicCommentDAOJpaImpl;
 import com.skilldistillery.sdelp.data.TopicDAO;
 import com.skilldistillery.sdelp.data.TopicDAOJpaImpl;
 import com.skilldistillery.sdelp.data.UserProfileDAO;
-import com.skilldistillery.sdelp.data.UserProfileDAOJpaImpl;
 import com.skilldistillery.sdelp.entities.Content;
+import com.skilldistillery.sdelp.entities.Image;
 import com.skilldistillery.sdelp.entities.Log;
 import com.skilldistillery.sdelp.entities.Profile;
 import com.skilldistillery.sdelp.entities.Resource;
@@ -48,6 +50,9 @@ public class TopicController {
 	
 	@Autowired
 	UserProfileDAO userdao;
+	
+	@Autowired
+	ImageDAO imagedao = new ImageDAOJpaImpl();
 	
 	@Autowired
 	LogDAO logdao = new LogDAOJpaImpl();
@@ -189,6 +194,37 @@ public class TopicController {
 		model.addAttribute("topic", topic);
 		return "topic_page";
 	}
+	
+	@RequestMapping(path="showAddResource.do")
+	public String showAddResource(@RequestParam("topicId") int tid, Model model) {
+		model.addAttribute("topic", topicdao.getTopicById(tid));
+		return "add_resource";
+	}
+	
+	@RequestMapping(path="attemptAddResource.do")
+	public String attemptAddResource(@RequestParam("topicId") int tid,
+			@RequestParam("") String title,
+			@RequestParam("") String resourceUrl,
+			@RequestParam("") String image) {
+		Resource newResource = new Resource();
+		newResource.setTitle("TBD");
+		newResource.setResourceUrl("TBD");
+		newResource.setTopic(topicdao.getTopicById(tid));
+		Image newImage = new Image();
+		//if user wants an image, else, give it skill distillery logo
+		if(image == null || image == "") {
+			newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
+		} else {
+			newImage.setImageUrl(image);
+		}
+		newImage = imagedao.addImage(newImage);
+		newResource.setImage(newImage);
+		resourcedao.addResource(newResource);
+		return "redirect:showSingleTopic.do?topicId=" + tid;
+	}
+	
+	
+	
 //	public String updateComments(Model model) {
 //		
 //	}
