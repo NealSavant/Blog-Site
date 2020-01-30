@@ -58,7 +58,7 @@ public class UserController {
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String attemptLogin(@RequestParam String username, @RequestParam String password, HttpSession session) {
 		Profile profile = userProfileDao.getProfileByUserUsernamePassword(username, password);
-		if (profile != null) {
+		if (profile != null && profile.getUser().getActive()) {
 			// need to add the profile
 			
 			//get logs all the time to display for side bar article viewer
