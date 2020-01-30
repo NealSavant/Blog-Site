@@ -6,4 +6,6 @@ public interface ImageDAO {
 	
 	Image addImage(Image image);
 
+	Image updateImage(Image image);
+
 }
