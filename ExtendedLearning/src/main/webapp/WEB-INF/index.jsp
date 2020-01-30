@@ -19,7 +19,7 @@
 	<div class="main-container">
 			<div class="jumbotron">
   				<h1 class="display-4">Welcome to SD ELP!</h1>
-  				<p class="lead">SD ELP was created as a resource for Skill Distillery graduates to quickly find information on topics both from and outside of the full stack boot camp.</p>
+  				<p class="lead">SD ELP was created as a resource for Skill Distillery graduates to quickly find information on topics from the full stack boot camp and beyond.</p>
   				<hr class="my-4">
   				<p>Information is accessible without logging in, but we would love to have you as a user!</p>
   				<a class="btn btn-primary btn-lg" href="showLogin.do" role="button">Log In</a>

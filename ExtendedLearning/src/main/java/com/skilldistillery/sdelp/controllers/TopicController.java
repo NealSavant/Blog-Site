@@ -1,6 +1,7 @@
 package com.skilldistillery.sdelp.controllers;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -68,29 +69,18 @@ public class TopicController {
 					return "topic_page";
 				}
 				Log log = new Log();
-				// checks if log is already present, if so, updates date and does not add new
-				// log to profile
-
-//				for (Log logCheck : currentLogList) {
-//					
-//					// if topic ID from current logs equals current topic id
-//					if(logCheck.getTopic().getId() == topic.getId()) {
-//						log.setTimeStamp(LocalDateTime.now());//set time
-//						logdao.retrieveCurrentLogs(log);
-//						
-//					}
-//				}
-
 				log.setTopic(topic);
 				log.setUser(profile.getUser());
 				log.setTimeStamp(LocalDateTime.now());
-				// check loglist put new log at top of nav bar list
+				logdao.writeLog(log);// send log to database
+
+				// get logs from database, new users will have a list set to null
 				@SuppressWarnings("unchecked")
 				List<Log> compareLogList = (List<Log>) session.getAttribute("logList");
 
 				// sort through logs
 				List<Log> currentLogList = sortLogs(compareLogList, log);
-				logdao.writeLog(log);
+
 				session.setAttribute("logList", currentLogList);
 
 				List<TopicComment> comments = commentdao.getAllCommentsForTopic(topic);
@@ -103,15 +93,27 @@ public class TopicController {
 	}
 
 	private List<Log> sortLogs(List<Log> logs, Log newLog) {
+		boolean added = false;
 		if (logs != null) {
 			for (int x = 0; x < logs.size(); x++) {
 				if (newLog.getTopic().getId() == logs.get(x).getTopic().getId()) {
 					logs.remove(x);
 					logs.add(0, newLog);
+					added = true;
 					// if the viewed article is already present, delete the old mapping and move new
 					// log to the top of the list
 				}
 			}
+			// user has view history but is viewing article for first time
+			if (added == false) {
+				logs.add(0, newLog);
+				added = true;
+			}
+		}
+		// if a null list of logs is passed in (new user), create a new list and add the log to it
+		if (added == false) {
+			logs = new ArrayList<>();
+			logs.add(newLog);
 		}
 
 		return logs;

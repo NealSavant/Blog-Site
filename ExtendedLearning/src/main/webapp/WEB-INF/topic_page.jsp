@@ -67,20 +67,26 @@
 			<div class="resources-container" id="resources">
 				<h3>Resources</h3>
 				<c:forEach var="resource" items="${topic.resources}">
-				<hr>
+					<hr>
 					<div class="row">
 						<div class="col">
 							<p>${resource.title}</p>
 							<a href="${resource.resourceUrl}">${resource.resourceUrl}</a>
 						</div>
 						<div class="col">
-							<p><a href = "${resource.image.imageUrl}"><img src="${resource.image.imageUrl}"></a></p>
+							<c:if test="${not empty resource.image.imageUrl}">
+								<p>
+									<a href="${resource.image.imageUrl}"><img
+										src="${resource.image.imageUrl}"></a>
+								</p>
+							</c:if>
 						</div>
 						<c:if test="${profile.id != null }">
 							<div class="col">
 								<form action="showUpdateResource.do">
 									<input type="hidden" value="${topic.id }" name="topicId" /> <br>
-									<input type="hidden" value="${resource.id }" name="resourceId" /> <br>
+									<input type="hidden" value="${resource.id }" name="resourceId" />
+									<br>
 									<button type="submit" class="btn btn-info pull-right">Update</button>
 								</form>
 							</div>
@@ -143,7 +149,8 @@
 												<c:forEach var="comment" items="${topic.topicComments}">
 													<c:if test="${comment.active }">
 														<li class="media"><a href="" class="pull-left"> <img
-																src="${comment.user.profile.image.imageUrl }" alt="" class="img-circle">
+																src="${comment.user.profile.image.imageUrl }" alt=""
+																class="img-circle">
 														</a>
 															<div class="media-body">
 																<span class="text-muted pull-right"> <small

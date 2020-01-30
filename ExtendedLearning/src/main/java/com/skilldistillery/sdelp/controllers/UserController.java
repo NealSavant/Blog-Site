@@ -29,7 +29,7 @@ public class UserController {
 
 	@Autowired
 	ImageDAO imagedao = new ImageDAOJpaImpl();
-	
+
 	@Autowired
 	LogDAO logdao;
 
@@ -60,15 +60,16 @@ public class UserController {
 		Profile profile = userProfileDao.getProfileByUserUsernamePassword(username, password);
 		if (profile != null && profile.getUser().getActive()) {
 			// need to add the profile
-			
-			//get logs all the time to display for side bar article viewer
+
+			// get logs all the time to display for side bar article viewer
 			List<Log> currentLogList = logdao.retrieveCurrentLogs(profile.getUser().getId());
+			session.isNew();
 			session.setAttribute("profile", profile);
 			session.setAttribute("logs", profile.getUser().getLogs());
 			session.setAttribute("logList", currentLogList);
 			return "redirect:userHome.do";
 		} else {
-			
+
 			return "redirect:showLogin.do";
 		}
 	}
@@ -78,8 +79,8 @@ public class UserController {
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
 	public String attemptCreateAccount(@RequestParam String username, @RequestParam String password,
 			@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session
-			, Model model) {
+			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session,
+			Model model) {
 		if (userProfileDao.checkIfUsernameAndEmailAreAvailable(username, email)) {
 			User user = new User();
 			user.setUsername(username);
@@ -94,17 +95,18 @@ public class UserController {
 			profile.setJobTitle(jobTitle);
 			profile.setAbout(about);
 			Image newImage = new Image();
-			//if user wants an image, else, give it skill distillery logo
-			if(image == null || image == "") {
+			// if user wants an image, else, give it skill distillery logo
+			if (image == null || image == "") {
 				newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
 			} else {
 				newImage.setImageUrl(image);
 			}
-			
+
 			imagedao.addImage(newImage);
 			profile.setImage(newImage);
 			profile.setUser(user);
 			userProfileDao.createProfile(profile);
+			session.isNew();
 			session.setAttribute("profile", profile);
 			session.removeAttribute("fail");
 			return "redirect:userHome.do";
@@ -122,7 +124,8 @@ public class UserController {
 	@RequestMapping(path = "updateAccount.do", method = RequestMethod.POST)
 	public String attemptUpdateAccount(@RequestParam String username, @RequestParam String password,
 			@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image, HttpSession session) {
+			@RequestParam String jobTitle, @RequestParam String about, @RequestParam String image,
+			HttpSession session) {
 		Profile profile = (Profile) session.getAttribute("profile");
 		profile.getUser().setUsername(username);
 		profile.getUser().setPassword(password);
@@ -132,8 +135,8 @@ public class UserController {
 		profile.setJobTitle(jobTitle);
 		profile.setAbout(about);
 		Image newImage = new Image();
-		//if user wants an image, else, give it skill distillery logo
-		if(image == null || image == "") {
+		// if user wants an image, else, give it skill distillery logo
+		if (image == null || image == "") {
 			newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
 		} else {
 			newImage.setImageUrl(image);
@@ -157,6 +160,7 @@ public class UserController {
 	@RequestMapping(path = "userHome.do")
 	public String showUserHome(HttpSession session) {
 		session.setAttribute("profile", session.getAttribute("profile"));
+		session.setAttribute("logList", session.getAttribute("logList"));
 		return "user_home";
 	}
 
@@ -199,12 +203,12 @@ public class UserController {
 			return "redirect:home.do";
 		}
 	}
-	
-	@RequestMapping(path="showUser.do")
+
+	@RequestMapping(path = "showUser.do")
 	public String showUser(@RequestParam("uid") Integer uid, Model model) {
 		Profile showProfile = userProfileDao.getProfileByUserId(uid);
 		model.addAttribute("otherProfile", showProfile);
 		return "show_user";
 	}
-	
+
 }
