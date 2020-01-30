@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Extended Learning</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
+<link rel="stylesheet" href="/css/profile-page.css">
 </head>
 <body>
 
@@ -16,24 +17,86 @@
 
 	<article class="containergrid">
 
-<jsp:include page="shared_jsp/nav.jsp"/>
+
+		<jsp:include page="shared_jsp/nav.jsp" />
 
 
 		<div class="main-container">
-			<c:if test="${otherProfile != null}">
-				<div class="profile-info">
-					<div class="profile-image">
-						<img alt="image" src="${otherProfile.image.imageUrl}" width="300px"
-							height="300px">
+
+			<div class="container emp-profile">
+				<form method="post" action="showUpdateAccount.do">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="profile-img">
+								<img alt="image" src="${otherProfile.image.imageUrl}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="profile-head">
+								<h5>${otherProfile.firstName }</h5>
+								<h6>${otherProfile.jobTitle }</h6>
+								<ul class="nav nav-tabs" id="myTab" role="tablist">
+									<li class="nav-item"><a class="nav-link active"
+										id="home-tab" data-toggle="tab" href="#home" role="tab"
+										aria-controls="home" aria-selected="true">Contact </a></li>
+
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-2"></div>
 					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="profile-work">
+								<p>ABOUT</p>
+								<a>${otherProfile.about }</a>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="tab-content profile-tab" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel"
+									aria-labelledby="home-tab">
+									<div class="row">
+										<div class="col-md-6">
+											<label>Username</label>
+										</div>
+										<div class="col-md-6">
+											<p>${otherProfile.user.username}</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<label>First Name</label>
+										</div>
+										<div class="col-md-6">
+											<p>${otherProfile.firstName }</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<label>Last Name</label>
+										</div>
+										<div class="col-md-6">
+											<p>${otherProfile.lastName }</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<label>Email</label>
+										</div>
+										<div class="col-md-6">
+											<p>${otherProfile.email }</p>
+										</div>
+									</div>
+								</div>
 
-					<a>Username: ${otherProfile.user.username }</a> <a>First Name:
-						${otherProfile.firstName }</a> <a>Last Name: ${otherProfile.lastName }</a> <a>Email:
-						${otherProfile.email }</a> <br> <a>Job Title: ${otherProfile.jobTitle }</a>
-					<a>Biography: ${otherProfile.about }</a>
+								<!--display under View History  -->
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
 
-				</div>
-			</c:if>
 		</div>
 
 
