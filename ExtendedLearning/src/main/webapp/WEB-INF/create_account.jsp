@@ -8,12 +8,12 @@
 <title>Login</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
 </head>
-<body>
 
 	<header class="main-header">
 		<jsp:include page="shared_jsp/header.jsp" />
 	</header>
 
+<body style="padding-top: 65px">
 		<!-- TODO: SEND USERNAME/PASSWORD TO USER TABLE
 SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
  -->
@@ -24,6 +24,7 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 			</c:if>
 		<div>
 			<c:if test="${profile.id == 0 or profile == null}">
+			<div class="container" style="width:300px">
 				<form action="createAccount.do" method="POST">
 					<fieldset>
 						<legend>Create Account</legend>
@@ -65,10 +66,12 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 							class="btn btn-primary" />
 					</fieldset>
 				</form>
+			</div>	
 			</c:if>
 
 			<!-- if updating account -->
 			<c:if test="${profile.user != null}">
+			<div class="container" style="width:300px">
 				<form action="updateAccount.do" method="POST">
 					<fieldset>
 						<legend>Update Account Details</legend>
@@ -117,6 +120,7 @@ SEND FIRSTNAME LASTNAME EMAIL, IMAGE, JOB TITLE, ABOUT TO PROFILE TABLE
 							class="btn btn-primary" />
 					</fieldset>
 				</form>
+			</div>
 			</c:if>
 
 
