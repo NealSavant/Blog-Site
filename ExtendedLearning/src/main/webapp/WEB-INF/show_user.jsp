@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Extended Learning</title>
 <jsp:include page="shared_jsp/jsp_scripts/styleTop.jsp" />
-<link rel="stylesheet" href="/css/profile-page.css">
+<link rel="stylesheet" href="css/profile-page.css">
 </head>
 <body>
 

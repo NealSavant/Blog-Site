@@ -115,7 +115,6 @@ public class TopicController {
 			logs = new ArrayList<>();
 			logs.add(newLog);
 		}
-
 		return logs;
 	}
 

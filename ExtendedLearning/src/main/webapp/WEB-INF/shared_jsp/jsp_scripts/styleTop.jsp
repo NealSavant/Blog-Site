@@ -11,9 +11,9 @@
 	crossorigin="anonymous"></script>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="/css/master.css">
-<link rel="stylesheet" href="/css/header.css">
-<link rel="stylesheet" href="/css/side-nav.css"> 
-<link rel="stylesheet" href="/css/form.css">
-<link rel="stylesheet" href="/css/topic.css">
+<link rel="stylesheet" href="css/master.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/side-nav.css"> 
+<link rel="stylesheet" href="css/form.css">
+<link rel="stylesheet" href="css/topic.css">
 <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
