@@ -30,7 +30,7 @@
 }
 .resources-container img{
 	width: 450px;
-	height: inherit;
+	height: fit-content;
 }
 
 .comment-section {

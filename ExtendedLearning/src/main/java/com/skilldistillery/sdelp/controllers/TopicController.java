@@ -44,16 +44,16 @@ public class TopicController {
 
 	@Autowired
 	ResourceDAO resourcedao = new ResourceDAOJpaImpl();
-	
+
 	@Autowired
 	TopicCommentDAO commentdao = new TopicCommentDAOJpaImpl();
-	
+
 	@Autowired
 	UserProfileDAO userdao;
-	
+
 	@Autowired
 	ImageDAO imagedao = new ImageDAOJpaImpl();
-	
+
 	@Autowired
 	LogDAO logdao = new LogDAOJpaImpl();
 
@@ -68,8 +68,9 @@ public class TopicController {
 					return "topic_page";
 				}
 				Log log = new Log();
-				//checks if log is already present, if so, updates date and does not add new log to profile
-				List<Log> currentLogList = logdao.retrieveCurrentLogs(profile.getUser().getId());
+				// checks if log is already present, if so, updates date and does not add new
+				// log to profile
+
 //				for (Log logCheck : currentLogList) {
 //					
 //					// if topic ID from current logs equals current topic id
@@ -79,19 +80,41 @@ public class TopicController {
 //						
 //					}
 //				}
-				
+
 				log.setTopic(topic);
 				log.setUser(profile.getUser());
 				log.setTimeStamp(LocalDateTime.now());
+				// check loglist put new log at top of nav bar list
+				@SuppressWarnings("unchecked")
+				List<Log> compareLogList = (List<Log>) session.getAttribute("logList");
+
+				// sort through logs
+				List<Log> currentLogList = sortLogs(compareLogList, log);
 				logdao.writeLog(log);
+				session.setAttribute("logList", currentLogList);
+
 				List<TopicComment> comments = commentdao.getAllCommentsForTopic(topic);
 				model.addAttribute("comments", comments);
-				model.addAttribute("logList", currentLogList);
 			} catch (ClassCastException e) {
 				e.printStackTrace();
 			}
 		}
 		return "topic_page";
+	}
+
+	private List<Log> sortLogs(List<Log> logs, Log newLog) {
+		if (logs != null) {
+			for (int x = 0; x < logs.size(); x++) {
+				if (newLog.getTopic().getId() == logs.get(x).getTopic().getId()) {
+					logs.remove(x);
+					logs.add(0, newLog);
+					// if the viewed article is already present, delete the old mapping and move new
+					// log to the top of the list
+				}
+			}
+		}
+
+		return logs;
 	}
 
 	@RequestMapping(path = "showAllTopics.do")
@@ -124,17 +147,17 @@ public class TopicController {
 		addContent.setContent(content);
 		addContent.setTopic(addTopic);
 		contentdao.addContent(addContent);
-		
+
 		Resource addResource = new Resource();
 		addResource.setTitle(resourceTitle);
 		addResource.setResourceUrl(resourceUrl);
 		addResource.setTopic(addTopic);
-		
+
 		resourcedao.addResource(addResource);
 
 		Topic newTopic = topicdao.getTopicById(addTopic.getId());
 		model.addAttribute("topic", newTopic);
-		
+
 		return "redirect:showSingleTopic.do?topicId=" + newTopic.getId();
 	}
 
@@ -161,15 +184,13 @@ public class TopicController {
 		resourcedao.updateResource(updatingFirstResource);
 
 		Topic updatedTopic = topicdao.getTopicById(tid);
-		model.addAttribute("topic", updatedTopic);	
+		model.addAttribute("topic", updatedTopic);
 		return "topic_page";
 	}
-	
+
 	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
-	public String addComment(Model model, 
-			@RequestParam("comment") String content, 
-			@RequestParam("topicId") Integer topicId, 
-			HttpSession session){
+	public String addComment(Model model, @RequestParam("comment") String content,
+			@RequestParam("topicId") Integer topicId, HttpSession session) {
 		int userId = ((Profile) session.getAttribute("profile")).getUser().getId();
 		Topic topic = topicdao.getTopicById(topicId);
 		TopicComment comment = new TopicComment();
@@ -177,16 +198,15 @@ public class TopicController {
 		comment.setUser(userdao.getUserById(userId));
 		comment.setTopic(topicdao.getTopicById(topicId));
 		comment.setActive(true);
-		
+
 		comment = commentdao.addTopicComment(comment);
 //		model.addAttribute("comment", comment);
 		model.addAttribute("topic", topic);
 		return "topic_page";
 	}
-	
-	@RequestMapping(path="hideComment.do")
-	public String hideComment(Model model,
-			@RequestParam("cid") Integer cid) {
+
+	@RequestMapping(path = "hideComment.do")
+	public String hideComment(Model model, @RequestParam("cid") Integer cid) {
 		TopicComment tc = commentdao.getTopicCommentById(cid);
 		tc.setActive(false);
 		commentdao.updateTopicComment(tc);
@@ -194,24 +214,22 @@ public class TopicController {
 		model.addAttribute("topic", topic);
 		return "topic_page";
 	}
-	
-	@RequestMapping(path="showAddResource.do")
+
+	@RequestMapping(path = "showAddResource.do")
 	public String showAddResource(@RequestParam("topicId") int tid, Model model) {
 		model.addAttribute("topic", topicdao.getTopicById(tid));
 		return "add_resource";
 	}
-	
-	@RequestMapping(path="attemptAddResource.do", method = RequestMethod.POST)
-	public String attemptAddResource(@RequestParam("topicId") int tid,
-			@RequestParam("resourceTitle") String title,
-			@RequestParam("resourceUrl") String resourceUrl,
-			@RequestParam("image") String image) {
+
+	@RequestMapping(path = "attemptAddResource.do", method = RequestMethod.POST)
+	public String attemptAddResource(@RequestParam("topicId") int tid, @RequestParam("resourceTitle") String title,
+			@RequestParam("resourceUrl") String resourceUrl, @RequestParam("image") String image) {
 		Resource newResource = new Resource();
 		newResource.setTitle(title);
 		newResource.setResourceUrl(resourceUrl);
 		newResource.setTopic(topicdao.getTopicById(tid));
 		Image newImage = new Image();
-		if(image == null || image == "") {
+		if (image == null || image == "") {
 			newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
 		} else {
 			newImage.setImageUrl(image);
@@ -221,45 +239,41 @@ public class TopicController {
 		resourcedao.addResource(newResource);
 		return "redirect:showSingleTopic.do?topicId=" + tid;
 	}
-	
-	@RequestMapping(path="showUpdateResource.do")
-	public String showUpdateResource(@RequestParam("topicId") int tid, @RequestParam("resourceId") int rid
-			, Model model) {
+
+	@RequestMapping(path = "showUpdateResource.do")
+	public String showUpdateResource(@RequestParam("topicId") int tid, @RequestParam("resourceId") int rid,
+			Model model) {
 		model.addAttribute("topic", topicdao.getTopicById(tid));
 		model.addAttribute("resource", resourcedao.getResourceById(rid));
-		
+
 		return "update_resource";
 	}
-	
-	@RequestMapping(path="attemptUpdateResource.do", method = RequestMethod.POST)
-	public String attemptUpdateResource(@RequestParam("topicId") int tid,
-			@RequestParam("resourceId") int rid,
-			@RequestParam("resourceTitle") String title,
-			@RequestParam("resourceUrl") String resourceUrl,
+
+	@RequestMapping(path = "attemptUpdateResource.do", method = RequestMethod.POST)
+	public String attemptUpdateResource(@RequestParam("topicId") int tid, @RequestParam("resourceId") int rid,
+			@RequestParam("resourceTitle") String title, @RequestParam("resourceUrl") String resourceUrl,
 			@RequestParam("image") String image) {
 		Resource updatedResource = resourcedao.getResourceById(rid);
-		
+
 		Image updatedImage = updatedResource.getImage();
 		updatedImage.setImageUrl(image);
 		updatedImage = imagedao.updateImage(updatedImage);
-		
+
 		updatedResource.setImage(updatedImage);
 		updatedResource.setTitle(title);
 		updatedResource.setResourceUrl(resourceUrl);
 		resourcedao.updateResource(updatedResource);
-		
-		
+
 		return "redirect:showSingleTopic.do?topicId=" + tid;
 	}
-	
-	
+
 //	public String updateComments(Model model) {
 //		
 //	}
-	
-	//TODO: JP :)
+
+	// TODO: JP :)
 //	public String updateResource(Model model) {
 //		
 //	}
-	
+
 }

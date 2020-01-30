@@ -38,8 +38,7 @@
 								Article Index</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="userHome.do"><i class="fas fa-user"></i>
-								Profile</a></li>
+
 						<li><a href="showAllTopics.do"><i class="fas fa-book"></i>
 								Article Index</a></li>
 
@@ -49,6 +48,8 @@
 							<li><a href="showAdminPage.do"><i
 									class="fas fa-users-cog"></i> Admin Panel</a></li>
 						</c:if>
+						<li><a href="userHome.do"><i class="fas fa-user"></i>
+								Profile</a></li>
 						<li><a href="logout.do"><i class="fas fa-sign-out-alt"></i>
 								Log Out</a></li>
 					</c:otherwise>

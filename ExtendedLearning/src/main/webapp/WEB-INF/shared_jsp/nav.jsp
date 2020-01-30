@@ -8,19 +8,8 @@
 	<div class="sidebar">
 		<table class="table">
 			<thead>
-
 				<tr>
-					<th><h4>
-							<a href="showAllTopics.do">Article Index</a>
-						</h4></th>
-				</tr>
-
-			</thead>
-		</table>
-		<table class="table">
-			<thead>
-				<tr>
-					<th><h4>Recent Articles</h4></th>
+					<th><h4>Recently Viewed</h4></th>
 				</tr>
 			</thead>
 			<c:choose>

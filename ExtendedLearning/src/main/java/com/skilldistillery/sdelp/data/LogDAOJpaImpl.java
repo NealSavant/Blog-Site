@@ -30,6 +30,7 @@ public class LogDAOJpaImpl implements LogDAO {
 		return log;
 	}
 	
+	//not optimized, need javascript in ideal
 	@Override
 	public List<Log> retrieveCurrentLogs(int userId) {
 		String jpql = "SELECT DISTINCT log FROM Log log WHERE log.user.id = :bindId "

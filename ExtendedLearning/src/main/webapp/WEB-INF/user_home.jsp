@@ -41,9 +41,7 @@
 									<li class="nav-item"><a class="nav-link" id="profile-tab"
 										data-toggle="tab" href="#profile" role="tab"
 										aria-controls="profile" aria-selected="false">View History</a></li>
-									<li class="nav-item"><a class="nav-link" id="profile-tab"
-										data-toggle="tab" href="#profile" role="tab"
-										aria-controls="profile" aria-selected="false">Comments</a></li>
+									
 								</ul>
 							</div>
 						</div>
