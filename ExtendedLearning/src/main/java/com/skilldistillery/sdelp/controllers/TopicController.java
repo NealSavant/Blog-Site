@@ -233,7 +233,7 @@ public class TopicController {
 	
 	@RequestMapping(path="attemptUpdateResource.do", method = RequestMethod.POST)
 	public String attemptUpdateResource(@RequestParam("topicId") int tid,
-			@RequestParam("") int rid,
+			@RequestParam("resourceId") int rid,
 			@RequestParam("resourceTitle") String title,
 			@RequestParam("resourceUrl") String resourceUrl,
 			@RequestParam("image") String image) {
