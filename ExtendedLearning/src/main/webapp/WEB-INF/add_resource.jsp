@@ -28,7 +28,8 @@
 				<input type="text" id="title" name="resourceTitle"> <input
 					type="url" name="resourceUrl"> <br>
 				<h6>Link an Image</h6>
-				<input type="hidden" value="${topic.id}"> <input type="url"
+				<input type="hidden" value="${topic.id}"> <input
+					type="hidden" value="${resource.id}"><input type="url"
 					name="image" placeholder="optional">
 				<!-- <input type="file" id="snippet" name="image" accept="image/png, image/jpeg"><br> -->
 				<input type="submit" value="Add">

@@ -68,15 +68,23 @@
 											<label>Username</label>
 										</div>
 										<div class="col-md-6">
-											<p>${profile.firstName}${profile.lastName }</p>
+											<p>${profile.user.username}</p>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6">
-											<label>Name</label>
+											<label>First Name</label>
 										</div>
 										<div class="col-md-6">
-											<p>${profile.firstName}${profile.lastName }</p>
+											<p>${profile.firstName }</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<label>Last Name</label>
+										</div>
+										<div class="col-md-6">
+											<p>${profile.lastName }</p>
 										</div>
 									</div>
 									<div class="row">
