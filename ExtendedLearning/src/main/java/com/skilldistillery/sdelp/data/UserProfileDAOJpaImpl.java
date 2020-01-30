@@ -21,12 +21,14 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 
 	@Override
 	public User getUserByUsernamePassword(String username, String password) {
-		User user = null;
 		String jpql = "select user from User user where username = :username"
 				+ " and password = :password";
-		user = em.createQuery(jpql, User.class).setParameter("username", username)
-				.setParameter("password", password).getResultList().get(0);
-		return user;
+		List<User> temp = em.createQuery(jpql, User.class).setParameter("username", username)
+				.setParameter("password", password).getResultList();
+		if (temp.size() == 0) {
+			return null;
+		}
+		return temp.get(0);
 	}
 	
 	@Override
@@ -63,12 +65,14 @@ public class UserProfileDAOJpaImpl implements UserProfileDAO {
 	
 	@Override
 	public Profile getProfileByUserUsernamePassword(String username, String password) {
-		Profile profile = null;
 		String jpql = "SELECT profile from Profile profile WHERE profile.user.username = :username"
 				+ " AND profile.user.password = :password";
-		profile = em.createQuery(jpql, Profile.class).setParameter("username", username)
-				.setParameter("password", password).getResultList().get(0);
-		return profile;
+		List<Profile> temp = em.createQuery(jpql, Profile.class).setParameter("username", username)
+		.setParameter("password", password).getResultList();
+		if (temp.size() == 0) {
+			return null;
+		}
+		return temp.get(0) ;
 	}
 	
 	@Override
