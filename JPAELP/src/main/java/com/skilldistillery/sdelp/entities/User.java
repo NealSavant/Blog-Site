@@ -1,6 +1,5 @@
 package com.skilldistillery.sdelp.entities;
 
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,30 +19,33 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String username;
-	
+
 	private String password;
-	
+
 	private String role;
-	
-	@Column(name="created_at")
+
+	@Column(name = "created_at")
 	@CreationTimestamp
 	public LocalDateTime createdAt;
-	
-	@Column(name="updated_at")
+
+	@Column(name = "updated_at")
 	@UpdateTimestamp
 	public LocalDateTime updatedAt;
 
 	private Boolean active;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToOne(mappedBy = "user")
+	private Profile profile;
+
+	@OneToMany(mappedBy = "user")
 	private List<Log> logs;
-	
+
 	@OneToMany(mappedBy="user")
 	private List<TopicComment> topicComments;
 
@@ -121,6 +123,14 @@ public class User {
 		this.topicComments = topicComments;
 	}
 
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role
@@ -148,10 +158,5 @@ public class User {
 			return false;
 		return true;
 	}
-	
-	
 
-	
-	
-	
 }
