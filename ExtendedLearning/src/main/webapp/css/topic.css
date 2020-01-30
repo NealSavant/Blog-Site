@@ -28,9 +28,9 @@
 .resources-container {
 	width: 100%;
 }
-
-.resource-container {
-	
+.resources-container img{
+	width: 450px;
+	height: inherit;
 }
 
 .comment-section {

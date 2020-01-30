@@ -67,13 +67,14 @@
 			<div class="resources-container" id="resources">
 				<h3>Resources</h3>
 				<c:forEach var="resource" items="${topic.resources}">
+				<hr>
 					<div class="row">
 						<div class="col">
 							<p>${resource.title}</p>
 							<a href="${resource.resourceUrl}">${resource.resourceUrl}</a>
 						</div>
 						<div class="col">
-							<p>image goes here</p>
+							<p><a href = "${resource.image.imageUrl}"><img src="${resource.image.imageUrl}"></a></p>
 						</div>
 						<c:if test="${profile.id != null }">
 							<div class="col">
@@ -85,7 +86,6 @@
 							</div>
 						</c:if>
 					</div>
-					<hr>
 				</c:forEach>
 				<div class="resource-footer">
 					<hr>
