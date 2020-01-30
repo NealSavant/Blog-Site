@@ -58,7 +58,6 @@ public class UserController {
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String attemptLogin(@RequestParam String username, @RequestParam String password, HttpSession session) {
 		Profile profile = userProfileDao.getProfileByUserUsernamePassword(username, password);
-
 		if (profile != null) {
 			// need to add the profile
 			
@@ -69,6 +68,7 @@ public class UserController {
 			session.setAttribute("logList", currentLogList);
 			return "redirect:userHome.do";
 		} else {
+			
 			return "redirect:showLogin.do";
 		}
 	}
