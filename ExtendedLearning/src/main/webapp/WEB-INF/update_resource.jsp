@@ -17,7 +17,7 @@
 		<div class="main-container">
 			<h4>Updating Resource from ${topic.title}</h4>
 			<hr>
-			<form action="" method="POST">
+			<form action="attemptUpdateResource.do" method="POST">
 
 				<br>
 				<h6>Resource</h6>
@@ -29,7 +29,9 @@
 					value="${resource.title}"> <input type="url"
 					name="resourceUrl" value="${resource.resourceUrl}"> <br>
 				<h6>Link an Image</h6>
-				<input type="url" name="image" placeholder="optional">
+				<input type="hidden" value="${topic.id}"> <input type="url"
+					name="image" value="${resource.image.imageUrl}"
+					placeholder="optional">
 				<!-- <input type="file" id="snippet" name="image" accept="image/png, image/jpeg"><br> -->
 				<input type="submit" value="Update">
 			</form>

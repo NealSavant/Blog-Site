@@ -201,7 +201,7 @@ public class TopicController {
 		return "add_resource";
 	}
 	
-	@RequestMapping(path="attemptAddResource.do")
+	@RequestMapping(path="attemptAddResource.do", method = RequestMethod.POST)
 	public String attemptAddResource(@RequestParam("topicId") int tid,
 			@RequestParam("resourceTitle") String title,
 			@RequestParam("resourceUrl") String resourceUrl,
@@ -211,7 +211,6 @@ public class TopicController {
 		newResource.setResourceUrl("TBD");
 		newResource.setTopic(topicdao.getTopicById(tid));
 		Image newImage = new Image();
-		//if user wants an image, else, give it skill distillery logo
 		if(image == null || image == "") {
 			newImage.setImageUrl("https://imgur.com/m7LFcq8.png");
 		} else {
@@ -229,6 +228,17 @@ public class TopicController {
 		
 		
 		return "update_resource";
+	}
+	
+	@RequestMapping(path="attemptUpdateResource.do", method = RequestMethod.POST)
+	public String attemptUpdateResource(@RequestParam("topicId") int tid,
+			@RequestParam("resourceTitle") String title,
+			@RequestParam("resourceUrl") String resourceUrl,
+			@RequestParam("image") String image) {
+			
+		
+		
+		return "redirect:showSingleTopic.do?topicId=" + tid;
 	}
 	
 	

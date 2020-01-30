@@ -77,7 +77,7 @@
 						</div>
 						<c:if test="${profile.id != null }">
 							<div class="col">
-								<form action="updateResource.do" method="POST">
+								<form action="showUpdateResource.do">
 									<input type="hidden" value="${topic.id }" name="topicId" /> <br>
 									<button type="submit" class="btn btn-info pull-right">Update</button>
 								</form>
@@ -89,7 +89,8 @@
 				<div class="resource-footer">
 					<hr>
 					<c:if test="${profile.id != null }">
-						<form action="showAddResource.do" method="POST">
+						<form action="showAddResource.do">
+
 							<input type="hidden" value="${topic.id }" name="topicId" /> <br>
 							<button type="submit" class="btn btn-success pull-right">Add
 								Resource</button>

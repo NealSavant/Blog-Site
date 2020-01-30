@@ -28,7 +28,10 @@ public class ResourceDAOJpaImpl implements ResourceDAO {
 		managedResource.setTitle(resource.getTitle());
 		managedResource.setResourceUrl(resource.getResourceUrl());
 		managedResource.setActive(resource.getActive());
+		em.flush();
 		return managedResource;
 	}
+	
+	
 
 }
