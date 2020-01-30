@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.sdelp.data.ImageDAO;
 import com.skilldistillery.sdelp.data.ImageDAOJpaImpl;
+import com.skilldistillery.sdelp.data.LogDAO;
 import com.skilldistillery.sdelp.data.UserProfileDAO;
 import com.skilldistillery.sdelp.data.UserProfileDAOJpaImpl;
 import com.skilldistillery.sdelp.entities.Image;
+import com.skilldistillery.sdelp.entities.Log;
 import com.skilldistillery.sdelp.entities.Profile;
 import com.skilldistillery.sdelp.entities.User;
 
@@ -27,6 +29,9 @@ public class UserController {
 
 	@Autowired
 	ImageDAO imagedao = new ImageDAOJpaImpl();
+	
+	@Autowired
+	LogDAO logdao;
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home() {
@@ -56,8 +61,12 @@ public class UserController {
 
 		if (profile != null) {
 			// need to add the profile
+			
+			//get logs all the time to display for side bar article viewer
+			List<Log> currentLogList = logdao.retrieveCurrentLogs(profile.getUser().getId());
 			session.setAttribute("profile", profile);
 			session.setAttribute("logs", profile.getUser().getLogs());
+			session.setAttribute("logList", currentLogList);
 			return "redirect:userHome.do";
 		} else {
 			return "redirect:showLogin.do";
@@ -196,4 +205,5 @@ public class UserController {
 		model.addAttribute("otherProfile", showProfile);
 		return "show_user";
 	}
+	
 }

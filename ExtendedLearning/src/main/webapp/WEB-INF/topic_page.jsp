@@ -43,6 +43,20 @@
 				<c:forEach var="content" items="${topic.contents}">
 					<p style="white-space: pre-line">${content.content}</p>
 				</c:forEach>
+				<!-- any logged in user can update a page right now -->
+				<c:if test="${profile.id != null }">
+					<li>
+						<form action="showUpdateTopic.do">
+							<c:forEach var="content" items="${topic.contents}">
+
+								<input type="hidden" value="${content.id}" name="cid">
+								<!--pass content id into content update page  -->
+								<button type="submit" class="btn btn-primary">Edit
+									Article</button>
+							</c:forEach>
+						</form>
+					</li>
+				</c:if>
 				<hr>
 			</div>
 
@@ -61,22 +75,26 @@
 						<div class="col">
 							<p>image goes here</p>
 						</div>
-						<div class="col">
-							<form action="updateResource.do" method="POST">
-								<input type="hidden" value="${topic.id }" name="topicId" /> <br>
-								<button type="submit" class="btn btn-info pull-right">Update</button>
-							</form>
-						</div>
+						<c:if test="${profile.id != null }">
+							<div class="col">
+								<form action="updateResource.do" method="POST">
+									<input type="hidden" value="${topic.id }" name="topicId" /> <br>
+									<button type="submit" class="btn btn-info pull-right">Update</button>
+								</form>
+							</div>
+						</c:if>
 					</div>
 					<hr>
 				</c:forEach>
 				<div class="resource-footer">
 					<hr>
-					<form action="addResource.do" method="POST">
-						<input type="hidden" value="${topic.id }" name="topicId" /> <br>
-						<button type="submit" class="btn btn-success pull-right">Add
-							Resource</button>
-					</form>
+					<c:if test="${profile.id != null }">
+						<form action="addResource.do" method="POST">
+							<input type="hidden" value="${topic.id }" name="topicId" /> <br>
+							<button type="submit" class="btn btn-success pull-right">Add
+								Resource</button>
+						</form>
+					</c:if>
 				</div>
 				<hr>
 
@@ -174,26 +192,10 @@
 			<div class="sidewidget">
 
 				<div class="card">
-					<h5 class="card-header">Side Widget</h5>
+					<h5 class="card-header">Go To:</h5>
 					<div class="card-body">
 						<ul>
 							<li><a href="#top">Article</a></li>
-
-
-							<!-- any logged in user can update a page right now -->
-							<c:if test="${profile.id != null }">
-								<li>
-									<form action="showUpdateTopic.do">
-										<c:forEach var="content" items="${topic.contents}">
-
-											<input type="hidden" value="${content.id}" name="cid">
-											<!--pass content id into content update page  -->
-											<button type="submit" class="btn btn-primary">Edit
-												Article</button>
-										</c:forEach>
-									</form>
-								</li>
-							</c:if>
 							<li><a href="#resources">Resources</a></li>
 							<li><a href="#comments">Comments</a></li>
 						</ul>
