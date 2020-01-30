@@ -203,9 +203,9 @@ public class TopicController {
 	
 	@RequestMapping(path="attemptAddResource.do")
 	public String attemptAddResource(@RequestParam("topicId") int tid,
-			@RequestParam("") String title,
-			@RequestParam("") String resourceUrl,
-			@RequestParam("") String image) {
+			@RequestParam("resourceTitle") String title,
+			@RequestParam("resourceUrl") String resourceUrl,
+			@RequestParam("image") String image) {
 		Resource newResource = new Resource();
 		newResource.setTitle("TBD");
 		newResource.setResourceUrl("TBD");
@@ -223,6 +223,13 @@ public class TopicController {
 		return "redirect:showSingleTopic.do?topicId=" + tid;
 	}
 	
+	@RequestMapping(path="showUpdateResource.do")
+	public String showUpdateResource(@RequestParam("topicId") int tid, @RequestParam("resourceId") int rid
+			, Model model) {
+		
+		
+		return "update_resource";
+	}
 	
 	
 //	public String updateComments(Model model) {
