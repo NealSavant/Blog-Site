@@ -22,8 +22,14 @@ Note that there is no security for password protection, so please do not use any
 
 The project is built with Spring Boot and JPA with a MySQL database deployed to AWS EC2.
 
-Database Schema
+*Database Schema*
 ![ELP Schema](/DB/midtermDB.png)
+
+From the database, the JPA is designed to create entities for Spring Boot.  The main entities for usage are the Profile and Topic entities, which encompass other information as follows:
+* Profile - incl. User (incl. Logs), Image
+* Topic - incl. Resource (incl. Image), Content, Image, Logs, Comments
+
+The database accessor objects in Spring Boot are called within controllers to provide the specific model for the Java Server Page views.  A database accessor object was created for nearly every table within the database, with the exception coming for Profile and User objects, as the Profile object includes a User object on a one-to-one relationship.  The controllers were limited to a Topic controller and a (somewhat misnamed) User controller, as these are the primary models needed when displaying a view to the user.
 
 ### Technologies and Methodologies Used
 
@@ -43,16 +49,7 @@ Database Schema
 * Trello
 * Agile development
 
-Purpose:
-* So you’ve finished your 16 weeks, what’s next? Continue your education!
-* Shake hands with common technologies in full stack development.
-* Related technologies:
-  - How they are different?
-  - What are the use cases?
-  - What resources are available?
-
-
 ### Lessons Learned
 * Define and document user stories with granularity during the planning phase of the project, follow these guidelines throughout project to ensure MVP
 * Update entities within persistence.xml as they are created
-*
+* Follow Spring Boot setup instructions precisely to avoid later setup troubleshooting
