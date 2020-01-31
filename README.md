@@ -26,6 +26,22 @@ The project is built with Spring Boot and JPA with a MySQL database deployed to 
 
 ### Technologies and Methodologies Used
 
+* Java 8 - programming language
+* Spring Boot MVC
+* Spring Tool Suite
+* JPA
+* JSTL
+* MySQL
+* MAMP - local MySQL hosting
+* HTML/CSS
+* Bootstrap
+* Github/Git - version control
+* AWS EC2
+* Gradle
+* Tomcat
+* Trello
+* Agile development
+
 Purpose:
 * So you’ve finished your 16 weeks, what’s next? Continue your education!
 * Shake hands with common technologies in full stack development.
