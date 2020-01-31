@@ -12,9 +12,17 @@ The Extended Learning Platform (ELP) is a blog-style site that provides quick in
 
 ### Description
 
-Upon landing on the site, users are presented a homepage with a greeting.  On the navigation bar, users can log in, create an account, or go directly to an index of topics.  
+Upon landing on the site, users are presented a homepage with a greeting.  On the navigation bar, users can log in, create an account, or go directly to an index of topics.  Without logging in or creating an account, users can view specific topics, and the comments from other users on those topics.  Upon logging in or creating an account, the user can also update a topic, comment on a topic, and create a new topic.  The administrator of the site has additional privileges, including the ability to hide comments, and enable/disable other users.  Upon disabling of a user, any log-in attempt will fail, although that user's comments are not immediately hidden.
+
+[Extended Learning Platform Site](http://3.137.38.238:8080/ExtendedLearning/)
+
+Note that there is no security for password protection, so please do not use any private information.
 
 ### Implementation
+
+The project is built with Spring Boot and JPA with a MySQL database deployed to AWS EC2.
+
+
 
 ### Technologies and Methodologies Used
 
