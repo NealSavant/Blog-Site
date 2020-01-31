@@ -50,6 +50,15 @@ The database accessor objects in Spring Boot are called within controllers to pr
 * Agile development
 
 ### Lessons Learned
+
 * Define and document user stories with granularity during the planning phase of the project, follow these guidelines throughout project to ensure MVP
 * Update entities within persistence.xml as they are created
 * Follow Spring Boot setup instructions precisely to avoid later setup troubleshooting
+
+### Stretch Goals
+
+* Learn CSS, Bootstrap
+* Implement more personal user experience
+* On page HTML editor for content creation
+* Fine-tune update processing
+* Streamline log management
