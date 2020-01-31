@@ -22,7 +22,8 @@ Note that there is no security for password protection, so please do not use any
 
 The project is built with Spring Boot and JPA with a MySQL database deployed to AWS EC2.
 
-
+Database Schema
+![ELP Schema](/DB/midtermDB.png)
 
 ### Technologies and Methodologies Used
 
