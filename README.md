@@ -1,4 +1,4 @@
-## SKillDistillery Extended Learning Platform
+# Extended Learning Platform Blog
 
 ### Midterm Team Project for Skill Distillery
 
@@ -6,7 +6,7 @@
 * Frank Martin
 * JP Sypniewski
 
-### Overview
+## Overview
 
 The Extended Learning Platform (ELP) is a blog-style site that provides quick information about programming topics.  The target audience is any person looking to learn and share more information about programming.
 
@@ -16,7 +16,18 @@ Upon landing on the site, users are presented a homepage with a greeting.  On th
 
 [Extended Learning Platform Site](http://3.137.38.238:8080/ExtendedLearning/)
 
-Note that there is no security for password protection, so please do not use any private information.
+Note: There is no security for password protection, so please do not use any private information.
+
+### User Interface
+
+## View the collection of articles!
+![Articles.png](https://user-images.githubusercontent.com/55298338/87257086-2299f200-c455-11ea-9364-d4005985dd0b.PNG)
+
+## Share a related resource or leave a comment!
+![UserInteraction.png](https://user-images.githubusercontent.com/55298338/87257087-2463b580-c455-11ea-9acb-a42837553a2a.PNG)
+
+## View other profiles and connect via email!
+![UserConnectivity](https://user-images.githubusercontent.com/55298338/87257090-262d7900-c455-11ea-934f-2011166255cb.PNG)
 
 ### Implementation
 
